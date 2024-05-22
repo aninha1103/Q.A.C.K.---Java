@@ -14,7 +14,7 @@ public class Teste {
     private Usuario criadoPor;
     private Tag tag;
     private List<Comentario> comentarios;
-
+    
     public Teste() {
     }
 
@@ -29,6 +29,28 @@ public class Teste {
         this.comentarios = new ArrayList<>();
     }
 
+    public void criarComentario( Usuario usuarioAtual, String comentarioTexto ){
+        Comentario c = new Comentario( usuarioAtual, LocalDate.now(), comentarioTexto);
+        comentarios.add( c );
+    }
+    
+    public void excluirComentario( Usuario usuarioAtual, Comentario comentario){
+        if( !comentario.permiteAlteracao( usuarioAtual ) ){
+            //erro: usuario nao tem permissao de excluir comentario selecionado
+            return;
+        }
+        comentarios.remove( comentario );
+    }
+    
+    public void editarCometario( Usuario usuarioAtual, Comentario comentario, String novoTexto ){
+        if( !comentario.permiteAlteracao( usuarioAtual ) ){
+            //erro: usuario nao tem permissao de alterar comentario selecionado
+            return;
+        }
+        comentario.setTextoComentario( novoTexto );
+        comentario.setEditado( Boolean.TRUE );
+    }
+    
     public int getId() {
         return id;
     }
@@ -39,6 +61,10 @@ public class Teste {
     
     public LocalDate getData() {
         return data;
+    }
+    
+    public List<Comentario> getComentarios(){
+        return comentarios;
     }
 
     public String getNome() {
