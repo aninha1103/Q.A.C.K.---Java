@@ -7,6 +7,8 @@ public class Usuario {
     private String senha;
     private String Nome;
     private String Login;
+    private Cargo cargo;
+    private Permissoes permissoes;
     /*Fim Atributos*/
 
     public int getId() {
@@ -41,16 +43,26 @@ public class Usuario {
         this.Login = Login;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", senha=" + senha + ", Nome=" + Nome + ", Login=" + Login + '}';
+    public Cargo getCargo() {
+        return cargo;
     }
 
-    public Usuario(int id, String senha, String Nome, String Login) {
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    @Override
+    public String toString() {
+        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nNome: " + Nome+ "\nLogin: " + Login+ "\ncargo: " + cargo+ "\npermissoes: " + permissoes + "\n-- FIM --";
+    }
+
+    public Usuario(int id, String senha, String Nome, String Login, Cargo cargo, Permissoes permissoes) {
         this.id = id;
         this.senha = senha;
         this.Nome = Nome;
         this.Login = Login;
+        this.cargo = cargo;
+        this.permissoes = permissoes;
     }
 
 }
