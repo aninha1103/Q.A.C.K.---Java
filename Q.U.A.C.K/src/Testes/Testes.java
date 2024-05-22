@@ -11,7 +11,7 @@ public class Testes {
         
         Permissoes p1 = new Permissoes(true, false, false, true, false);
         
-        Usuario u1 = new Usuario(1,  "123",  "Joao", "jao", c1, p1);
+        Usuario u1 = new Usuario(1,  "123",  "Joao", "jao", c1);
         
         System.out.println(u1);
     }

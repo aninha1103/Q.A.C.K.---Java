@@ -6,6 +6,8 @@ public class Cargo {
     
     /*Atributos*/
     private int id;
+    private Permissoes permissoes;
+    
     /*Fim Atributos*/
 
     public int getId() {

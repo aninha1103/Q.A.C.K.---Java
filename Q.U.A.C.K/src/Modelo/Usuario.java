@@ -8,7 +8,6 @@ public class Usuario {
     private String Nome;
     private String Login;
     private Cargo cargo;
-    private Permissoes permissoes;
     /*Fim Atributos*/
 
     public int getId() {
@@ -53,16 +52,15 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nNome: " + Nome+ "\nLogin: " + Login+ "\ncargo: " + cargo+ "\npermissoes: " + permissoes + "\n-- FIM --";
+        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nNome: " + Nome+ "\nLogin: " + Login+ "\ncargo: " + cargo+ "\n-- FIM --";
     }
 
-    public Usuario(int id, String senha, String Nome, String Login, Cargo cargo, Permissoes permissoes) {
+    public Usuario(int id, String senha, String Nome, String Login, Cargo cargo) {
         this.id = id;
         this.senha = senha;
         this.Nome = Nome;
         this.Login = Login;
         this.cargo = cargo;
-        this.permissoes = permissoes;
     }
 
 }
