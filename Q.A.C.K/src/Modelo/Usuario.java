@@ -62,5 +62,13 @@ public class Usuario {
         this.Login = Login;
         this.cargo = cargo;
     }
+    
+    public Usuario login(String login, String senha){
+        if( !(this.Login.equals( login ) && this.senha.equals( senha ) ) ){
+            //erro login ou senha invalida
+            return null;
+        }
+        return this;
+    }
 
 }
