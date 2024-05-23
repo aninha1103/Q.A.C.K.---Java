@@ -28,7 +28,7 @@ public class Testes {
             usuarios.add(u1);
             usuarios.add(u2);
             
-            testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, u1, Tag.BUG) );
+            /*testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, u1, Tag.BUG) );
             Teste t = testes.stream().filter( x -> x.getId() == 0).collect(Collectors.toList()).getFirst();
             t.criarComentario(u1, "teste1");
             t.criarComentario(u2, "teste2");
@@ -50,10 +50,11 @@ public class Testes {
                 System.out.println(usuarioAtual);
             }
             
-            
+           */ 
         }catch( Exception e ){
             System.out.println( e.getMessage() );
         }
         
     }
 }
+    
