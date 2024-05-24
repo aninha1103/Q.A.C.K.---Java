@@ -9,12 +9,12 @@ import java.util.List;
 import javax.imageio.ImageReader;
 
 public class Repositorio {
-    private List<Teste> teste;
+    private List<Teste> testes;
     private List<Usuario> usuarios;
     private Usuario usuarioAtual;
 
     public Repositorio() {
-        this.teste = new ArrayList<>();
+        this.testes = new ArrayList<>();
         this.usuarios = new ArrayList<>();
     }
     
@@ -24,7 +24,7 @@ public class Repositorio {
             //erro: usuario nao tem permissao para criar teste
             return;
         }
-        this.teste.add( teste );
+        this.testes.add( teste );
     }
     
     public void excluirTeste( Teste teste ){
@@ -32,7 +32,7 @@ public class Repositorio {
             //erro: usuario nao tem permissao para excluir teste indicado
             return;
         }
-        this.teste.remove( teste );
+        this.testes.remove( teste );
     }
     
     public void editarTeste( Teste teste, String nome, String descricao, ImageReader image, Tag tag ){
@@ -77,8 +77,8 @@ public class Repositorio {
         return usuarioAtual == teste.getCriadoPor();
     }
     
-    public List<Teste> getTeste() {
-        return teste;
+    public List<Teste> getTestes() {
+        return testes;
     }
 
     public List<Usuario> getUsuarios() {
