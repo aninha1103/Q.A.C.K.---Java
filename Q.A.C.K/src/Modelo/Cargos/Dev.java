@@ -9,13 +9,14 @@ import Modelo.Permissoes;
 
 /**
  *
- * @author LS.NOT 105
+ * @author Ingadev
  */
-public class QA extends Cargo{
+public class Dev extends Cargo {
 
-    public QA( Permissoes permissoes) {
+    public Dev( Permissoes permissoes) {
         //definir permissoes do usuario via construtor
         super( 1, new Permissoes(true, true, true, true, true, true) );
     }
+    
     
 }
