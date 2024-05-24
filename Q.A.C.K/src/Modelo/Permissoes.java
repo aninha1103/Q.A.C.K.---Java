@@ -4,6 +4,7 @@ package Modelo;
 public class Permissoes {
     
     /*Atributos*/
+    private boolean manipularUsuario;
     private boolean criar;
     private boolean alterar;
     private boolean excluir;
@@ -11,6 +12,14 @@ public class Permissoes {
     private boolean comentar;
     /*Fim Atributos*/
 
+    public boolean isManipularUsuario() {
+        return manipularUsuario;
+    }
+
+    public void setManipularUsuario(boolean manipularUsuario) {
+        this.manipularUsuario = manipularUsuario;
+    }
+    
     public boolean isCriar() {
         return criar;
     }
@@ -51,13 +60,16 @@ public class Permissoes {
         this.comentar = comentar;
     }
 
-    public Permissoes(boolean criar, boolean alterar, boolean excluir, boolean exportaRelatorio, boolean comentar) {
+    public Permissoes(boolean manipularUsuario, boolean criar, boolean alterar, boolean excluir, boolean exportaRelatorio, boolean comentar) {
+        this.manipularUsuario = manipularUsuario;
         this.criar = criar;
         this.alterar = alterar;
         this.excluir = excluir;
         this.exportaRelatorio = exportaRelatorio;
         this.comentar = comentar;
     }
+
+    
 
     @Override
     public String toString() {

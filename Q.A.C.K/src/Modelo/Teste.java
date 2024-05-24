@@ -30,12 +30,17 @@ public class Teste {
     }
 
     public void criarComentario( Usuario usuarioAtual, String comentarioTexto ){
+        if( !usuarioAtual.getCargo().getPermissoes().isComentar() ){
+            //erro usuario não pode criar comentarios
+            return;
+        }
+        
         Comentario c = new Comentario( usuarioAtual, LocalDate.now(), comentarioTexto);
         comentarios.add( c );
     }
     
     public void excluirComentario( Usuario usuarioAtual, Comentario comentario){
-        if( !comentario.permiteAlteracao( usuarioAtual ) ){
+        if( !comentario.permiteAlteracao( usuarioAtual ) && !usuarioAtual.getCargo().getPermissoes().isComentar() ){
             //erro: usuario nao tem permissao de excluir comentario selecionado
             return;
         }
@@ -43,7 +48,7 @@ public class Teste {
     }
     
     public void editarCometario( Usuario usuarioAtual, Comentario comentario, String novoTexto ){
-        if( !comentario.permiteAlteracao( usuarioAtual ) ){
+        if( !comentario.permiteAlteracao( usuarioAtual ) && !usuarioAtual.getCargo().getPermissoes().isComentar() ){
             //erro: usuario nao tem permissao de alterar comentario selecionado
             return;
         }
