@@ -36,11 +36,15 @@ public class Testes {
             //a seleção do comentário excluido/alterado deve ser responsabilidade de outra função/método
             t.editarCometario( u1, t.getComentarios().get(0), "Editado");
             t.excluirComentario(u2, t.getComentarios().get(1) );
-
             
-            
+            //Dados do filtro para teste
+            String nome = "tE";
+            Tag tag = Tag.FINALIZADO;
+            LocalDate dataInicio = LocalDate.parse("2023-05-01");
+            LocalDate dataFim = LocalDate.parse("2024-06-01");
+            Usuario usuario =  rep.getUsuarios().getLast();
             // Exibindo filtro nos teste
-            for (Teste teste : new Filtro( "teStE", Tag.ANDAMENTO, LocalDate.parse("2024-05-01"), LocalDate.parse("2024-06-01")).filtrarTeste( rep.getTestes() ) ) {
+            for (Teste teste : new Filtro( nome, tag, dataInicio, dataFim , usuario ).filtrarTeste( rep.getTestes() ) ) {
                 System.out.println("ID: " + teste.getId() + ", Nome: " + teste.getNome() + ", Data: " + teste.getData() + ", Descricao: " + teste.getDescricao() + ", Criado por: " + teste.getCriadoPor().getNome() + ", Tag: " + teste.getTag());
             }
         }catch( Exception e ){
