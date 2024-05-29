@@ -2,6 +2,7 @@ package Repositorio;
 
 import Modelo.Cargo;
 import Modelo.Cargos.Techlead;
+import Modelo.Status;
 import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
@@ -19,7 +20,7 @@ public class Repositorio {
         this.testes = new ArrayList<>();
         this.usuarios = new ArrayList<>();
         this.usuarios.add(( new Usuario( 0, "ADMIN", "adm", "adm", new Techlead() ) ) );
-        this.testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG) );
+        this.testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG, Status.ANDAMENTO) );
     }
     
     //manipulacao teste

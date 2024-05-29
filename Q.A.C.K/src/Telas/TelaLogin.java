@@ -3,9 +3,9 @@ package Telas;
 import Modelo.Usuario;
 import Repositorio.Repositorio;
 
-public class telaLogin extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JFrame {
 
-    public telaLogin() {
+    public TelaLogin() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -14,11 +14,11 @@ public class telaLogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         campoSenha = new javax.swing.JPasswordField();
-        campoLogin = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        campoUsuario = new javax.swing.JTextField();
+        IconLogin = new javax.swing.JLabel();
+        IconSenha = new javax.swing.JLabel();
+        ProgramName = new javax.swing.JLabel();
+        Versao = new javax.swing.JLabel();
         botaoEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -29,25 +29,25 @@ public class telaLogin extends javax.swing.JFrame {
 
         campoSenha.setDisabledTextColor(new java.awt.Color(204, 204, 204));
 
-        campoLogin.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        campoUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 228, 23));
-        jLabel1.setText("Login:");
+        IconLogin.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        IconLogin.setForeground(new java.awt.Color(255, 228, 23));
+        IconLogin.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\iconamarelo.png" ));
 
-        jLabel2.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 228, 23));
-        jLabel2.setText("Senha:");
+        IconSenha.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        IconSenha.setForeground(new java.awt.Color(255, 228, 23));
+        IconSenha.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\chave.png" ));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SimSun", 1, 40)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 228, 23));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText(" Q.A.C.K.");
+        ProgramName.setBackground(new java.awt.Color(255, 255, 255));
+        ProgramName.setFont(new java.awt.Font("SimSun", 1, 40)); // NOI18N
+        ProgramName.setForeground(new java.awt.Color(255, 228, 23));
+        ProgramName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ProgramName.setText(" Q.A.C.K.");
 
-        jLabel5.setFont(new java.awt.Font("Serif", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 228, 23));
-        jLabel5.setText("Versão: 00.00.01");
+        Versao.setFont(new java.awt.Font("Serif", 0, 10)); // NOI18N
+        Versao.setForeground(new java.awt.Color(255, 228, 23));
+        Versao.setText("Versão: 00.00.01");
 
         botaoEntrar.setBackground(new java.awt.Color(204, 204, 204));
         botaoEntrar.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
@@ -64,41 +64,39 @@ public class telaLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                            .addComponent(campoLogin)
-                            .addComponent(campoSenha))
-                        .addGap(0, 165, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Versao)
                 .addContainerGap())
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ProgramName, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(IconLogin)
+                    .addComponent(IconSenha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botaoEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoUsuario)
+                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addComponent(ProgramName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IconLogin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(IconSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160)
-                .addComponent(jLabel5)
+                .addGap(159, 159, 159)
+                .addComponent(Versao)
                 .addContainerGap())
         );
 
@@ -119,7 +117,7 @@ public class telaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        String login = this.campoLogin.getText();
+        String login = this.campoUsuario.getText();
         char[] senha = this.campoSenha.getPassword();
         String senhaStr = "";
         for( int i = 0; i<senha.length;i++){
@@ -127,26 +125,33 @@ public class telaLogin extends javax.swing.JFrame {
         }
         
         Repositorio rep = new Repositorio();
+        rep.setUsuarioAtual(rep.getUsuarios().getFirst() );
+//        for( Usuario u : rep.getUsuarios() ){
+//            Usuario usuarioAtual = u.login(login, senhaStr );
+//            if( usuarioAtual != null){
+//                rep.setUsuarioAtual( usuarioAtual );
+//            }
+//        }
         
-        for( Usuario u : rep.getUsuarios() ){
-            Usuario usuarioAtual = u.login(login, senhaStr );
-            if( usuarioAtual != null){
-                rep.setUsuarioAtual( usuarioAtual );
-            }
+        if( rep.getUsuarioAtual() == null ){
+            //erro login ou senha invalido
+            return;
+        }else{
+            this.dispose();
+            TelaPrincipal t = new TelaPrincipal( rep );
+            t.setVisible(true);
         }
-        this.dispose();
-        telaMenu t = new telaMenu( rep );
-        t.setVisible(true);
+        
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IconLogin;
+    private javax.swing.JLabel IconSenha;
+    private javax.swing.JLabel ProgramName;
+    private javax.swing.JLabel Versao;
     public javax.swing.JButton botaoEntrar;
-    private javax.swing.JTextField campoLogin;
     private javax.swing.JPasswordField campoSenha;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField campoUsuario;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

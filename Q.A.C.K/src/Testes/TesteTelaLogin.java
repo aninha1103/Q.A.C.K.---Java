@@ -1,10 +1,10 @@
 package Testes;
 
-import Telas.telaLogin;
+import Telas.TelaLogin;
 
 public class TesteTelaLogin {
     public static void main(String[] args) {
-        telaLogin t = new telaLogin();
+        TelaLogin t = new TelaLogin();
         t.setVisible(true);
     }
 }

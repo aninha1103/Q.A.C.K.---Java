@@ -13,12 +13,13 @@ public class Teste {
     private ImageReader imagem;
     private Usuario criadoPor;
     private Tag tag;
+    private Status status;
     private List<Comentario> comentarios;
     
     public Teste() {
     }
 
-    public Teste(int id, String nome, LocalDate data, String descricao, ImageReader imagem, Usuario criadoPor, Tag tag) {
+    public Teste(int id, String nome, LocalDate data, String descricao, ImageReader imagem, Usuario criadoPor, Tag tag, Status status ) {
         this.id = id;
         this.nome = nome;
         this.data = data;
@@ -26,8 +27,11 @@ public class Teste {
         this.imagem = imagem;
         this.criadoPor = criadoPor;
         this.tag = tag;
+        this.status = status;
         this.comentarios = new ArrayList<>();
     }
+
+    
 
     public void criarComentario( Usuario usuarioAtual, String comentarioTexto ){
         if( !usuarioAtual.getCargo().getPermissoes().isComentar() ){
@@ -103,6 +107,16 @@ public class Teste {
     public void setTag(Tag tag) {
         this.tag = tag;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
+    
 
     @Override
     public String toString() {

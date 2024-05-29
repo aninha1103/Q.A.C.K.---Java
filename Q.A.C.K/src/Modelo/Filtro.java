@@ -7,13 +7,15 @@ import java.util.stream.Collectors;
 public class Filtro {
     private String nome;
     private Tag tag;
+    private Status situacao;
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private Usuario usuario;
 
-    public Filtro(String nome, Tag tag, LocalDate dataInicio, LocalDate dataFim, Usuario usuario) {
+    public Filtro(String nome, Tag tag, Status situacao, LocalDate dataInicio, LocalDate dataFim, Usuario usuario) {
         this.nome = nome;
         this.tag = tag;
+        this.situacao = situacao;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.usuario = usuario;
@@ -27,6 +29,10 @@ public class Filtro {
         return tag;
     }
 
+    public Status getSituacao() {
+        return situacao;
+    }
+    
     public LocalDate getDataInicio() {
         return dataInicio;
     }
@@ -55,6 +61,10 @@ public class Filtro {
         
         if( this.getTag() != null ){
             testesFiltrado = testesFiltrado.stream().filter( x -> x.getTag() == this.getTag() ).collect(Collectors.toList());
+        }
+        
+        if( this.getSituacao() != null ){
+            testesFiltrado = testesFiltrado.stream().filter( x -> x.getSituacao()== this.getSituacao() ).collect(Collectors.toList());
         }
         
         if( this.getDataInicio() != null){
