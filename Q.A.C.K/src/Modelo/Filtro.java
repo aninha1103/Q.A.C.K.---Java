@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 public class Filtro {
     private String nome;
     private Tag tag;
-    private Status situacao;
+    private Status status;
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private Usuario usuario;
 
-    public Filtro(String nome, Tag tag, Status situacao, LocalDate dataInicio, LocalDate dataFim, Usuario usuario) {
+    public Filtro(String nome, Tag tag, Status status, LocalDate dataInicio, LocalDate dataFim, Usuario usuario) {
         this.nome = nome;
         this.tag = tag;
-        this.situacao = situacao;
+        this.status = status;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.usuario = usuario;
@@ -29,8 +29,8 @@ public class Filtro {
         return tag;
     }
 
-    public Status getSituacao() {
-        return situacao;
+    public Status getStatus() {
+        return status;
     }
     
     public LocalDate getDataInicio() {
@@ -47,7 +47,6 @@ public class Filtro {
     
     public List<Teste> filtrarTeste( List<Teste> teste ){
         List<Teste> testesFiltrado = teste;
-        
         if( this.getNome() != null ){
             int lenght = getNome().length();
             testesFiltrado = teste.stream().filter( x -> x.getNome().substring(0, ( x.getNome().length() < lenght) ? x.getNome().length() : lenght ).equalsIgnoreCase(
@@ -63,8 +62,8 @@ public class Filtro {
             testesFiltrado = testesFiltrado.stream().filter( x -> x.getTag() == this.getTag() ).collect(Collectors.toList());
         }
         
-        if( this.getSituacao() != null ){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getSituacao()== this.getSituacao() ).collect(Collectors.toList());
+        if( this.getStatus() != null ){
+            testesFiltrado = testesFiltrado.stream().filter( x -> x.getStatus()== this.getStatus() ).collect(Collectors.toList());
         }
         
         if( this.getDataInicio() != null){

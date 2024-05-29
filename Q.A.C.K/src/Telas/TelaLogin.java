@@ -125,13 +125,13 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
         Repositorio rep = new Repositorio();
-        rep.setUsuarioAtual(rep.getUsuarios().getFirst() );
-//        for( Usuario u : rep.getUsuarios() ){
-//            Usuario usuarioAtual = u.login(login, senhaStr );
-//            if( usuarioAtual != null){
-//                rep.setUsuarioAtual( usuarioAtual );
-//            }
-//        }
+        
+        for( Usuario u : rep.getUsuarios() ){
+            Usuario usuarioAtual = u.login(login, senhaStr );
+            if( usuarioAtual != null){
+                rep.setUsuarioAtual( usuarioAtual );
+            }
+        }
         
         if( rep.getUsuarioAtual() == null ){
             //erro login ou senha invalido
