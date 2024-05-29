@@ -13,7 +13,7 @@ import Modelo.Permissoes;
  */
 public class Techlead extends Cargo {
 
-    public Techlead( Permissoes permissoes) {
+    public Techlead() {
         //definir permissoes do usuario via construtor
         super( 1, new Permissoes(true, true, true, true, true, true) );
     }

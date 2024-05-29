@@ -1,6 +1,7 @@
 package Telas;
 
-import javax.swing.JFrame;
+import Modelo.Usuario;
+import Repositorio.Repositorio;
 
 public class telaLogin extends javax.swing.JFrame {
 
@@ -27,18 +28,8 @@ public class telaLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(80, 0, 102));
 
         campoSenha.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        campoSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaActionPerformed(evt);
-            }
-        });
 
         campoLogin.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        campoLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoLoginActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 228, 23));
@@ -127,27 +118,26 @@ public class telaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
-
-    }//GEN-LAST:event_campoLoginActionPerformed
-
-    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-
-    }//GEN-LAST:event_campoSenhaActionPerformed
-
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
+        String login = this.campoLogin.getText();
+        char[] senha = this.campoSenha.getPassword();
+        String senhaStr = "";
+        for( int i = 0; i<senha.length;i++){
+            senhaStr += senha[ i ];
+        }
+        
+        Repositorio rep = new Repositorio();
+        
+        for( Usuario u : rep.getUsuarios() ){
+            Usuario usuarioAtual = u.login(login, senhaStr );
+            if( usuarioAtual != null){
+                rep.setUsuarioAtual( usuarioAtual );
+            }
+        }
         this.dispose();
-        telaMenu t = new telaMenu();
+        telaMenu t = new telaMenu( rep );
         t.setVisible(true);
     }//GEN-LAST:event_botaoEntrarActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new telaLogin().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton botaoEntrar;

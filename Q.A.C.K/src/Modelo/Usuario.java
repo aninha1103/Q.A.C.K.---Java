@@ -4,9 +4,9 @@ package Modelo;
 public class Usuario {
     /*Atributos*/
     private int id;
+    private String nome;
+    private String login;
     private String senha;
-    private String Nome;
-    private String Login;
     private Cargo cargo;
     /*Fim Atributos*/
 
@@ -27,19 +27,19 @@ public class Usuario {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getLogin() {
-        return Login;
+        return login;
     }
 
-    public void setLogin(String Login) {
-        this.Login = Login;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public Cargo getCargo() {
@@ -52,19 +52,19 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nNome: " + Nome+ "\nLogin: " + Login+ "\n-- Cargo--\n" + cargo+ "\n-- FIM --";
+        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nnome: " + nome+ "\nlogin: " + login+ "\n-- Cargo--\n" + cargo+ "\n-- FIM --";
     }
 
-    public Usuario(int id, String senha, String Nome, String Login, Cargo cargo) {
+    public Usuario(int id, String nome, String login, String senha, Cargo cargo) {
         this.id = id;
+        this.nome = nome;
+        this.login = login;
         this.senha = senha;
-        this.Nome = Nome;
-        this.Login = Login;
         this.cargo = cargo;
     }
     
     public Usuario login(String login, String senha){
-        if( !(this.Login.equals( login ) && this.senha.equals( senha ) ) ){
+        if( !(this.login.equals( login ) && this.senha.equals( senha ) ) ){
             //erro login ou senha invalida
             return null;
         }

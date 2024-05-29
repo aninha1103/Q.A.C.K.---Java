@@ -13,9 +13,9 @@ import Modelo.Permissoes;
  */
 public class QA extends Cargo{
 
-    public QA( Permissoes permissoes) {
+    public QA() {
         //definir permissoes do usuario via construtor
-        super( 1, new Permissoes(true, true, true, true, true, true) );
+        super( 2, new Permissoes(true, true, true, true, true, true) );
     }
     
 }

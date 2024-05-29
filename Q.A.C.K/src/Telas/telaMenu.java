@@ -1,5 +1,10 @@
 package Telas;
 
+import Modelo.Teste;
+import Repositorio.Repositorio;
+import java.util.List;
+import javax.swing.DefaultListModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,13 +16,17 @@ package Telas;
  */
 public class telaMenu extends javax.swing.JFrame {
     
-
-    /**
-     * Creates new form Menu
-     */
-    public telaMenu() {
+    public telaMenu( Repositorio rep) {
         initComponents();
-        campoNomeCargo.setText("Luis, DEV");
+        this.campoNomeCargo.setText(rep.getUsuarioAtual().getNome() + ", " + rep.getNomeCargo() );
+        atulizaListaUsuario( rep.getTestes() );
+    }
+    
+    public final void atulizaListaUsuario( List<Teste> testes ){
+        DefaultListModel modelo = new DefaultListModel();
+        modelo.clear();
+        modelo.addAll( testes );
+        this.listaTestes.setModel( modelo );
     }
 
     /**
@@ -34,11 +43,12 @@ public class telaMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        botaoUsuario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollBar5 = new javax.swing.JScrollBar();
-        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        adicionarTeste = new javax.swing.JButton();
         campoNomeCargo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -56,14 +66,14 @@ public class telaMenu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(213, 213, 213));
 
-        jButton3.setBackground(new java.awt.Color(80, 0, 102));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Icon.png"))); // NOI18N
-        jButton3.setMaximumSize(new java.awt.Dimension(26, 26));
-        jButton3.setMinimumSize(new java.awt.Dimension(26, 26));
-        jButton3.setPreferredSize(new java.awt.Dimension(26, 26));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botaoUsuario.setBackground(new java.awt.Color(80, 0, 102));
+        botaoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Icon.png"))); // NOI18N
+        botaoUsuario.setMaximumSize(new java.awt.Dimension(26, 26));
+        botaoUsuario.setMinimumSize(new java.awt.Dimension(26, 26));
+        botaoUsuario.setPreferredSize(new java.awt.Dimension(26, 26));
+        botaoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botaoUsuarioActionPerformed(evt);
             }
         });
 
@@ -74,30 +84,47 @@ public class telaMenu extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(234, 234, 234));
         jPanel6.setFocusCycleRoot(true);
 
+        listaTestes.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        listaTestes.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listaTestes.setToolTipText("");
+        listaTestes.setAutoscrolls(false);
+        listaTestes.setName(""); // NOI18N
+        jScrollPane1.setViewportView(listaTestes);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollBar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(80, 0, 102));
-        jButton1.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Adicionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        adicionarTeste.setBackground(new java.awt.Color(80, 0, 102));
+        adicionarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        adicionarTeste.setForeground(new java.awt.Color(255, 255, 255));
+        adicionarTeste.setText("Adicionar");
+        adicionarTeste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                adicionarTesteActionPerformed(evt);
             }
         });
 
-        campoNomeCargo.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        campoNomeCargo.setFont(new java.awt.Font("SimSun", 1, 12)); // NOI18N
         campoNomeCargo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -110,11 +137,11 @@ public class telaMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(campoNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botaoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(343, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(adicionarTeste)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -122,12 +149,12 @@ public class telaMenu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoNomeCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(adicionarTeste)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -150,27 +177,18 @@ public class telaMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void adicionarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarTesteActionPerformed
+        //tela adicionar teste
+    }//GEN-LAST:event_adicionarTesteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botaoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    public static void main(String args[]) {
-  
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                telaMenu t = new telaMenu();
-            }
-        });
-    }
+    }//GEN-LAST:event_botaoUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adicionarTeste;
+    private javax.swing.JButton botaoUsuario;
     private javax.swing.JLabel campoNomeCargo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
@@ -180,6 +198,8 @@ public class telaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollBar jScrollBar5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private final javax.swing.JList<String> listaTestes = new javax.swing.JList<>();
     // End of variables declaration//GEN-END:variables
 }
 

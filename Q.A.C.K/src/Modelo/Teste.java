@@ -103,5 +103,12 @@ public class Teste {
     public void setTag(Tag tag) {
         this.tag = tag;
     }
+
+    @Override
+    public String toString() {
+        return id + "  " + nome + "           " + data ;
+    }
+    
+    
     
 }

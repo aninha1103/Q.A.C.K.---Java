@@ -13,9 +13,9 @@ import Modelo.Permissoes;
  */
 public class Dev extends Cargo {
 
-    public Dev( Permissoes permissoes) {
+    public Dev() {
         //definir permissoes do usuario via construtor
-        super( 1, new Permissoes(true, true, true, true, true, true) );
+        super( 3, new Permissoes(true, true, true, true, true, true) );
     }
     
     

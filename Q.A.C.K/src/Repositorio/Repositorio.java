@@ -1,9 +1,11 @@
 package Repositorio;
 
 import Modelo.Cargo;
+import Modelo.Cargos.Techlead;
 import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageReader;
@@ -16,6 +18,8 @@ public class Repositorio {
     public Repositorio() {
         this.testes = new ArrayList<>();
         this.usuarios = new ArrayList<>();
+        this.usuarios.add(( new Usuario( 0, "ADMIN", "adm", "adm", new Techlead() ) ) );
+        this.testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG) );
     }
     
     //manipulacao teste
@@ -46,7 +50,7 @@ public class Repositorio {
         teste.setTag(tag);
     }
     
-    public void adicionarUsuario( Usuario usuario){
+    public final void adicionarUsuario( Usuario usuario) {
         if( !usuarioAtual.getCargo().getPermissoes().isManipularUsuario() ){
             //erro usuario não tem permissao para manipular usuarios
             return;
@@ -91,6 +95,16 @@ public class Repositorio {
 
     public void setUsuarioAtual(Usuario usuarioAtual) {
         this.usuarioAtual = usuarioAtual;
+    }
+    
+    public String getNomeCargo(){
+        String nomeCargo = "";
+        switch(usuarioAtual.getCargo().getId()){
+            case 1 -> nomeCargo = "TechLead";
+            case 2 -> nomeCargo = "QA";
+            case 3 -> nomeCargo = "Dev";
+        }
+        return nomeCargo;
     }
     
 }
