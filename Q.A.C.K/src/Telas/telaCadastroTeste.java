@@ -229,7 +229,9 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             //TesteJDBC.insert( t ) 
             rep.adicionarTeste( t );
         }catch(IOException e){
-            System.out.println( e.getMessage() );
+            //Houve um erro ao salvar teste
+        }finally{
+            this.dispose();
         }      
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
