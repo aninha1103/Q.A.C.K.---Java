@@ -118,11 +118,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
         String login = this.campoUsuario.getText();
-        char[] senha = this.campoSenha.getPassword();
-        String senhaStr = "";
-        for( int i = 0; i<senha.length;i++){
-            senhaStr += senha[ i ];
-        }
+        String senhaStr = String.copyValueOf(this.campoSenha.getPassword());
         
         Repositorio rep = new Repositorio();
         
@@ -135,7 +131,6 @@ public class TelaLogin extends javax.swing.JFrame {
         
         if( rep.getUsuarioAtual() == null ){
             //erro login ou senha invalido
-            return;
         }else{
             this.dispose();
             TelaPrincipal t = new TelaPrincipal( rep );

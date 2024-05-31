@@ -19,7 +19,7 @@ public class Repositorio {
     public Repositorio() {
         this.testes = new ArrayList<>();
         this.usuarios = new ArrayList<>();
-        this.usuarios.add(( new Usuario( 0, "ADMIN", "adm", "adm", new Techlead() ) ) );
+        this.usuarios.add(( new Usuario( "ADMIN", "adm", "adm", new Techlead() ) ) );
         this.testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG, Status.ANDAMENTO) );
     }
     
@@ -51,12 +51,12 @@ public class Repositorio {
         teste.setTag(tag);
     }
     
-    public final void adicionarUsuario( Usuario usuario) {
+    public void adicionarUsuario( Usuario usuario) {
         if( !usuarioAtual.getCargo().getPermissoes().isManipularUsuario() ){
             //erro usuario não tem permissao para manipular usuarios
             return;
         }
-        this.usuarios.add(usuario);
+        this.usuarios.add( usuario );
     }
     
     public void removerUsuario( Usuario usuario){
