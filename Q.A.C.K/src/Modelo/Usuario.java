@@ -9,7 +9,7 @@ public class Usuario {
     private String senha;
     private Cargo cargo;
     /*Fim Atributos*/
-
+    
     public int getId() {
         return id;
     }
@@ -52,11 +52,15 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nnome: " + nome+ "\nlogin: " + login+ "\n-- Cargo--\n" + cargo+ "\n-- FIM --";
+        return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nnome: " + nome+ "\nlogin: " + login+ "\nCargo: " + cargo.getId() + "\n-- FIM --";
     }
+    
+    //variavel auxiliar para substituir autoincrement do banco de dados
+    private static int idUsuario = 0;
+    //fim auxiliar
 
-    public Usuario(int id, String nome, String login, String senha, Cargo cargo) {
-        this.id = id;
+    public Usuario( String nome, String login, String senha, Cargo cargo) {
+        this.id = idUsuario++;
         this.nome = nome;
         this.login = login;
         this.senha = senha;

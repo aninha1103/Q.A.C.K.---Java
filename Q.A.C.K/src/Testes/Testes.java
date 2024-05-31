@@ -22,10 +22,10 @@ public class Testes {
             Cargo c1 = new Cargo(1, p1);
             
             //necessario existir um usuario logado para fazer as alteracoes, pois é verificado as permissao do usuario logado
-            Usuario u2 = new Usuario(2,  "Luis", "luis","123", c1);
+            Usuario u2 = new Usuario( "Luis", "luis","123", c1);
             rep.setUsuarioAtual( u2 );
             
-            Usuario u1 = new Usuario(1, "Joao", "jao", "123", c1);
+            Usuario u1 = new Usuario( "Joao", "jao", "123", c1);
             rep.adicionarUsuario(u1);
             rep.adicionarUsuario(u2);
             
@@ -45,7 +45,7 @@ public class Testes {
             Status status = Status.ANDAMENTO;
             LocalDate dataInicio = LocalDate.parse("2023-05-01");
             LocalDate dataFim = LocalDate.parse("2024-06-01");
-            Usuario usuario =  rep.getUsuarios().get(1);
+            Usuario usuario =  rep.getUsuarios().get( 0 );
             // Exibindo filtro nos teste
             for (Teste teste : new Filtro( nome, tag, status, dataInicio, dataFim , usuario ).filtrarTeste( rep.getTestes() ) ) {
                 System.out.println("ID: " + teste.getId() + ", Nome: " + teste.getNome() + ", Data: " + teste.getData() + ", Descricao: " + teste.getDescricao() + ", Criado por: " + teste.getCriadoPor().getNome() + ", Tag: " + teste.getTag());
