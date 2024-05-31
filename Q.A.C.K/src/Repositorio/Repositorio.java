@@ -6,10 +6,10 @@ import Modelo.Status;
 import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
+import java.awt.Image;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.imageio.ImageReader;
 
 public class Repositorio {
     private List<Teste> testes;
@@ -20,7 +20,7 @@ public class Repositorio {
         this.testes = new ArrayList<>();
         this.usuarios = new ArrayList<>();
         this.usuarios.add(( new Usuario( "ADMIN", "adm", "adm", new Techlead() ) ) );
-        this.testes.add( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG, Status.ANDAMENTO) );
+        this.testes.add( new Teste( "teste", LocalDate.now(), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG, Status.ANDAMENTO) );
     }
     
     //manipulacao teste
@@ -40,7 +40,7 @@ public class Repositorio {
         this.testes.remove( teste );
     }
     
-    public void editarTeste( Teste teste, String nome, String descricao, ImageReader image, Tag tag ){
+    public void editarTeste( Teste teste, String nome, String descricao, Image image, Tag tag ){
         if( !usuarioAtual.getCargo().getPermissoes().isExcluir() && !permiteAlteracao( usuarioAtual, teste )  ){
             //erro: usuario nao tem permissao para excluir teste indicado
             return;

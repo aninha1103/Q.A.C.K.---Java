@@ -62,8 +62,7 @@ public class Testes {
             Usuario usuario = (i % 2 == 0) ? u1 : u2;
             Tag tag = (i % 2 == 0) ? Tag.BUG : Tag.MELHORIA;
             
-            Teste teste = new Teste(
-                i, 
+            Teste teste = new Teste( 
                 "Teste " + i, 
                 LocalDate.now(), 
                 "Descricao do teste " + i, 
@@ -75,9 +74,9 @@ public class Testes {
             
             rep.adicionarTeste(teste);
             }
-        rep.adicionarTeste( new Teste(0, "teste", LocalDate.now(), "Destinado a teste", null, u1, Tag.BUG, Status.ANDAMENTO) );
-        rep.adicionarTeste( new Teste(11, "teste dataInicio", LocalDate.parse("2024-05-05"), "Destinado a teste", null, u2, Tag.RETRABALHO, Status.FINALIZADO) );
-        rep.adicionarTeste( new Teste(12, "teste data fim", LocalDate.parse("2024-11-11"), "Destinado a teste", null, u2, Tag.MELHORIA, Status.ANDAMENTO) );
+        rep.adicionarTeste( new Teste( "teste", LocalDate.now(), "Destinado a teste", null, u1, Tag.BUG, Status.ANDAMENTO) );
+        rep.adicionarTeste( new Teste( "teste dataInicio", LocalDate.parse("2024-05-05"), "Destinado a teste", null, u2, Tag.RETRABALHO, Status.FINALIZADO) );
+        rep.adicionarTeste( new Teste( "teste data fim", LocalDate.parse("2024-11-11"), "Destinado a teste", null, u2, Tag.MELHORIA, Status.ANDAMENTO) );
     }
 }
     

@@ -1,26 +1,30 @@
 package Modelo;
 
+import java.awt.Image;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.imageio.ImageReader;
 
 public class Teste {
     private int id;
     private String nome;
     private LocalDate data;
     private String descricao;
-    private ImageReader imagem;
+    private Image imagem;
     private Usuario criadoPor;
     private Tag tag;
     private Status status;
     private List<Comentario> comentarios;
+
+    //variavel auxiliar para substituir autoincrement do banco de dados
+    private static int idUsuario = 0;
+    //fim auxiliar
     
     public Teste() {
     }
 
-    public Teste(int id, String nome, LocalDate data, String descricao, ImageReader imagem, Usuario criadoPor, Tag tag, Status status ) {
-        this.id = id;
+    public Teste( String nome, LocalDate data, String descricao, Image imagem, Usuario criadoPor, Tag tag, Status status ) {
+        this.id = idUsuario++;
         this.nome = nome;
         this.data = data;
         this.descricao = descricao;
@@ -92,11 +96,11 @@ public class Teste {
         this.descricao = descricao;
     }
 
-    public ImageReader getImagem() {
+    public Image getImagem() {
         return imagem;
     }
 
-    public void setImagem(ImageReader imagem) {
+    public void setImagem(Image imagem) {
         this.imagem = imagem;
     }
 
