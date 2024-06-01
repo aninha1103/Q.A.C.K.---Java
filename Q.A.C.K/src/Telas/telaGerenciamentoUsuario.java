@@ -27,19 +27,19 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        campoNomeCargo = new javax.swing.JLabel();
+        CampoNomeCargoUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        campoNomeUsuario = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        campoSenhaUsuario = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
+        UsuarioTexto = new javax.swing.JLabel();
+        NomeTexto = new javax.swing.JLabel();
+        CampoNomeUsuario = new javax.swing.JTextField();
+        CargoTexto = new javax.swing.JLabel();
+        CampoSenhaUsuario = new javax.swing.JPasswordField();
+        SenhaTexto = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        botaoSalvarCadastro = new javax.swing.JButton();
-        botaoCadastrar = new javax.swing.JButton();
-        campoCargo = new javax.swing.JTextField();
-        campoUsuário = new javax.swing.JTextField();
+        BotaoSalvarCadastro = new javax.swing.JButton();
+        BotaoExcluir = new javax.swing.JButton();
+        CampoCargoUsuario = new javax.swing.JTextField();
+        CampoUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Usuário");
@@ -47,51 +47,51 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(213, 213, 213));
 
-        campoNomeCargo.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        campoNomeCargo.setForeground(new java.awt.Color(80, 0, 102));
-        campoNomeCargo.setText("Nome Usuário + Cargo");
+        CampoNomeCargoUsuario.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        CampoNomeCargoUsuario.setForeground(new java.awt.Color(80, 0, 102));
+        CampoNomeCargoUsuario.setText("Nome Usuário + Cargo");
 
         jPanel2.setBackground(new java.awt.Color(234, 234, 234));
 
-        jLabel2.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jLabel2.setText("Usuário:");
+        UsuarioTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        UsuarioTexto.setText("Usuário:");
 
-        jLabel4.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jLabel4.setText("Nome:");
+        NomeTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        NomeTexto.setText("Nome:");
 
-        campoNomeUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        campoNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
+        CampoNomeUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeUsuarioActionPerformed(evt);
+                CampoNomeUsuarioActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jLabel5.setText("Cargo:");
+        CargoTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CargoTexto.setText("Cargo:");
 
-        campoSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
+        CampoSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaUsuarioActionPerformed(evt);
+                CampoSenhaUsuarioActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        jLabel6.setText("Senha:");
+        SenhaTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        SenhaTexto.setText("Senha:");
 
         jPanel3.setBackground(new java.awt.Color(234, 234, 234));
 
-        botaoSalvarCadastro.setBackground(new java.awt.Color(80, 0, 102));
-        botaoSalvarCadastro.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        botaoSalvarCadastro.setForeground(new java.awt.Color(255, 255, 255));
-        botaoSalvarCadastro.setText("Salvar");
+        BotaoSalvarCadastro.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoSalvarCadastro.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoSalvarCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoSalvarCadastro.setText("Salvar");
 
-        botaoCadastrar.setBackground(new java.awt.Color(80, 0, 102));
-        botaoCadastrar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoCadastrar.setText("Cadastrar");
-        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        BotaoExcluir.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoExcluir.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoExcluir.setText("Excluir");
+        BotaoExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCadastrarActionPerformed(evt);
+                BotaoExcluirActionPerformed(evt);
             }
         });
 
@@ -101,9 +101,9 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(107, 107, 107)
-                .addComponent(botaoSalvarCadastro)
+                .addComponent(BotaoSalvarCadastro)
                 .addGap(18, 18, 18)
-                .addComponent(botaoCadastrar)
+                .addComponent(BotaoExcluir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -111,18 +111,18 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoSalvarCadastro)
-                    .addComponent(botaoCadastrar))
+                    .addComponent(BotaoSalvarCadastro)
+                    .addComponent(BotaoExcluir))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        campoCargo.setEditable(false);
-        campoCargo.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        campoCargo.setText("Cargo");
+        CampoCargoUsuario.setEditable(false);
+        CampoCargoUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoCargoUsuario.setText("Cargo");
 
-        campoUsuário.setEditable(false);
-        campoUsuário.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        campoUsuário.setText("Usuário");
+        CampoUsuario.setEditable(false);
+        CampoUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoUsuario.setText("Usuário");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,20 +132,20 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(SenhaTexto)
                         .addGap(20, 20, 20)
-                        .addComponent(campoSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CampoSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(UsuarioTexto)
+                            .addComponent(NomeTexto)
+                            .addComponent(CargoTexto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CampoNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoUsuário, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                .addComponent(campoCargo, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(CampoUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                .addComponent(CampoCargoUsuario, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -154,20 +154,20 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel4)
-                    .addComponent(campoNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NomeTexto)
+                    .addComponent(CampoNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel5)
-                    .addComponent(campoCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CargoTexto)
+                    .addComponent(CampoCargoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel2)
-                    .addComponent(campoUsuário, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UsuarioTexto)
+                    .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel6)
-                    .addComponent(campoSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SenhaTexto)
+                    .addComponent(CampoSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -178,7 +178,7 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(campoNomeCargo)
+                .addComponent(CampoNomeCargoUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -186,7 +186,7 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(campoNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoNomeCargoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
@@ -206,17 +206,17 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeUsuarioActionPerformed
+    private void CampoNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNomeUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeUsuarioActionPerformed
+    }//GEN-LAST:event_CampoNomeUsuarioActionPerformed
 
-    private void campoSenhaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaUsuarioActionPerformed
+    private void CampoSenhaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSenhaUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoSenhaUsuarioActionPerformed
+    }//GEN-LAST:event_CampoSenhaUsuarioActionPerformed
 
-    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+    private void BotaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botaoCadastrarActionPerformed
+    }//GEN-LAST:event_BotaoExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,17 +255,17 @@ public class telaGerenciamentoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoCadastrar;
-    private javax.swing.JButton botaoSalvarCadastro;
-    private javax.swing.JTextField campoCargo;
-    private javax.swing.JLabel campoNomeCargo;
-    private javax.swing.JTextField campoNomeUsuario;
-    private javax.swing.JPasswordField campoSenhaUsuario;
-    private javax.swing.JTextField campoUsuário;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton BotaoExcluir;
+    private javax.swing.JButton BotaoSalvarCadastro;
+    private javax.swing.JTextField CampoCargoUsuario;
+    private javax.swing.JLabel CampoNomeCargoUsuario;
+    private javax.swing.JTextField CampoNomeUsuario;
+    private javax.swing.JPasswordField CampoSenhaUsuario;
+    private javax.swing.JTextField CampoUsuario;
+    private javax.swing.JLabel CargoTexto;
+    private javax.swing.JLabel NomeTexto;
+    private javax.swing.JLabel SenhaTexto;
+    private javax.swing.JLabel UsuarioTexto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
