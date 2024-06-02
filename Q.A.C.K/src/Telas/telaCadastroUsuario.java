@@ -10,15 +10,18 @@ import Repositorio.Repositorio;
 public class telaCadastroUsuario extends javax.swing.JFrame {
 
     private Repositorio rep;
+    private final TelaListagemUsuarios telaOrigem;
     private Integer idUsuario;
     
-    public telaCadastroUsuario( Repositorio rep ) {
+    public telaCadastroUsuario( Repositorio rep, TelaListagemUsuarios tela ) {
         initComponents();
+        this.telaOrigem = tela;
         this.rep = rep;
     }
     
-    public telaCadastroUsuario( Repositorio rep, Usuario usuarioEditar ) {
+    public telaCadastroUsuario( Repositorio rep, TelaListagemUsuarios tela, Usuario usuarioEditar ) {
         initComponents();
+        this.telaOrigem = tela;
         this.rep = rep;
         this.idUsuario = usuarioEditar.getId();
         this.cadastroNome.setText( usuarioEditar.getNome() );
@@ -213,8 +216,9 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
             }
         }
         if( remover != null ){
-            this.dispose();
             rep.removerUsuario( remover );
+            telaOrigem.atualizaListaUsuario( rep.getUsuarios() );
+            this.dispose();
             //UsuarioJDBC.remove( remover );
         }else{
             //erro: usuario nao encontrado
@@ -247,6 +251,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
             rep.adicionarUsuario( new Usuario( nome, login, senhaStr, cargo) );
             //UsuarioJDBC.insert( u );
         }
+        telaOrigem.atualizaListaUsuario( rep.getUsuarios() );
         this.dispose();
     }//GEN-LAST:event_botalSalvarCadastroActionPerformed
 

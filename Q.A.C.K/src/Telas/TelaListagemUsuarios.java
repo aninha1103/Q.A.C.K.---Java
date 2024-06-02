@@ -1,12 +1,30 @@
 
 package Telas;
 
+import Modelo.Usuario;
+import Repositorio.Repositorio;
+import java.util.List;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaListagemUsuarios extends javax.swing.JFrame {
 
-    public TelaListagemUsuarios() {
+    private final Repositorio rep;
+    
+    public TelaListagemUsuarios( Repositorio rep) {
         initComponents();
+        this.rep = rep;
+        atualizaListaUsuario( rep.getUsuarios() );
+    }
+    
+    public final void atualizaListaUsuario( List<Usuario> usuarios ){
+        DefaultTableModel modelo = (DefaultTableModel) TabelaUsuarios.getModel();
+        modelo.setNumRows( 0 );
+        modelo.setRowCount( 0 );
+        for( Usuario u : usuarios ){
+            String[] dados = { String.valueOf( u.getId()) ,u.getNome(), u.getLogin() };
+            modelo.addRow( dados );
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -36,10 +54,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         TabelaUsuarios.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         TabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Admin", "Adm"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Usuário"
@@ -69,6 +84,11 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         BotaoVizualizarUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         BotaoVizualizarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BotaoVizualizarUsuario.setText("Vizualizar");
+        BotaoVizualizarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoVizualizarUsuarioActionPerformed(evt);
+            }
+        });
 
         BotaoCadastrarUsuario.setBackground(new java.awt.Color(80, 0, 102));
         BotaoCadastrarUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
@@ -99,17 +119,14 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ListaDeUsuariosTexto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PainelScrollTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoVizualizarUsuario))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(BotaoCadastrarUsuario)))
+                .addContainerGap()
+                .addComponent(ListaDeUsuariosTexto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PainelScrollTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotaoVizualizarUsuario)
+                    .addComponent(BotaoCadastrarUsuario))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -128,8 +145,19 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarUsuarioActionPerformed
-        // TODO add your handling code here:
+        telaCadastroUsuario t = new telaCadastroUsuario( rep, this );
+        t.setVisible( true );
     }//GEN-LAST:event_BotaoCadastrarUsuarioActionPerformed
+
+    private void BotaoVizualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarUsuarioActionPerformed
+        if( TabelaUsuarios.getSelectedRow() != -1){
+            this.rep.getUsuarios().get(TabelaUsuarios.getSelectedRow() );
+            telaCadastroUsuario t = new telaCadastroUsuario( rep, this, this.rep.getUsuarios().get(TabelaUsuarios.getSelectedRow() ) );
+            t.setVisible( true );
+        }else{
+            //erro: selecione um usuario para visualizar
+        }
+    }//GEN-LAST:event_BotaoVizualizarUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoCadastrarUsuario;
