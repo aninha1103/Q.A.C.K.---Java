@@ -10,7 +10,7 @@ import Repositorio.Repositorio;
 public class telaCadastroUsuario extends javax.swing.JFrame {
 
     private Repositorio rep;
-    private Integer id;
+    private Integer idUsuario;
     
     public telaCadastroUsuario( Repositorio rep ) {
         initComponents();
@@ -20,7 +20,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
     public telaCadastroUsuario( Repositorio rep, Usuario usuarioEditar ) {
         initComponents();
         this.rep = rep;
-        this.id = usuarioEditar.getId();
+        this.idUsuario = usuarioEditar.getId();
         this.cadastroNome.setText( usuarioEditar.getNome() );
         this.cadastroCargo.setSelectedIndex( usuarioEditar.getCargo().getId() - 1 );
         this.cadastroUsuario.setText( usuarioEditar.getLogin() );
@@ -207,8 +207,9 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         //mensagem: Confirma exclusão?
         Usuario remover = null;
         for( Usuario u : rep.getUsuarios() ){
-            if( u.getId() == id){
+            if( u.getId() == idUsuario){
                 remover = u;
+                break;
             }
         }
         if( remover != null ){
@@ -230,9 +231,22 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
             case 1 -> cargo = new Techlead();
             case 2 -> cargo = new Dev();
         }
-        Usuario u = new Usuario( nome, login, senhaStr, cargo);
-        rep.adicionarUsuario( u );
-        //UsuarioJDBC.insert( u );
+        if( this.idUsuario != null ){
+            //editar
+            Integer posicaoUsuario = 0;
+            for( int i = 0; i < rep.getUsuarios().size(); i++ ){
+                if( rep.getUsuarios().get( i ).getId() == this.idUsuario ){
+                    posicaoUsuario = i;
+                    break;
+                }
+            }
+            rep.alterarUsuario( new Usuario( this.idUsuario, nome, login, senhaStr, cargo), posicaoUsuario );
+            //UsuarioJDBC.update( u );
+        }else{
+            
+            rep.adicionarUsuario( new Usuario( nome, login, senhaStr, cargo) );
+            //UsuarioJDBC.insert( u );
+        }
         this.dispose();
     }//GEN-LAST:event_botalSalvarCadastroActionPerformed
 

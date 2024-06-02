@@ -67,15 +67,12 @@ public class Repositorio {
         this.usuarios.remove(usuario);
     }
     
-    public void alterarUsuario( Usuario usuario, String nome, String login, String senha, Cargo cargo ){
+    public void alterarUsuario( Usuario usuario, Integer posicaoUsuario ){
         if( !usuarioAtual.getCargo().getPermissoes().isManipularUsuario() ){
             //erro usuario não tem permissao para manipular usuarios
             return;
         }
-        usuario.setNome( nome );
-        usuario.setLogin( login );
-        usuario.setSenha( senha );
-        usuario.setCargo( cargo );
+        usuarios.set( posicaoUsuario, usuario );
     }
      
     private Boolean permiteAlteracao( Usuario usuarioAtual, Teste teste ){

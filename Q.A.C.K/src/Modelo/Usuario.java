@@ -66,6 +66,14 @@ public class Usuario {
         this.senha = senha;
         this.cargo = cargo;
     }
+
+    public Usuario(int id, String nome, String login, String senha, Cargo cargo) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.cargo = cargo;
+    }
     
     public Usuario login(String login, String senha){
         if( !(this.login.equals( login ) && this.senha.equals( senha ) ) ){
