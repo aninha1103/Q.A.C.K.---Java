@@ -21,6 +21,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     public telaCadastroTeste( Repositorio rep ) {
         initComponents();
         this.rep = rep;
+        campoNomeArquivo.setText(" ");
     }
 
     @SuppressWarnings("unchecked")
@@ -207,14 +208,13 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             File f = chooser.getSelectedFile();
             String fileName = f.getAbsolutePath();
             campoNomeArquivo.setText(fileName);
-        }
-        
+        }    
     }//GEN-LAST:event_botaoSelecionarAnexoActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         String nome = this.campoTitulo.getText();
         String descricao = this.campoDescricao.getText();
-        String caminhoImagem = this.campoNomeArquivo.getText();
+        String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
         Usuario criandoTeste = rep.getUsuarioAtual();
         Tag tag = Tag.valueOf(this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status = Status.valueOf(this.campoSituacao.getSelectedItem().toString().toUpperCase() );
@@ -228,6 +228,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             rep.adicionarTeste( t );
         }catch(IOException e){
             //Houve um erro ao salvar teste
+            System.out.println(e.getMessage());
         }finally{
             this.dispose();
         }      

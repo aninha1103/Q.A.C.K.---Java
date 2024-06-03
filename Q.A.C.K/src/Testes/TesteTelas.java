@@ -13,7 +13,7 @@ public class TesteTelas {
         Usuario u = new Usuario("teste exlcusao", "1", "2", new Dev() );
         rep.setUsuarioAtual( rep.getUsuarios().getFirst() );
         rep.adicionarUsuario( u );
-        TelaListagemUsuarios t = new TelaListagemUsuarios( rep );
+        telaCadastroTeste t = new telaCadastroTeste( rep );
         t.setVisible(true);
     }
 }
