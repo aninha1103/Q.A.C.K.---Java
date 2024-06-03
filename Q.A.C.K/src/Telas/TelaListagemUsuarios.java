@@ -14,6 +14,8 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
     public TelaListagemUsuarios( Repositorio rep) {
         initComponents();
         this.rep = rep;
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);
         atualizaListaUsuario( rep.getUsuarios() );
     }
     
@@ -152,7 +154,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
     private void BotaoVizualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarUsuarioActionPerformed
         if( TabelaUsuarios.getSelectedRow() != -1){
             this.rep.getUsuarios().get(TabelaUsuarios.getSelectedRow() );
-            telaCadastroUsuario t = new telaCadastroUsuario( rep, this, this.rep.getUsuarios().get(TabelaUsuarios.getSelectedRow() ) );
+            telaCadastroUsuario t = new telaCadastroUsuario( rep, this, this.rep.getUsuarios().get( TabelaUsuarios.getSelectedRow() ) );
             t.setVisible( true );
         }else{
             //erro: selecione um usuario para visualizar

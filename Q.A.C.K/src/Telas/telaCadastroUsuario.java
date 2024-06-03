@@ -10,24 +10,29 @@ import Repositorio.Repositorio;
 public class telaCadastroUsuario extends javax.swing.JFrame {
 
     private Repositorio rep;
-    private final TelaListagemUsuarios telaOrigem;
+    private TelaListagemUsuarios telaOrigem;
     private Integer idUsuario;
     
     public telaCadastroUsuario( Repositorio rep, TelaListagemUsuarios tela ) {
         initComponents();
-        this.telaOrigem = tela;
-        this.rep = rep;
+        operacoesPadrao( rep, tela );
     }
     
     public telaCadastroUsuario( Repositorio rep, TelaListagemUsuarios tela, Usuario usuarioEditar ) {
         initComponents();
-        this.telaOrigem = tela;
-        this.rep = rep;
+        operacoesPadrao( rep, tela );
         this.idUsuario = usuarioEditar.getId();
         this.cadastroNome.setText( usuarioEditar.getNome() );
         this.cadastroCargo.setSelectedIndex( usuarioEditar.getCargo().getId() - 1 );
         this.cadastroUsuario.setText( usuarioEditar.getLogin() );
         this.cadastroSenha.setText( usuarioEditar.getSenha() );
+    }
+    
+    private void operacoesPadrao( Repositorio rep, TelaListagemUsuarios tela ){
+        this.telaOrigem = tela;
+        this.rep = rep;
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);
     }
     
     @SuppressWarnings("unchecked")
@@ -111,7 +116,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
                 .addComponent(botalSalvarCadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoExcluirCadastro)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,22 +135,22 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UsuarioTexto)
+                    .addComponent(NomeTexto)
+                    .addComponent(CargoTexto)
+                    .addComponent(SenhaTexto))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(SenhaTexto)
-                        .addGap(20, 20, 20)
-                        .addComponent(cadastroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(UsuarioTexto)
-                            .addComponent(NomeTexto)
-                            .addComponent(CargoTexto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cadastroNome, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cadastroCargo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cadastroUsuario, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                .addComponent(cadastroUsuario, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cadastroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -164,12 +169,12 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
                     .addComponent(UsuarioTexto)
                     .addComponent(cadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SenhaTexto)
                     .addComponent(cadastroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -180,7 +185,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TelaCadastroUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +193,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TelaCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(96, 96, 96))
         );
 
@@ -247,7 +252,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
             rep.alterarUsuario( new Usuario( this.idUsuario, nome, login, senhaStr, cargo), posicaoUsuario );
             //UsuarioJDBC.update( u );
         }else{
-            
+
             rep.adicionarUsuario( new Usuario( nome, login, senhaStr, cargo) );
             //UsuarioJDBC.insert( u );
         }
