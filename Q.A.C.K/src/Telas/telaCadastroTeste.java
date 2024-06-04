@@ -17,13 +17,55 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class telaCadastroTeste extends javax.swing.JFrame {
 
     private Repositorio rep;
+    private TelaPrincipal origem;
+    private Integer idTeste;
+    private Image imagemTeste;
+    private LocalDate data;
     
-    public telaCadastroTeste( Repositorio rep ) {
+    public telaCadastroTeste( Repositorio rep, TelaPrincipal origem ) {
         initComponents();
-        this.rep = rep;
-        campoNomeArquivo.setText(" ");
+        operacoesPadrao( rep, origem );  
+        this.TelaCadastroTeste.setText("Cadastro de Teste");
+    }
+    
+    public telaCadastroTeste( Repositorio rep, TelaPrincipal origem, Teste testeEditar ) {
+        initComponents();
+        operacoesPadrao( rep, origem );   
+        this.TelaCadastroTeste.setText("Edição de Teste");
+        this.idTeste = testeEditar.getId();
+        this.campoTitulo.setText(testeEditar.getNome());
+        this.campoDescricao.setText(testeEditar.getDescricao());
+        this.campoSituacao.setSelectedIndex( getStatusIndice( testeEditar ) );
+        this.campoTag.setSelectedIndex( getTagIndice( testeEditar ) );
+        imagemTeste = testeEditar.getImagem();
+        data = testeEditar.getData();
     }
 
+    public final void operacoesPadrao( Repositorio rep, TelaPrincipal origem ){
+        this.rep = rep;
+        this.origem = origem;
+        campoNomeArquivo.setText(" ");
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);   
+    }
+    
+    private Integer getStatusIndice( Teste t ){
+        Integer indice = 0;
+        switch( t.getStatus()){
+            case Status.FINALIZADO -> indice = 1;
+        }
+        return indice;
+    }
+    
+    private Integer getTagIndice( Teste t ){
+        Integer indice = 0;
+        switch( t.getTag()){
+            case Tag.MELHORIA -> indice = 1;
+            case Tag.BUG -> indice = 2; 
+        }
+        return indice;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -216,22 +258,36 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         String descricao = this.campoDescricao.getText();
         String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
         Usuario criandoTeste = rep.getUsuarioAtual();
-        Tag tag = Tag.valueOf(this.campoTag.getSelectedItem().toString().toUpperCase() );
-        Status status = Status.valueOf(this.campoSituacao.getSelectedItem().toString().toUpperCase() );
-        try{
-            Image foto = ImageIO.read( new File( caminhoImagem )).getScaledInstance(WIDTH, HEIGHT, WIDTH);
-            Teste t = new Teste( nome, LocalDate.now(), descricao, foto, criandoTeste, tag, status);
-            //Variaveis para encaminhar imagem para o banco
-            FileInputStream fis = new FileInputStream( new File( caminhoImagem ));
-            Long tamanho = new File( caminhoImagem ).length();
-            //TesteJDBC.insert( t ) 
-            rep.adicionarTeste( t );
-        }catch(IOException e){
-            //Houve um erro ao salvar teste
-            System.out.println(e.getMessage());
-        }finally{
-            this.dispose();
-        }      
+        Tag tag = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
+        Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
+        
+        if( this.idTeste == null){
+            try{
+                Image foto = ImageIO.read( new File( caminhoImagem )).getScaledInstance( 200, 200, Image.SCALE_SMOOTH);
+                //Variaveis para encaminhar imagem para o banco
+                FileInputStream fis = new FileInputStream( new File( caminhoImagem ));
+                Long tamanho = new File( caminhoImagem ).length();
+                //TesteJDBC.insert( t ) ;
+                rep.adicionarTeste( new Teste( nome, LocalDate.now(), descricao, foto, criandoTeste, tag, status) );
+            }catch(IOException e){
+                //Houve um erro ao salvar teste
+                System.out.println(e.getMessage());
+            }
+        }else{
+            Integer posicaoTeste = 0;
+            for( int i = 0; i < rep.getUsuarios().size(); i++ ){
+                if( rep.getTestes().get( i ).getId() == this.idTeste ){
+                    posicaoTeste = i;
+                    break;
+                }
+            }
+            //Teste.JDBC.update( t );
+            rep.editarTeste( new Teste( this.idTeste, nome, data, descricao, this.imagemTeste, criandoTeste, tag, status), posicaoTeste );
+        }
+        
+        origem.atulizaListaTeste(rep.getTestes() );
+        this.dispose();
+             
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

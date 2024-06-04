@@ -1,25 +1,41 @@
 package Telas;
 
 import Modelo.Teste;
+import Modelo.Usuario;
 import Repositorio.Repositorio;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    private Repositorio rep;
+    
     public TelaPrincipal( Repositorio rep ) {
         initComponents();
-        //renomear campoNomeCargo baseado nos dados do usuário
-        //this.campoNomeCargo.setText(rep.getUsuarioAtual().getNome() + ", " + rep.getNomeCargo() );
-        //atulizaListaUsuario( rep.getTestes() );
+        this.rep = rep;
+        this.campoNomeCargo.setText(rep.getUsuarioAtual().getNome() + ", " + rep.getNomeCargo() );
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);        
+        atulizaListaTeste( rep.getTestes() );
     }
     
-    public final void atulizaListaUsuario( List<Teste> testes ){
-        DefaultListModel modelo = new DefaultListModel();
-        modelo.clear();
-        modelo.addAll( testes );
-        //this.listaTestes.setModel( modelo );
+    public final void atulizaListaTeste( List<Teste> testes ){
+        DefaultTableModel modelo = (DefaultTableModel) ListaTestes.getModel();
+        modelo.setNumRows( 0 );
+        modelo.setRowCount( 0 );
+        for( Teste t : testes ){
+            //id titulo data stauts categoria
+            String data = t.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy") );
+            String status= t.getStatus().toString();
+            String tag = t.getTag().toString();
+            String[] dados = { String.valueOf( t.getId()), t.getNome(),data, status, tag };
+            modelo.addRow( dados );
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -176,7 +192,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoAdicionarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAdicionarTesteActionPerformed
-        
+        telaCadastroTeste t = new telaCadastroTeste( rep, this );
+        t.setVisible( true );
     }//GEN-LAST:event_BotaoAdicionarTesteActionPerformed
 
     private void BotaoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoUsuariosActionPerformed
@@ -188,7 +205,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
     private void BotaoVizualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarTesteActionPerformed
-        // TODO add your handling code here:
+        if( ListaTestes.getSelectedRow() != -1){
+            this.rep.getUsuarios().get(ListaTestes.getSelectedRow() );
+            telaCadastroTeste t = new telaCadastroTeste( rep, this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
+            t.setVisible( true );
+        }else{
+            //erro: selecione um usuario para visualizar
+        }
     }//GEN-LAST:event_BotaoVizualizarTesteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

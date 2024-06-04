@@ -6,6 +6,7 @@ import Repositorio.Repositorio;
 import Telas.telaCadastroTeste;
 import Telas.telaCadastroUsuario;
 import Telas.TelaListagemUsuarios;
+import Telas.TelaPrincipal;
 
 public class TesteTelas {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class TesteTelas {
         Usuario u = new Usuario("teste exlcusao", "1", "2", new Dev() );
         rep.setUsuarioAtual( rep.getUsuarios().getFirst() );
         rep.adicionarUsuario( u );
-        telaCadastroTeste t = new telaCadastroTeste( rep );
+        TelaPrincipal t = new TelaPrincipal(rep);
         t.setVisible(true);
     }
 }

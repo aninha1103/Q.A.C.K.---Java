@@ -34,8 +34,18 @@ public class Teste {
         this.status = status;
         this.comentarios = new ArrayList<>();
     }
-
     
+    public Teste( Integer id, String nome, LocalDate data, String descricao, Image imagem, Usuario criadoPor, Tag tag, Status status ) {
+        this.id = id;
+        this.nome = nome;
+        this.data = data;
+        this.descricao = descricao;
+        this.imagem = imagem;
+        this.criadoPor = criadoPor;
+        this.tag = tag;
+        this.status = status;
+        this.comentarios = new ArrayList<>();
+    }    
 
     public void criarComentario( Usuario usuarioAtual, String comentarioTexto ){
         if( !usuarioAtual.getCargo().getPermissoes().isComentar() ){
