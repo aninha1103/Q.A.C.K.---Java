@@ -89,12 +89,14 @@ public class UsuarioJDBC {
             }
             
             statement.close();
-            return usuarios;
+            if( !usuarios.isEmpty() ){
+                return usuarios;
+            }
         } catch (SQLException ex) {
             System.out.println( ex.getMessage() );
             Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("nulo");
+        //erro: nao ha usuarios cadastrados
         return null;
     }
 }
