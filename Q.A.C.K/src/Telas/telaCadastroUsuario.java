@@ -3,7 +3,6 @@ package Telas;
 import JDBC.UsuarioJDBC;
 import Modelo.Cargo;
 import Modelo.Usuario;
-import Repositorio.Repositorio;
 
 public class telaCadastroUsuario extends javax.swing.JFrame {
 
@@ -212,7 +211,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         for( Usuario u : UsuarioJDBC.findAll() ){
             if( u.getId() == idUsuario){
                 UsuarioJDBC.delete( u );
-                telaOrigem.atualizaListaUsuario( UsuarioJDBC.findAll() );
+                telaOrigem.atualizaListaUsuario();
                 break;
             }
         }
@@ -233,7 +232,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         }else{
             UsuarioJDBC.create( new Usuario( nome, login, senhaStr, cargo) );
         }
-        telaOrigem.atualizaListaUsuario( UsuarioJDBC.findAll() );
+        telaOrigem.atualizaListaUsuario();
         this.dispose();
     }//GEN-LAST:event_botalSalvarCadastroActionPerformed
 

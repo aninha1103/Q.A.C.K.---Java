@@ -3,24 +3,29 @@ package Telas;
 
 import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaListagemUsuarios extends javax.swing.JFrame {
 
+    private List<Usuario> usuarios = new ArrayList();
+    
     public TelaListagemUsuarios() {
         initComponents();
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
-        atualizaListaUsuario( UsuarioJDBC.findAll() );
+        this.usuarios = UsuarioJDBC.findAll();
+        atualizaListaUsuario();
     }
     
-    public final void atualizaListaUsuario( List<Usuario> usuarios ){
+    public final void atualizaListaUsuario(){
         DefaultTableModel modelo = (DefaultTableModel) TabelaUsuarios.getModel();
         modelo.setNumRows( 0 );
         modelo.setRowCount( 0 );
-        for( Usuario u : usuarios ){
+        this.usuarios = UsuarioJDBC.findAll();
+        for( Usuario u : this.usuarios ){
             String[] dados = { String.valueOf( u.getId()) ,u.getNome(), u.getLogin() };
             modelo.addRow( dados );
         }
@@ -150,7 +155,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
 
     private void BotaoVizualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarUsuarioActionPerformed
         if( TabelaUsuarios.getSelectedRow() != -1){
-            Usuario usuarioEdicao = UsuarioJDBC.findAll().get(TabelaUsuarios.getSelectedRow() );
+            Usuario usuarioEdicao = usuarios.get(TabelaUsuarios.getSelectedRow() );
             telaCadastroUsuario t = new telaCadastroUsuario( this, usuarioEdicao );
             t.setVisible( true );
         }else{
