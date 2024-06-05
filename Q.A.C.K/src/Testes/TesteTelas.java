@@ -14,7 +14,7 @@ public class TesteTelas {
         Usuario u = new Usuario("teste exlcusao", "1", "2", new Dev() );
         rep.setUsuarioAtual( rep.getUsuarios().getFirst() );
         rep.adicionarUsuario( u );
-        TelaPrincipal t = new TelaPrincipal(rep);
+        TelaPrincipal t = new TelaPrincipal( u );
         t.setVisible(true);
     }
 }

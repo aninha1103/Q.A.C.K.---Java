@@ -13,15 +13,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    private Repositorio rep;
+    private Usuario usuario;
     
-    public TelaPrincipal( Repositorio rep ) {
+    public TelaPrincipal( Usuario usuarioAtual ) {
         initComponents();
-        this.rep = rep;
-        this.campoNomeCargo.setText(rep.getUsuarioAtual().getNome() + ", " + rep.getNomeCargo() );
+        this.usuario = usuarioAtual;
+        this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);        
-        atulizaListaTeste( rep.getTestes() );
+        //atulizaListaTeste( rep.getTestes() );
     }
     
     public final void atulizaListaTeste( List<Teste> testes ){
@@ -192,8 +192,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoAdicionarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAdicionarTesteActionPerformed
-        telaCadastroTeste t = new telaCadastroTeste( rep, this );
-        t.setVisible( true );
+//        telaCadastroTeste t = new telaCadastroTeste( rep, this );
+//        t.setVisible( true );
     }//GEN-LAST:event_BotaoAdicionarTesteActionPerformed
 
     private void BotaoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoUsuariosActionPerformed
@@ -207,9 +207,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void BotaoVizualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
-            this.rep.getUsuarios().get(ListaTestes.getSelectedRow() );
-            telaCadastroTeste t = new telaCadastroTeste( rep, this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
-            t.setVisible( true );
+            //this.rep.getUsuarios().get( ListaTestes.getSelectedRow() );
+            //telaCadastroTeste t = new telaCadastroTeste( rep, this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
+            //t.setVisible( true );
         }else{
             //erro: selecione um usuario para visualizar
         }

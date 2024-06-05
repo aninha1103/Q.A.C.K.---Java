@@ -1,7 +1,7 @@
 package Telas;
 
+import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
-import Repositorio.Repositorio;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -119,23 +119,16 @@ public class TelaLogin extends javax.swing.JFrame {
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
         String login = this.campoUsuario.getText();
         String senhaStr = String.copyValueOf(this.campoSenha.getPassword());
-        
-        Repositorio rep = new Repositorio();
-        
-        for( Usuario u : rep.getUsuarios() ){
-            Usuario usuarioAtual = u.login(login, senhaStr );
-            if( usuarioAtual != null){
-                rep.setUsuarioAtual( usuarioAtual );
+
+        for( Usuario u : UsuarioJDBC.findAll() ){
+            if( u.login(login, senhaStr ) != null){
+                this.dispose();
+                TelaPrincipal t = new TelaPrincipal( u.login(login, senhaStr ) );
+                t.setVisible(true);
+                return;
             }
         }
-        
-        if( rep.getUsuarioAtual() == null ){
-            //erro login ou senha invalido
-        }else{
-            this.dispose();
-            TelaPrincipal t = new TelaPrincipal( rep );
-            t.setVisible(true);
-        }
+        //erro login ou senha invalido
         
     }//GEN-LAST:event_botaoEntrarActionPerformed
 

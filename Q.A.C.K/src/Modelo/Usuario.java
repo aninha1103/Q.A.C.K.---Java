@@ -7,7 +7,7 @@ import Modelo.Cargos.Techlead;
 
 public class Usuario {
     /*Atributos*/
-    private int id;
+    private Integer id;
     private String nome;
     private String login;
     private String senha;
@@ -18,7 +18,7 @@ public class Usuario {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -58,13 +58,9 @@ public class Usuario {
     public String toString() {
         return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nnome: " + nome+ "\nlogin: " + login+ "\nCargo: " + cargo.getId() + "\n-- FIM --";
     }
-    
-    //variavel auxiliar para substituir autoincrement do banco de dados
-    private static int idUsuario = 0;
-    //fim auxiliar
 
     public Usuario( String nome, String login, String senha, Cargo cargo) {
-        this.id = idUsuario++;
+        this.id = null;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
@@ -95,6 +91,16 @@ public class Usuario {
             case 3 -> cargo = new Dev();
         }
         return cargo;
+    }
+    
+    public String getNomeCargo(){
+        String nomeCargo = "";
+        switch( this.getCargo().getId() ){
+            case 1 -> nomeCargo = "TechLead";
+            case 2 -> nomeCargo = "QA";
+            case 3 -> nomeCargo = "Dev";
+        }
+        return nomeCargo;
     }
 
 }
