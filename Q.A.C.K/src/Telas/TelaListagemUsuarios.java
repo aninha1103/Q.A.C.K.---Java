@@ -1,22 +1,19 @@
 
 package Telas;
 
+import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
-import Repositorio.Repositorio;
 import java.util.List;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaListagemUsuarios extends javax.swing.JFrame {
 
-    private final Repositorio rep;
-    
-    public TelaListagemUsuarios( Repositorio rep) {
+    public TelaListagemUsuarios() {
         initComponents();
-        this.rep = rep;
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
-        atualizaListaUsuario( rep.getUsuarios() );
+        atualizaListaUsuario( UsuarioJDBC.findAll() );
     }
     
     public final void atualizaListaUsuario( List<Usuario> usuarios ){
@@ -147,14 +144,14 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarUsuarioActionPerformed
-        telaCadastroUsuario t = new telaCadastroUsuario( rep, this );
+        telaCadastroUsuario t = new telaCadastroUsuario( this );
         t.setVisible( true );
     }//GEN-LAST:event_BotaoCadastrarUsuarioActionPerformed
 
     private void BotaoVizualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarUsuarioActionPerformed
         if( TabelaUsuarios.getSelectedRow() != -1){
-            this.rep.getUsuarios().get(TabelaUsuarios.getSelectedRow() );
-            telaCadastroUsuario t = new telaCadastroUsuario( rep, this, this.rep.getUsuarios().get( TabelaUsuarios.getSelectedRow() ) );
+            Usuario usuarioEdicao = UsuarioJDBC.findAll().get(TabelaUsuarios.getSelectedRow() );
+            telaCadastroUsuario t = new telaCadastroUsuario( this, usuarioEdicao );
             t.setVisible( true );
         }else{
             //erro: selecione um usuario para visualizar

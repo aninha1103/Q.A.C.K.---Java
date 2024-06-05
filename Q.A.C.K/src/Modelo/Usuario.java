@@ -1,6 +1,10 @@
 
 package Modelo;
 
+import Modelo.Cargos.Dev;
+import Modelo.Cargos.QA;
+import Modelo.Cargos.Techlead;
+
 public class Usuario {
     /*Atributos*/
     private int id;
@@ -81,6 +85,16 @@ public class Usuario {
             return null;
         }
         return this;
+    }
+    
+    public static Cargo cargoPorId( Integer idCargo ){
+        Cargo cargo = null;
+        switch (idCargo){
+            case 1 -> cargo = new QA();
+            case 2 -> cargo = new Techlead();
+            case 3 -> cargo = new Dev();
+        }
+        return cargo;
     }
 
 }

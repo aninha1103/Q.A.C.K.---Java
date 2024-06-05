@@ -1,26 +1,23 @@
 package Telas;
 
+import JDBC.UsuarioJDBC;
 import Modelo.Cargo;
-import Modelo.Cargos.Dev;
-import Modelo.Cargos.QA;
-import Modelo.Cargos.Techlead;
 import Modelo.Usuario;
 import Repositorio.Repositorio;
 
 public class telaCadastroUsuario extends javax.swing.JFrame {
 
-    private Repositorio rep;
     private TelaListagemUsuarios telaOrigem;
     private Integer idUsuario;
     
-    public telaCadastroUsuario( Repositorio rep, TelaListagemUsuarios tela ) {
+    public telaCadastroUsuario( TelaListagemUsuarios tela ) {
         initComponents();
-        operacoesPadrao( rep, tela );
+        operacoesPadrao( tela );
     }
     
-    public telaCadastroUsuario( Repositorio rep, TelaListagemUsuarios tela, Usuario usuarioEditar ) {
+    public telaCadastroUsuario( TelaListagemUsuarios tela, Usuario usuarioEditar ) {
         initComponents();
-        operacoesPadrao( rep, tela );
+        operacoesPadrao( tela );
         this.idUsuario = usuarioEditar.getId();
         this.cadastroNome.setText( usuarioEditar.getNome() );
         this.cadastroCargo.setSelectedIndex( usuarioEditar.getCargo().getId() - 1 );
@@ -28,9 +25,8 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         this.cadastroSenha.setText( usuarioEditar.getSenha() );
     }
     
-    private void operacoesPadrao( Repositorio rep, TelaListagemUsuarios tela ){
+    private void operacoesPadrao( TelaListagemUsuarios tela ){
         this.telaOrigem = tela;
-        this.rep = rep;
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
     }
@@ -213,50 +209,31 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
 
     private void botaoExcluirCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirCadastroActionPerformed
         //mensagem: Confirma exclusão?
-        Usuario remover = null;
-        for( Usuario u : rep.getUsuarios() ){
+        for( Usuario u : UsuarioJDBC.findAll() ){
             if( u.getId() == idUsuario){
-                remover = u;
+                UsuarioJDBC.delete( u );
+                telaOrigem.atualizaListaUsuario( UsuarioJDBC.findAll() );
                 break;
             }
         }
-        if( remover != null ){
-            rep.removerUsuario( remover );
-            telaOrigem.atualizaListaUsuario( rep.getUsuarios() );
-            this.dispose();
-            //UsuarioJDBC.remove( remover );
-        }else{
-            //erro: usuario nao encontrado
-        }
+        //erro: usuario nao encontrado
+        this.dispose();
+        
+        
     }//GEN-LAST:event_botaoExcluirCadastroActionPerformed
 
     private void botalSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botalSalvarCadastroActionPerformed
         String nome = this.cadastroNome.getText();
         String login = this.cadastroUsuario.getText();
         String senhaStr = String.copyValueOf( this.cadastroSenha.getPassword() );
-        Cargo cargo = null;
-        switch( cadastroCargo.getSelectedIndex()){
-            case 0 -> cargo = new QA();
-            case 1 -> cargo = new Techlead();
-            case 2 -> cargo = new Dev();
-        }
-        if( this.idUsuario != null ){
-            //editar
-            Integer posicaoUsuario = 0;
-            for( int i = 0; i < rep.getUsuarios().size(); i++ ){
-                if( rep.getUsuarios().get( i ).getId() == this.idUsuario ){
-                    posicaoUsuario = i;
-                    break;
-                }
-            }
-            rep.alterarUsuario( new Usuario( this.idUsuario, nome, login, senhaStr, cargo), posicaoUsuario );
-            //UsuarioJDBC.update( u );
-        }else{
+        Cargo cargo = Usuario.cargoPorId( cadastroCargo.getSelectedIndex() + 1);
 
-            rep.adicionarUsuario( new Usuario( nome, login, senhaStr, cargo) );
-            //UsuarioJDBC.insert( u );
+        if( this.idUsuario != null ){
+            UsuarioJDBC.update( new Usuario( this.idUsuario, nome, login, senhaStr, cargo) );
+        }else{
+            UsuarioJDBC.create( new Usuario( nome, login, senhaStr, cargo) );
         }
-        telaOrigem.atualizaListaUsuario( rep.getUsuarios() );
+        telaOrigem.atualizaListaUsuario( UsuarioJDBC.findAll() );
         this.dispose();
     }//GEN-LAST:event_botalSalvarCadastroActionPerformed
 

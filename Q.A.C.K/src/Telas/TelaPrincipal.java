@@ -197,7 +197,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoAdicionarTesteActionPerformed
 
     private void BotaoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoUsuariosActionPerformed
-        
+        TelaListagemUsuarios t = new TelaListagemUsuarios();
+        t.setVisible( true );
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
     private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed
