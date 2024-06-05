@@ -1,5 +1,6 @@
 package Telas;
 
+import Modelo.Anexo;
 import Modelo.Status;
 import Modelo.Tag;
 import Modelo.Teste;
@@ -19,7 +20,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     private Repositorio rep;
     private TelaPrincipal origem;
     private Integer idTeste;
-    private Image imagemTeste;
+    private Anexo imagemTeste;
     private LocalDate data;
     
     public telaCadastroTeste( Repositorio rep, TelaPrincipal origem ) {
@@ -260,19 +261,17 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Usuario criandoTeste = rep.getUsuarioAtual();
         Tag tag = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
+        Anexo anexo = new Anexo( caminhoImagem );
         
         if( this.idTeste == null){
-            try{
-                Image foto = ImageIO.read( new File( caminhoImagem )).getScaledInstance( 200, 200, Image.SCALE_SMOOTH);
-                //Variaveis para encaminhar imagem para o banco
-                FileInputStream fis = new FileInputStream( new File( caminhoImagem ));
-                Long tamanho = new File( caminhoImagem ).length();
-                //TesteJDBC.insert( t ) ;
-                rep.adicionarTeste( new Teste( nome, LocalDate.now(), descricao, foto, criandoTeste, tag, status) );
-            }catch(IOException e){
-                //Houve um erro ao salvar teste
-                System.out.println(e.getMessage());
-            }
+
+            //Image foto = ImageIO.read( new File( caminhoImagem )).getScaledInstance( 200, 200, Image.SCALE_SMOOTH);
+
+            //TesteJDBC.insert( t ) ;
+            rep.adicionarTeste( new Teste( nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status) );
+
+            //Houve um erro ao salvar teste
+
         }else{
             Integer posicaoTeste = 0;
             for( int i = 0; i < rep.getUsuarios().size(); i++ ){
@@ -285,7 +284,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             rep.editarTeste( new Teste( this.idTeste, nome, data, descricao, this.imagemTeste, criandoTeste, tag, status), posicaoTeste );
         }
         
-        origem.atulizaListaTeste(rep.getTestes() );
+        origem.atulizaListaTeste( rep.getTestes() );
         this.dispose();
              
     }//GEN-LAST:event_botaoSalvarActionPerformed

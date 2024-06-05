@@ -1,30 +1,22 @@
 package JDBC;
 
-import Modelo.Usuario;
+import Modelo.Tag;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
-
-public class UsuarioJDBC {
-
-    public UsuarioJDBC() {
-    }
-    
-    public static void create( Usuario u ){
+public class TagJDBC {
+    public static void create( Tag t ){
         
         StringBuilder insertQuery = new StringBuilder();
-        insertQuery.append("INSERT INTO Usuario( nome, usuario, senha, id_cargo) VALUES(");
-        insertQuery.append( "'" ).append( u.getNome()  ).append( "', ");
-        insertQuery.append( "'" ).append( u.getLogin() ).append( "', ");
-        insertQuery.append( "'" ).append( u.getSenha() ).append( "', ");
-        insertQuery.append( u.getCargo().getId() ).append( "); ");
+        insertQuery.append("INSERT INTO Tag( nome ) VALUES(");
+        insertQuery.append( "'" ).append( t.name() ).append( "); ");
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
         {
@@ -36,14 +28,11 @@ public class UsuarioJDBC {
         }
     }
     
-    public static void update( Usuario u ) {
+    public static void update( Tag t ) {
         StringBuilder updateQuery = new StringBuilder();
-        updateQuery.append("UPDATE Usuario SET ");
-        updateQuery.append( "nome = '"     ).append( u.getNome() ) .append( "', ");
-        updateQuery.append( "usuario = '"  ).append( u.getLogin() ).append( "', ");
-        updateQuery.append( "senha = '"    ).append( u.getSenha() ).append( "', ");
-        updateQuery.append( "id_cargo = "  ).append( u.getCargo().getId() );
-        updateQuery.append( " WHERE id = " ).append( u.getId() ).append( ";" );
+        updateQuery.append( "UPDATE Tag SET ");
+        updateQuery.append( "nome = '"     ).append( t.name() ) .append( "', ");
+        updateQuery.append( " WHERE id = " ).append( findIdbyName( t.name() ) ).append( ";" );
         
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
@@ -56,9 +45,9 @@ public class UsuarioJDBC {
         }
     }
     
-    public static void delete( Usuario u ){
+    public static void delete( Tag t ){
         StringBuilder deleteQuery = new StringBuilder();
-        deleteQuery.append( "DELETE FROM Usuario WHERE id = " ).append( u.getId() );
+        deleteQuery.append( "DELETE FROM Tag WHERE id = " ).append( findIdbyName( t.name() ) );
         
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
@@ -71,32 +60,50 @@ public class UsuarioJDBC {
         }
     }
     
-    public static List<Usuario> findAll(){
-        StringBuilder selectQuery = new StringBuilder();
-        selectQuery.append( "SELECT * FROM Usuario" );
+    public static Integer findIdbyName( String name ){
+        StringBuilder query = new StringBuilder();
+        query.append( "SELECT * FROM Tag WHERE nome = '");
+        query.append( name ).append("'");
         
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
         {
-            ResultSet rs = statement.executeQuery(selectQuery.toString());
-            List<Usuario> usuarios = new ArrayList();
-            while(rs.next()){
-                usuarios.add( new Usuario( rs.getInt("id"),
-                                           rs.getString("nome"),
-                                           rs.getString("usuario"),
-                                           rs.getString("senha"),
-                                           Usuario.cargoPorId( rs.getInt("id_cargo") ) ) );
+            ResultSet rs = statement.executeQuery(query.toString());
+            Integer idTag = null;
+            while( rs.next() ){
+                idTag = rs.getInt("id");
             }
             
             statement.close();
-            if( !usuarios.isEmpty() ){
-                return usuarios;
+            return idTag;
+        } catch (SQLException ex) {
+            System.out.println( ex.getMessage() );
+            Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static List<Tag> findAll(){
+        StringBuilder query = new StringBuilder();
+        query.append( "SELECT * FROM Tag;");
+        
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
+          Statement statement = connection.createStatement();)
+        {
+            ResultSet rs = statement.executeQuery(query.toString());
+            List<Tag> tags = new ArrayList();
+            while( rs.next() ){
+                tags.add( Tag.valueOf( rs.getString("nome") ));
+            }
+            
+            statement.close();
+            if( !tags.isEmpty() ){
+                return tags;
             }
         } catch (SQLException ex) {
             System.out.println( ex.getMessage() );
             Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //erro: nao ha usuarios cadastrados
         return null;
     }
 }

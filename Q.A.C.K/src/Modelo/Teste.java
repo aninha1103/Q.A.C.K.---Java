@@ -10,7 +10,7 @@ public class Teste {
     private String nome;
     private LocalDate data;
     private String descricao;
-    private Image imagem;
+    private Anexo imagem;
     private Usuario criadoPor;
     private Tag tag;
     private Status status;
@@ -23,7 +23,7 @@ public class Teste {
     public Teste() {
     }
 
-    public Teste( String nome, LocalDate data, String descricao, Image imagem, Usuario criadoPor, Tag tag, Status status ) {
+    public Teste( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
         this.id = idUsuario++;
         this.nome = nome;
         this.data = data;
@@ -35,7 +35,7 @@ public class Teste {
         this.comentarios = new ArrayList<>();
     }
     
-    public Teste( Integer id, String nome, LocalDate data, String descricao, Image imagem, Usuario criadoPor, Tag tag, Status status ) {
+    public Teste( Integer id, String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
         this.id = id;
         this.nome = nome;
         this.data = data;
@@ -106,11 +106,11 @@ public class Teste {
         this.descricao = descricao;
     }
 
-    public Image getImagem() {
+    public Anexo getImagem() {
         return imagem;
     }
 
-    public void setImagem(Image imagem) {
+    public void setImagem(Anexo imagem) {
         this.imagem = imagem;
     }
 
