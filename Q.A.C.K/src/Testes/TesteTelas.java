@@ -9,8 +9,8 @@ import Telas.TelaPrincipal;
 
 public class TesteTelas {
     public static void main(String[] args) {
-        Usuario u = new Usuario("teste exlcusao", "1", "2", new Dev() );
-        TelaPrincipal t = new TelaPrincipal( u );
+        Usuario u = new Usuario(2, "teste exlcusao", "1", "2", new Dev() );
+        TelaPrincipal t = new TelaPrincipal( u  );
         t.setVisible(true);
     }
 }

@@ -3,13 +3,8 @@ package Telas;
 import JDBC.TesteJDBC;
 import Modelo.Teste;
 import Modelo.Usuario;
-import Repositorio.Repositorio;
-import java.awt.Component;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
-import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 

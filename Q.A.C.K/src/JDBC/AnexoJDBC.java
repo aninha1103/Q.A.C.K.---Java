@@ -42,16 +42,20 @@ public class AnexoJDBC {
     public static Anexo findByPath( String caminho ){
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM Anexos where caminho LIKE ");
-        query.append( "'" ).append( caminho ).append( "'); ");
+        query.append( "'" ).append( caminho ).append( "'; ");
         //foto
-        Anexo a = new Anexo();
+        Anexo a = null;
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
                 Statement statement = conn.createStatement())  {
 
             ResultSet rs = statement.executeQuery(query.toString());
             while( rs.next()){
-                a.setId(rs.getInt("id"));
-                a.setCaminhoArquivo(rs.getString("caminho") );
+                if( rs.getInt("id") != 0){
+                    a = new Anexo();
+                    a.setId(rs.getInt("id"));
+                    a.setCaminhoArquivo(rs.getString("caminho") );
+                }
+                
             }
             statement.close();
         } catch (SQLException ex) {

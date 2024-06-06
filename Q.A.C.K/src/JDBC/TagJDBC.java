@@ -65,23 +65,22 @@ public class TagJDBC {
         StringBuilder query = new StringBuilder();
         query.append( "SELECT * FROM Tag WHERE nome = '");
         query.append( name ).append("'");
-        
+
+        Integer idTag = null;
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
         {
             ResultSet rs = statement.executeQuery(query.toString());
-            Integer idTag = null;
+            
             while( rs.next() ){
                 idTag = rs.getInt("id");
             }
-            
             statement.close();
-            return idTag;
         } catch (SQLException ex) {
             System.out.println( ex.getMessage() );
             Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return idTag;
     }
     
     public static Tag findById( Integer id){

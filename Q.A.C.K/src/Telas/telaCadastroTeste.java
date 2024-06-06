@@ -252,21 +252,19 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         String nome = this.campoTitulo.getText();
         String descricao = this.campoDescricao.getText();
-        String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
+        String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") || !this.campoNomeArquivo.getText().trim().isEmpty() ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
         Usuario criandoTeste = origem.getUsuario();
         Tag tag = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
         Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
-        
         if( anexo == null){
             anexo = new Anexo( caminhoImagem );
             AnexoJDBC.create( anexo );
         }
         if( this.idTeste == null){
-            //Image foto = ImageIO.read( new File( caminhoImagem )).getScaledInstance( 200, 200, Image.SCALE_SMOOTH);
             TesteJDBC.create( new Teste( nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status )) ;
         }else{
-            TesteJDBC.update( new Teste( this.idTeste, nome, data, descricao, this.imagemTeste, criandoTeste, tag, status) );
+            TesteJDBC.update( new Teste( this.idTeste, nome, data, descricao, anexo, criandoTeste, tag, status) );
         }
         
         origem.atulizaListaTeste();

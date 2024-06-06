@@ -19,8 +19,7 @@ import java.util.logging.Logger;
 public class TesteJDBC {
     public static void create( Teste t ){
         StringBuilder insertQuery = new StringBuilder();
-        insertQuery.append("INSERT INTO Teste( id, titulo, data_teste, descricao, id_usuario, id_tag, status, id_anexo ) VALUES(");
-        insertQuery.append( "'" ).append( t.getId()       ).append( "', ");
+        insertQuery.append("INSERT INTO Teste( titulo, data_teste, descricao, id_usuario, id_tag, status, id_anexo ) VALUES(");
         insertQuery.append( "'" ).append( t.getNome()     ).append( "', ");
         insertQuery.append( "'" ).append( t.getData()     ).append( "', ");
         insertQuery.append( "'" ).append( t.getDescricao()).append( "', ");
