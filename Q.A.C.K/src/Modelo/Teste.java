@@ -1,6 +1,5 @@
 package Modelo;
 
-import java.awt.Image;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +52,7 @@ public class Teste {
             return;
         }
         
-        Comentario c = new Comentario( usuarioAtual, LocalDate.now(), comentarioTexto);
+        Comentario c = new Comentario( this.getId(), usuarioAtual, LocalDate.now(), comentarioTexto);
         comentarios.add( c );
     }
     

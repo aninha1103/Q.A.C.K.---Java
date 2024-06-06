@@ -3,21 +3,28 @@ package Modelo;
 import java.time.LocalDate;
 
 public class Comentario {
-    private int id;
+    private Integer id;
+    private int id_Teste;
     private Usuario usuario;
     private LocalDate data;
     private String textoComentario;
     private Boolean editado;
-
-    //variavel auxiliar para substituir autoincrement do banco de dados
-    private static int idComentario = 0;
-    //fim auxiliar
     
     public Comentario() {
     }
 
-    public Comentario( Usuario usuario, LocalDate data, String textoComentario ) {
-        this.id = idComentario++;
+    public Comentario( int id_Teste, Usuario usuario, LocalDate data, String textoComentario ) {
+        this.id = null;
+        this.id_Teste = id_Teste;
+        this.usuario = usuario;
+        this.data = data;
+        this.textoComentario = textoComentario;
+        this.editado = false;
+    }
+    
+    public Comentario( int id, int id_Teste, Usuario usuario, LocalDate data, String textoComentario ) {
+        this.id = id;
+        this.id_Teste = id_Teste;
         this.usuario = usuario;
         this.data = data;
         this.textoComentario = textoComentario;
@@ -54,6 +61,14 @@ public class Comentario {
 
     public boolean permiteAlteracao( Usuario usuarioAtual ){
         return usuarioAtual == usuario;
+    }
+
+    public int getId_Teste() {
+        return id_Teste;
+    }
+
+    public void setId_Teste(int id_Teste) {
+        this.id_Teste = id_Teste;
     }
     
     @Override
