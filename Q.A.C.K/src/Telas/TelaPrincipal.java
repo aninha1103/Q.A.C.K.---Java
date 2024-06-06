@@ -209,6 +209,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void BotaoVizualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
+            TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ) );
+            t.setVisible( true );
             //telaCadastroTeste t = new telaCadastroTeste( this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
             //t.setVisible( true );
         }else{

@@ -1,11 +1,24 @@
 
 package Telas;
 
+import Modelo.Teste;
+
 public class TelaVisualizarTeste extends javax.swing.JFrame {
 
-
-    public TelaVisualizarTeste() {
+    public TelaVisualizarTeste( Teste testeVizualizar ) {
         initComponents();
+        this.TelaCadastroTeste.setText(testeVizualizar.getNome() );
+        this.campoDescricao.setText( testeVizualizar.getDescricao() );
+        this.CampoSituacao.setText( testeVizualizar.getStatus().name() );
+        this.CampoCategoria.setText( testeVizualizar.getTag().name() );
+        this.UsuarioCriadoPor.setText( testeVizualizar.getCriadoPor().getNome() );
+        this.campoDescricao.setEnabled( false );
+        this.CampoSituacao.setEnabled( false );
+        this.CampoCategoria.setEnabled( false );
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null); 
+        //this.ImagemAnexada.setIcon(icon);
+        //this.PainelComentarios
     }
 
     @SuppressWarnings("unchecked")
@@ -75,7 +88,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
 
         campoDescricao.setEditable(false);
         campoDescricao.setColumns(20);
-        campoDescricao.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        campoDescricao.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         campoDescricao.setRows(5);
         ScrollAreaDescricao.setViewportView(campoDescricao);
 
@@ -105,10 +118,10 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             }
         });
 
-        CriadoPorTexto.setFont(new java.awt.Font("SimSun", 0, 10)); // NOI18N
+        CriadoPorTexto.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         CriadoPorTexto.setText("Criado por:");
 
-        UsuarioCriadoPor.setFont(new java.awt.Font("SimSun", 0, 10)); // NOI18N
+        UsuarioCriadoPor.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         UsuarioCriadoPor.setForeground(new java.awt.Color(80, 0, 102));
         UsuarioCriadoPor.setText("Usuário");
 
@@ -176,29 +189,28 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ImagemAnexada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(ComentariosTexto)
-                            .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelPrincipalLayout.createSequentialGroup()
-                                    .addComponent(TagsTexto)
-                                    .addGap(48, 48, 48)
-                                    .addComponent(SituacaoTexto)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(CampoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(CategoriaTexto)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(CampoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(BotaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(BotaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(104, 104, 104)
-                                    .addComponent(CriadoPorTexto)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(UsuarioCriadoPor))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelPrincipalLayout.createSequentialGroup()
-                                    .addComponent(DescricaoTexto)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ScrollAreaDescricao))))
+                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                                .addComponent(TagsTexto)
+                                .addGap(48, 48, 48)
+                                .addComponent(SituacaoTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CampoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(CategoriaTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CampoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BotaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BotaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(CriadoPorTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(UsuarioCriadoPor))
+                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                                .addComponent(DescricaoTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ScrollAreaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 25, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -218,7 +230,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                     .addComponent(TagsTexto)
                     .addComponent(CampoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CampoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CriadoPorTexto)
+                    .addComponent(CriadoPorTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(UsuarioCriadoPor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,56 +290,6 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed
 
     }//GEN-LAST:event_BotaoEditarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaVisualizarTeste().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnexosTexto;

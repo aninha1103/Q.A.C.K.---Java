@@ -102,4 +102,35 @@ public class TesteJDBC {
             }
         return teste;    
     }
+    
+    public static Teste findByRowIndex( Integer index ){
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM Teste LIMIT 1 OFFSET ");
+        query.append( index ).append( "; ");
+        
+        Teste t = null;
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
+                Statement statement = conn.createStatement())  {
+
+                ResultSet rs = statement.executeQuery(query.toString());
+
+                while( rs.next()){
+                    Integer id       = rs.getInt("id");
+                    String titulo    = rs.getString("titulo");
+                    LocalDate data   = LocalDate.parse( rs.getString("data_teste") );
+                    String descricao = rs.getString("descricao");
+                    Anexo anexo      = AnexoJDBC.findById( rs.getInt("id_anexo") );
+                    Usuario usuario  = UsuarioJDBC.findById(rs.getInt("id_usuario"));
+                    Tag tag          = TagJDBC.findById( rs.getInt("id_tag"));
+                    Status status    = ("a".equals(rs.getString("status") ) ) ? Status.ANDAMENTO : Status.FINALIZADO;
+                    t = new Teste(id, titulo, LocalDate.now(), descricao, anexo, usuario, tag, status);
+                }
+
+                statement.close();
+            } catch (SQLException ex) {
+                System.out.println( ex.getMessage() );
+                Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return t;    
+    }
 }

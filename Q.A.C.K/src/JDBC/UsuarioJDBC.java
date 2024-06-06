@@ -106,18 +106,18 @@ public class UsuarioJDBC {
         query.append("SELECT * FROM Usuario where id =");
         query.append( id ).append( "; ");
         //foto
-        List<Usuario> usuarios = new ArrayList();
+        Usuario u = null;
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
                 Statement statement = conn.createStatement())  {
 
                 ResultSet rs = statement.executeQuery(query.toString());
 
                 while( rs.next()){
-                    usuarios.add( new Usuario( rs.getInt("id"),
-                                               rs.getString("nome"),
-                                               rs.getString("usuario"),
-                                               rs.getString("senha"),
-                                               CargoJDBC.findById(rs.getInt("id_cargo")) ) );
+                    u = new Usuario( rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("usuario"),
+                            rs.getString("senha"),
+                            CargoJDBC.findById(rs.getInt("id_cargo")) );
                 }
 
                 statement.close();
@@ -125,6 +125,6 @@ public class UsuarioJDBC {
                 System.out.println( ex.getMessage() );
                 Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-        return usuarios.getFirst();    
+        return u;
     }
 }
