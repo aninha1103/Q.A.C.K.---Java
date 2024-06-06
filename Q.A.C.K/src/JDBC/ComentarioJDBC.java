@@ -16,9 +16,9 @@ public class ComentarioJDBC {
         insertQuery.append( "'" ).append( c.getTextoComentario()  ).append( "', ");
         insertQuery.append( "'" ).append( c.getData() ).append( "', ");
         insertQuery.append( c.getId_Teste() ).append( ", ");
-        insertQuery.append( c.getUsuario().getId() ).append( " ");
-        insertQuery.append( "FALSE" ).append( "); ");
-        
+        insertQuery.append( c.getUsuario().getId() ).append( ", ");
+        insertQuery.append( 0 ).append( "); ");
+        System.out.println(insertQuery);
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
         {
@@ -34,7 +34,9 @@ public class ComentarioJDBC {
         StringBuilder updateQuery = new StringBuilder();
         updateQuery.append("UPDATE Comentario SET ");
         updateQuery.append( "textComent = '"     ).append( c.getTextoComentario() ) .append( "', ");
+        updateQuery.append( "is_edited = "     ).append( 1 );
         updateQuery.append( " WHERE id = " ).append( c.getId() ).append( ";" );
+        System.out.println(updateQuery);
         
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)

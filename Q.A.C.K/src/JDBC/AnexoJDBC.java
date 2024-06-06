@@ -21,9 +21,8 @@ public class AnexoJDBC {
         }
         
         StringBuilder insertQuery = new StringBuilder();
-        insertQuery.append("INSERT INTO Anexos( caminho, arquivo ) VALUES(");
-        insertQuery.append( "'" ).append( a.getCaminhoArquivo() ).append( "', ");
-        insertQuery.append( "FILE_READ(").append( a.getCaminhoArquivo() ).append( ")); ");
+        insertQuery.append("INSERT INTO Anexos( caminho ) VALUES(");
+        insertQuery.append( "'" ).append( a.getCaminhoArquivo() ).append( "'); ");
         //foto
         System.out.println( insertQuery );
 

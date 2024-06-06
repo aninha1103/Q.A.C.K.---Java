@@ -16,7 +16,7 @@ public class TagJDBC {
         
         StringBuilder insertQuery = new StringBuilder();
         insertQuery.append("INSERT INTO Tag( nome ) VALUES(");
-        insertQuery.append( "'" ).append( t.name() ).append( "); ");
+        insertQuery.append( "'" ).append( t.name() ).append( "'); ");
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
         {
@@ -28,11 +28,12 @@ public class TagJDBC {
         }
     }
     
-    public static void update( Tag t ) {
+    public static void update( Tag antiga, Tag nova ) {
+        
         StringBuilder updateQuery = new StringBuilder();
         updateQuery.append( "UPDATE Tag SET ");
-        updateQuery.append( "nome = '"     ).append( t.name() ) .append( "', ");
-        updateQuery.append( " WHERE id = " ).append( findIdbyName( t.name() ) ).append( ";" );
+        updateQuery.append( "nome = '"     ).append( nova.name() ).append("'") ;
+        updateQuery.append( " WHERE id = " ).append( findIdbyName( antiga.name() ) ).append( ";" );
         
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)

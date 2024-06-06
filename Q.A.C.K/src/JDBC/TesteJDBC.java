@@ -10,18 +10,17 @@ import java.util.logging.Logger;
 
 public class TesteJDBC {
     public static void create( Teste t ){
-        
         StringBuilder insertQuery = new StringBuilder();
-        insertQuery.append("INSERT INTO Teste( id, titulo, data_teste, descricao, id_usuarios, id_tag, status, id_anexo ) VALUES(");
+        insertQuery.append("INSERT INTO Teste( id, titulo, data_teste, descricao, id_usuario, id_tag, status, id_anexo ) VALUES(");
         insertQuery.append( "'" ).append( t.getId() ).append( "', ");
         insertQuery.append( "'" ).append( t.getNome()).append( "', ");
         insertQuery.append( "'" ).append( t.getData()).append( "', ");
         insertQuery.append( "'" ).append( t.getDescricao()).append( "', ");
         insertQuery.append( t.getCriadoPor().getId() ).append( ", ");
-        insertQuery.append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( "', ");
-        insertQuery.append( "'" ).append( t.getStatus().toString() ).append( "', ");
+        insertQuery.append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( ", ");
+        insertQuery.append( "'" ).append( t.getStatus().toString().toLowerCase().charAt(0) ).append( "', ");
         //insertQuery.append( "'" ).append( t.getImagem() ).append( "', ");
-        insertQuery.append( "'" ).append( "NULL" ).append( "', ");
+        insertQuery.append( t.getAnexo().getId() ).append( ");");
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
             Statement statement = connection.createStatement();)
         {
@@ -37,11 +36,10 @@ public class TesteJDBC {
         StringBuilder updateQuery = new StringBuilder();
         updateQuery.append("UPDATE Teste SET ");
         updateQuery.append( "descricao = '"     ).append( t.getDescricao() ) .append( "', ");
-        updateQuery.append( "status = '"  ).append( t.getStatus() ).append( "', ");
-        updateQuery.append( "id_tag = "    ).append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( ", ");
+        updateQuery.append( "status = '"  ).append( t.getStatus().toString().toLowerCase().charAt(0) ).append( "', ");
+        updateQuery.append( "id_tag = "    ).append( TagJDBC.findIdbyName( t.getTag().name() ) );
         //updateQuery.append( "id_anexo = "  ).append( t.getAnexo().getId() );
         updateQuery.append( " WHERE id = " ).append( t.getId() ).append( ";" );
-        
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
         {
