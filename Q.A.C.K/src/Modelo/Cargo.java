@@ -6,6 +6,7 @@ public class Cargo {
     
     /*Atributos*/
     private int id;
+    private String nome;
     private Permissoes permissoes;
     
     /*Fim Atributos*/
@@ -18,6 +19,14 @@ public class Cargo {
         this.id = id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     public Permissoes getPermissoes() {
         return permissoes;
     }
@@ -31,7 +40,7 @@ public class Cargo {
         return "id: " + id + "\nPermissoes: " + permissoes;
     }
 
-    public Cargo(int id, Permissoes permissoes) {
+    public Cargo(int id, String nome, Permissoes permissoes) {
         this.id = id;
         this.permissoes = permissoes;
     }

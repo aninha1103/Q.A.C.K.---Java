@@ -1,6 +1,7 @@
 package JDBC;
 
 import Modelo.Usuario;
+import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -98,5 +99,32 @@ public class UsuarioJDBC {
         }
         //erro: nao ha usuarios cadastrados
         return null;
+    }
+    
+    public static Usuario findById( Integer id ){
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM Usuario where id =");
+        query.append( id ).append( "; ");
+        //foto
+        List<Usuario> usuarios = new ArrayList();
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
+                Statement statement = conn.createStatement())  {
+
+                ResultSet rs = statement.executeQuery(query.toString());
+
+                while( rs.next()){
+                    usuarios.add( new Usuario( rs.getInt("id"),
+                                               rs.getString("nome"),
+                                               rs.getString("usuario"),
+                                               rs.getString("senha"),
+                                               CargoJDBC.findById(rs.getInt("id_cargo")) ) );
+                }
+
+                statement.close();
+            } catch (SQLException ex) {
+                System.out.println( ex.getMessage() );
+                Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return usuarios.getFirst();    
     }
 }

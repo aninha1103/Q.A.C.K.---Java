@@ -1,11 +1,12 @@
 package Telas;
 
+import JDBC.AnexoJDBC;
+import JDBC.TesteJDBC;
 import Modelo.Anexo;
 import Modelo.Status;
 import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
-import Repositorio.Repositorio;
 import java.io.File;
 import java.time.LocalDate;
 import javax.swing.JFileChooser;
@@ -13,21 +14,20 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class telaCadastroTeste extends javax.swing.JFrame {
 
-    private Repositorio rep;
     private TelaPrincipal origem;
     private Integer idTeste;
     private Anexo imagemTeste;
     private LocalDate data;
     
-    public telaCadastroTeste( Repositorio rep, TelaPrincipal origem ) {
+    public telaCadastroTeste( TelaPrincipal origem ) {
         initComponents();
-        operacoesPadrao( rep, origem );  
+        operacoesPadrao( origem );  
         this.TelaCadastroTeste.setText("Cadastro de Teste");
     }
     
-    public telaCadastroTeste( Repositorio rep, TelaPrincipal origem, Teste testeEditar ) {
+    public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar ) {
         initComponents();
-        operacoesPadrao( rep, origem );   
+        operacoesPadrao( origem );   
         this.TelaCadastroTeste.setText("Edição de Teste");
         this.idTeste = testeEditar.getId();
         this.campoTitulo.setText(testeEditar.getNome());
@@ -38,8 +38,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         data = testeEditar.getData();
     }
 
-    public final void operacoesPadrao( Repositorio rep, TelaPrincipal origem ){
-        this.rep = rep;
+    public final void operacoesPadrao( TelaPrincipal origem ){
         this.origem = origem;
         campoNomeArquivo.setText(" ");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
@@ -254,33 +253,23 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         String nome = this.campoTitulo.getText();
         String descricao = this.campoDescricao.getText();
         String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
-        Usuario criandoTeste = rep.getUsuarioAtual();
+        Usuario criandoTeste = origem.getUsuario();
         Tag tag = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
-        Anexo anexo = new Anexo( caminhoImagem );
+        Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
         
+        if( anexo == null){
+            anexo = new Anexo( caminhoImagem );
+            AnexoJDBC.create( anexo );
+        }
         if( this.idTeste == null){
-
             //Image foto = ImageIO.read( new File( caminhoImagem )).getScaledInstance( 200, 200, Image.SCALE_SMOOTH);
-
-            //TesteJDBC.insert( t ) ;
-            rep.adicionarTeste( new Teste( nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status) );
-
-            //Houve um erro ao salvar teste
-
+            TesteJDBC.create( new Teste( nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status )) ;
         }else{
-            Integer posicaoTeste = 0;
-            for( int i = 0; i < rep.getUsuarios().size(); i++ ){
-                if( rep.getTestes().get( i ).getId() == this.idTeste ){
-                    posicaoTeste = i;
-                    break;
-                }
-            }
-            //Teste.JDBC.update( t );
-            rep.editarTeste( new Teste( this.idTeste, nome, data, descricao, this.imagemTeste, criandoTeste, tag, status), posicaoTeste );
+            TesteJDBC.update( new Teste( this.idTeste, nome, data, descricao, this.imagemTeste, criandoTeste, tag, status) );
         }
         
-        origem.atulizaListaTeste( rep.getTestes() );
+        origem.atulizaListaTeste();
         this.dispose();
              
     }//GEN-LAST:event_botaoSalvarActionPerformed

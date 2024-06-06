@@ -84,6 +84,26 @@ public class TagJDBC {
         return null;
     }
     
+    public static Tag findById( Integer id){
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM Tag where id =");
+        query.append( id ).append( "; ");
+        Tag tag = null;
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
+                Statement statement = conn.createStatement())  {
+
+                ResultSet rs = statement.executeQuery(query.toString());
+                while( rs.next()){
+                    tag = Tag.valueOf( rs.getString("nome") );
+                }
+                statement.close();
+            } catch (SQLException ex) {
+                System.out.println( ex.getMessage() );
+                Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return tag;  
+    }
+    
     public static List<Tag> findAll(){
         StringBuilder query = new StringBuilder();
         query.append( "SELECT * FROM Tag;");

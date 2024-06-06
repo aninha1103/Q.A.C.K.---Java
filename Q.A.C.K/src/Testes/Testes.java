@@ -19,7 +19,7 @@ public class Testes {
             
             Permissoes p1 = new Permissoes(true, true, true, true, true, true);
             
-            Cargo c1 = new Cargo(1, p1);
+            Cargo c1 = new Cargo(1,"", p1);
             
             //necessario existir um usuario logado para fazer as alteracoes, pois é verificado as permissao do usuario logado
             Usuario u2 = new Usuario( "Luis", "luis","123", c1);

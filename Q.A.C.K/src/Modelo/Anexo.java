@@ -11,6 +11,9 @@ public class Anexo {
     private Integer id;
     private String caminhoArquivo;
 
+    public Anexo() {
+    }
+    
     public Anexo(Integer id, String caminhoArquivo) {
         this.id = id;
         this.caminhoArquivo = caminhoArquivo;
