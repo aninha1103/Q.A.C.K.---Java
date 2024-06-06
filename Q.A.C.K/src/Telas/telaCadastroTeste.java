@@ -6,12 +6,8 @@ import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
 import Repositorio.Repositorio;
-import java.awt.Image;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.LocalDate;
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -38,7 +34,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         this.campoDescricao.setText(testeEditar.getDescricao());
         this.campoSituacao.setSelectedIndex( getStatusIndice( testeEditar ) );
         this.campoTag.setSelectedIndex( getTagIndice( testeEditar ) );
-        imagemTeste = testeEditar.getImagem();
+        imagemTeste = testeEditar.getAnexo();
         data = testeEditar.getData();
     }
 

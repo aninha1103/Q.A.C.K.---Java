@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Teste {
-    private int id;
+    private Integer id;
     private String nome;
     private LocalDate data;
     private String descricao;
@@ -14,16 +14,12 @@ public class Teste {
     private Tag tag;
     private Status status;
     private List<Comentario> comentarios;
-
-    //variavel auxiliar para substituir autoincrement do banco de dados
-    private static int idUsuario = 0;
-    //fim auxiliar
     
     public Teste() {
     }
 
     public Teste( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
-        this.id = idUsuario++;
+        this.id = null;
         this.nome = nome;
         this.data = data;
         this.descricao = descricao;
@@ -73,7 +69,7 @@ public class Teste {
         comentario.setEditado( Boolean.TRUE );
     }
     
-    public int getId() {
+    public Integer getId() {
         return id;
     }
     
@@ -105,11 +101,11 @@ public class Teste {
         this.descricao = descricao;
     }
 
-    public Anexo getImagem() {
+    public Anexo getAnexo() {
         return imagem;
     }
 
-    public void setImagem(Anexo imagem) {
+    public void setAnexo(Anexo imagem) {
         this.imagem = imagem;
     }
 

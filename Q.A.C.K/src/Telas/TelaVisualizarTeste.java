@@ -240,7 +240,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             .addGroup(PainelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TelaCadastroTeste)
-                .addContainerGap(715, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(PainelScrollPrincipal)
         );
         PainelLayout.setVerticalGroup(
@@ -248,7 +248,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             .addGroup(PainelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TelaCadastroTeste)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
