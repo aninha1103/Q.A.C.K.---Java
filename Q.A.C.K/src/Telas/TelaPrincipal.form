@@ -89,7 +89,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="BotaoFiltrarTeste" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BotaoVizualizarTeste" min="-2" max="-2" attributes="0"/>
+                          <Component id="BotaoVisualizarTeste" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="BotaoAdicionarTeste" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -113,7 +113,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BotaoAdicionarTeste" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotaoFiltrarTeste" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotaoVizualizarTeste" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotaoVisualizarTeste" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -197,7 +197,7 @@
             <Property name="text" type="java.lang.String" value="Nome Usuario + Cargo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="BotaoVizualizarTeste">
+        <Component class="javax.swing.JButton" name="BotaoVisualizarTeste">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="50" type="rgb"/>
@@ -208,10 +208,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Vizualizar"/>
+            <Property name="text" type="java.lang.String" value="Visualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoVizualizarTesteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoVisualizarTesteActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="PainelListaTestes">

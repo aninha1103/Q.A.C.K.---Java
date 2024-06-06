@@ -54,7 +54,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BotaoAdicionarTeste = new javax.swing.JButton();
         BotaoFiltrarTeste = new javax.swing.JButton();
         campoNomeCargo = new javax.swing.JLabel();
-        BotaoVizualizarTeste = new javax.swing.JButton();
+        BotaoVisualizarTeste = new javax.swing.JButton();
         PainelListaTestes = new javax.swing.JScrollPane();
         ListaTestes = new javax.swing.JTable();
 
@@ -110,13 +110,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         campoNomeCargo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         campoNomeCargo.setText("Nome Usuario + Cargo");
 
-        BotaoVizualizarTeste.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoVizualizarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        BotaoVizualizarTeste.setForeground(new java.awt.Color(255, 255, 255));
-        BotaoVizualizarTeste.setText("Vizualizar");
-        BotaoVizualizarTeste.addActionListener(new java.awt.event.ActionListener() {
+        BotaoVisualizarTeste.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoVisualizarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoVisualizarTeste.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoVisualizarTeste.setText("Visualizar");
+        BotaoVisualizarTeste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoVizualizarTesteActionPerformed(evt);
+                BotaoVisualizarTesteActionPerformed(evt);
             }
         });
 
@@ -156,7 +156,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BotaoFiltrarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoVizualizarTeste)
+                        .addComponent(BotaoVisualizarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoAdicionarTeste)
                         .addContainerGap())))
@@ -175,7 +175,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoAdicionarTeste)
                     .addComponent(BotaoFiltrarTeste)
-                    .addComponent(BotaoVizualizarTeste))
+                    .addComponent(BotaoVisualizarTeste))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,7 +207,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
-    private void BotaoVizualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarTesteActionPerformed
+    private void BotaoVisualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVisualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
             TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ) );
             t.setVisible( true );
@@ -216,13 +216,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }else{
             //erro: selecione um usuario para visualizar
         }
-    }//GEN-LAST:event_BotaoVizualizarTesteActionPerformed
+    }//GEN-LAST:event_BotaoVisualizarTesteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAdicionarTeste;
     private javax.swing.JButton BotaoFiltrarTeste;
     private javax.swing.JButton BotaoUsuarios;
-    private javax.swing.JButton BotaoVizualizarTeste;
+    private javax.swing.JButton BotaoVisualizarTeste;
     private javax.swing.JTable ListaTestes;
     private javax.swing.JScrollPane PainelListaTestes;
     private javax.swing.JPanel TelaPrincipal;

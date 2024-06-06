@@ -82,7 +82,8 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         campoTag = new javax.swing.JComboBox<>();
         botaoSelecionarAnexo = new javax.swing.JButton();
         campoNomeArquivo = new javax.swing.JTextField();
-        botaoSalvar = new javax.swing.JButton();
+        BotaoSalvar = new javax.swing.JButton();
+        BotaoCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Teste");
@@ -139,13 +140,23 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         campoNomeArquivo.setEditable(false);
         campoNomeArquivo.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
 
-        botaoSalvar.setBackground(new java.awt.Color(80, 0, 102));
-        botaoSalvar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        botaoSalvar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoSalvar.setText("Salvar");
-        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+        BotaoSalvar.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoSalvar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoSalvar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoSalvar.setText("Salvar");
+        BotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoSalvarActionPerformed(evt);
+                BotaoSalvarActionPerformed(evt);
+            }
+        });
+
+        BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoCancelar.setText("Cancelar");
+        BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoCancelarActionPerformed(evt);
             }
         });
 
@@ -156,7 +167,10 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botaoSalvar)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BotaoCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotaoSalvar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DescricaoTexto)
@@ -184,7 +198,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TituloTexto)
                     .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,7 +223,9 @@ public class telaCadastroTeste extends javax.swing.JFrame {
                     .addComponent(botaoSelecionarAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AnexosTexto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoSalvar)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotaoSalvar)
+                    .addComponent(BotaoCancelar))
                 .addGap(12, 12, 12))
         );
 
@@ -249,7 +265,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_botaoSelecionarAnexoActionPerformed
 
-    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+    private void BotaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarActionPerformed
         String nome = this.campoTitulo.getText();
         String descricao = this.campoDescricao.getText();
         String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") || !this.campoNomeArquivo.getText().trim().isEmpty() ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
@@ -270,10 +286,16 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         origem.atulizaListaTeste();
         this.dispose();
              
-    }//GEN-LAST:event_botaoSalvarActionPerformed
+    }//GEN-LAST:event_BotaoSalvarActionPerformed
+
+    private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnexosTexto;
+    private javax.swing.JButton BotaoCancelar;
+    private javax.swing.JButton BotaoSalvar;
     private javax.swing.JLabel CategoriaTexto;
     private javax.swing.JLabel DescricaoTexto;
     private javax.swing.JScrollPane ScrollAreaDescricao;
@@ -281,7 +303,6 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     private javax.swing.JLabel TagsTexto;
     private javax.swing.JLabel TelaCadastroTeste;
     private javax.swing.JLabel TituloTexto;
-    private javax.swing.JButton botaoSalvar;
     private javax.swing.JButton botaoSelecionarAnexo;
     private javax.swing.JTextArea campoDescricao;
     private javax.swing.JTextField campoNomeArquivo;
