@@ -294,12 +294,12 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             AnexoJDBC.create( anexo );
         }
         if( this.idTeste == null){
-            //TesteJDBC.create( t ) ;
+            TesteJDBC.create( t ) ;
         }else{
             TesteJDBC.update( t );
         }
         
-        origem.atulizaListaTeste();
+        origem.atulizaListaTeste( TesteJDBC.findAll() );
         if( origemVisualizar != null ){
             origemVisualizar.setTesteVisualizar( t );
             origemVisualizar.atualizaCampos();

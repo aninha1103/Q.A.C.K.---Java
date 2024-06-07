@@ -1,6 +1,7 @@
 
 package Telas;
 
+import JDBC.TesteJDBC;
 import Modelo.Teste;
 
 public class TelaVisualizarTeste extends javax.swing.JFrame {
@@ -15,6 +16,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         atualizaCampos();
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null); 
+        this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
         //this.ImagemAnexada.setIcon(icon);
         //this.PainelComentarios
     }
@@ -301,7 +303,10 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoComentarActionPerformed
 
     private void BotaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoExcluirActionPerformed
-        // TODO add your handling code here:
+        //confirma exclusao?
+        TesteJDBC.delete( testeVisualizar );
+        origem.atulizaListaTeste( TesteJDBC.findAll() );
+        this.dispose();
     }//GEN-LAST:event_BotaoExcluirActionPerformed
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed

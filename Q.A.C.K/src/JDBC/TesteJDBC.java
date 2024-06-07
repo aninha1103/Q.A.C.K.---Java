@@ -101,7 +101,7 @@ public class TesteJDBC {
                 System.out.println( ex.getMessage() );
                 Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-        return teste;    
+        return teste;
     }
     
     public static Teste findByRowIndex( Integer index ){

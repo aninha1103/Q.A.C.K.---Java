@@ -1,11 +1,104 @@
 package Telas;
 
-public class TelaFiltrar extends javax.swing.JFrame {
+import JDBC.TagJDBC;
+import JDBC.TesteJDBC;
+import JDBC.UsuarioJDBC;
+import Modelo.Filtro;
+import Modelo.Status;
+import Modelo.Tag;
+import Modelo.Teste;
+import Modelo.Usuario;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TelaFiltrar<E> extends javax.swing.JFrame {
     
-    public TelaFiltrar() {
+    private TelaPrincipal origemTela;
+    
+    public TelaFiltrar( TelaPrincipal origem ) {
         initComponents();
+        this.origemTela = origem;
+        preencheComboBoxUsuario();
+        preencheComboBoxTag();
+        selecionaFiltroAtivo();
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);
     }
 
+    private void preencheComboBoxUsuario(){
+        for( Usuario u : UsuarioJDBC.findAll() ){
+            this.CampoFiltrarUsuario.addItem( u.getId() + " - " + u.getNome());
+        }
+    }
+    
+    private void preencheComboBoxTag(){
+        for( Tag t : TagJDBC.findAll() ){
+            this.CampoFiltrarTag.addItem( t.name() );
+        }
+    }
+    
+    private void selecionaFiltroAtivo(){
+        Filtro f = origemTela.getFiltroAtivo();
+        if( f != null ){
+            
+            String dataInicio = null;
+            String dataFim = null;
+            
+            if( f.getDataInicio() != null ){
+                dataInicio = f.getDataInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }
+            if( f.getDataFim() != null ){
+                dataFim = f.getDataFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }
+            this.CampoFiltrarUsuario.setSelectedIndex( procuraIndexUsuario() );
+            this.CampoFiltrarTag.setSelectedIndex( procuraIndexTag() );
+            this.CampoFiltrarStatus.setSelectedIndex( procuraIndexStatus() );
+            this.CampoFiltrarDataInicio.setText( dataInicio );
+            this.CampoFiltrarDataFim.setText( dataFim );
+        }
+    }
+    
+    private Integer procuraIndexUsuario(){
+        if( origemTela.getFiltroAtivo().getUsuario() == null ){
+            return 0;
+        }
+        for( Integer i = 1; i < this.CampoFiltrarUsuario.getItemCount(); i++){
+            String itemComboBox = this.CampoFiltrarUsuario.getItemAt( i );
+            if( Integer.parseInt( itemComboBox.split(" -")[0] ) == origemTela.getFiltroAtivo().getUsuario().getId() ){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    private Integer procuraIndexTag(){
+        if( origemTela.getFiltroAtivo().getTag() == null ){
+            return 0;
+        }
+        for( Integer i = 1; i < this.CampoFiltrarTag.getItemCount(); i++){
+            String itemComboBox = this.CampoFiltrarTag.getItemAt( i );
+            if( itemComboBox.equals( origemTela.getFiltroAtivo().getTag().name() ) ){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    private Integer procuraIndexStatus(){
+        if( origemTela.getFiltroAtivo().getStatus()== null ){
+            return 0;
+        }
+        for( Integer i = 1; i < this.CampoFiltrarStatus.getItemCount(); i++){
+            String itemComboBox = this.CampoFiltrarStatus.getItemAt( i );
+            if( itemComboBox.toUpperCase().equals( origemTela.getFiltroAtivo().getStatus().name() ) ){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,13 +176,14 @@ public class TelaFiltrar extends javax.swing.JFrame {
         TagTexto.setText("Tag");
 
         CampoFiltrarTag.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        CampoFiltrarTag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Bug", "Retrabalho", "Melhoria" }));
+        CampoFiltrarTag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum" }));
 
         StatusTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         StatusTexto.setText("Status");
 
         CampoFiltrarStatus.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        CampoFiltrarStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Finalizado", "Andamento" }));
+        CampoFiltrarStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Andamento", "Finalizado" }));
+        CampoFiltrarStatus.setToolTipText("");
 
         DataInicioTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         DataInicioTexto.setText("Data Início");
@@ -211,11 +305,44 @@ public class TelaFiltrar extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     private void BotaoFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarActionPerformed
-        // TODO add your handling code here:
+        Usuario usuario;
+        Tag tag;
+        Status status;
+        LocalDate dataInicio = null;
+        LocalDate dataFim = null;
+        
+        switch( this.CampoFiltrarUsuario.getSelectedIndex() ){
+            case 0 -> usuario = null;
+            default -> usuario = UsuarioJDBC.findById(Integer.valueOf( this.CampoFiltrarUsuario.getSelectedItem().toString().split(" -")[0] ) );
+        }
+        
+        switch( this.CampoFiltrarTag.getSelectedIndex() ){
+            case 0 -> tag = null;
+            default -> tag = Tag.valueOf( this.CampoFiltrarTag.getSelectedItem().toString() );
+        }
+        
+        switch( this.CampoFiltrarStatus.getSelectedIndex() ){
+            case 1 -> status = Status.ANDAMENTO;
+            case 2 -> status = Status.FINALIZADO;
+            default -> status = null;
+        }
+        if( !this.CampoFiltrarDataInicio.getText().isBlank() ){
+            dataInicio = LocalDate.parse( this.CampoFiltrarDataInicio.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy") );
+        }
+        if( !this.CampoFiltrarDataFim.getText().isBlank() ){
+            dataFim = LocalDate.parse( this.CampoFiltrarDataFim.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        }
+        
+        origemTela.setFiltroAtivo( new Filtro( null, tag, status, dataInicio, dataFim, usuario) );
+        origemTela.atulizaListaTeste( origemTela.getFiltroAtivo().filtrarTestes( TesteJDBC.findAll() ) );
+        this.dispose();
+        
     }//GEN-LAST:event_BotaoFiltrarActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-        // TODO add your handling code here:
+        origemTela.setFiltroAtivo( null );
+        origemTela.atulizaListaTeste( TesteJDBC.findAll() );
+        this.dispose();
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

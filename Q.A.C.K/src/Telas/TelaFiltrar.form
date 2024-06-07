@@ -271,11 +271,8 @@
                   <Font name="SimSun" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
+                  <StringArray count="1">
                     <StringItem index="0" value="Nenhum"/>
-                    <StringItem index="1" value="Bug"/>
-                    <StringItem index="2" value="Retrabalho"/>
-                    <StringItem index="3" value="Melhoria"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -299,10 +296,11 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
                     <StringItem index="0" value="Nenhum"/>
-                    <StringItem index="1" value="Finalizado"/>
-                    <StringItem index="2" value="Andamento"/>
+                    <StringItem index="1" value="Andamento"/>
+                    <StringItem index="2" value="Finalizado"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

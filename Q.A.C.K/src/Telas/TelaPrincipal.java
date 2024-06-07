@@ -2,17 +2,18 @@ package Telas;
 
 import JDBC.TesteJDBC;
 import Modelo.Filtro;
-import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private Usuario usuario;
+    private Filtro filtroAtivo;
     
     public TelaPrincipal( Usuario usuarioAtual ) {
         initComponents();
@@ -20,14 +21,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);        
-        atulizaListaTeste();
+        atulizaListaTeste( TesteJDBC.findAll() );
     }
     
-    protected final void atulizaListaTeste(){
+    protected final void atulizaListaTeste( List<Teste> testes){
+        
         DefaultTableModel modelo = (DefaultTableModel) ListaTestes.getModel();
         modelo.setNumRows( 0 );
         modelo.setRowCount( 0 );
-        List<Teste> testes = TesteJDBC.findAll();
         for( Teste t : testes ){
             //id titulo data stauts categoria
             String data = t.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy") );
@@ -40,6 +41,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public Usuario getUsuario() {
         return usuario;
+    }
+
+    public JTable getListaTestes() {
+        return ListaTestes;
+    }
+
+    public Filtro getFiltroAtivo() {
+        return filtroAtivo;
+    }
+
+    public void setFiltroAtivo(Filtro filtroAtivo) {
+        this.filtroAtivo = filtroAtivo;
     }
     
     @SuppressWarnings("unchecked")
@@ -206,15 +219,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
     private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed
-        // TODO add your handling code here:
+        TelaFiltrar tela = new TelaFiltrar( this );
+        tela.setVisible( Boolean.TRUE );
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
     private void BotaoVisualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVisualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
             TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ), this );
             t.setVisible( true );
-            //telaCadastroTeste t = new telaCadastroTeste( this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
-            //t.setVisible( true );
         }else{
             //erro: selecione um usuario para visualizar
         }
