@@ -5,8 +5,21 @@ import Modelo.Teste;
 
 public class TelaVisualizarTeste extends javax.swing.JFrame {
 
-    public TelaVisualizarTeste( Teste testeVizualizar ) {
+    private TelaPrincipal origem;
+    private Teste testeVizualizar;
+    
+    public TelaVisualizarTeste( Teste testeVizualizar, TelaPrincipal origem ) {
         initComponents();
+        this.origem = origem;
+        this.testeVizualizar = testeVizualizar;
+        atualizaCampos();
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null); 
+        //this.ImagemAnexada.setIcon(icon);
+        //this.PainelComentarios
+    }
+
+    protected final void atualizaCampos(){
         this.TelaCadastroTeste.setText(testeVizualizar.getNome() );
         this.campoDescricao.setText( testeVizualizar.getDescricao() );
         this.CampoSituacao.setText( testeVizualizar.getStatus().name() );
@@ -15,12 +28,16 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.campoDescricao.setEnabled( false );
         this.CampoSituacao.setEnabled( false );
         this.CampoCategoria.setEnabled( false );
-        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
-        this.setLocationRelativeTo(null); 
-        //this.ImagemAnexada.setIcon(icon);
-        //this.PainelComentarios
     }
 
+    public Teste getTesteVizualizar() {
+        return testeVizualizar;
+    }
+
+    public void setTesteVizualizar(Teste testeVizualizar) {
+        this.testeVizualizar = testeVizualizar;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -288,7 +305,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoExcluirActionPerformed
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed
-
+        //this = new TelaVisualizarTeste( testeVizualizar );
+        telaCadastroTeste telaCadastro = new telaCadastroTeste( origem, testeVizualizar, this );
+        telaCadastro.setVisible( true );
     }//GEN-LAST:event_BotaoEditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
