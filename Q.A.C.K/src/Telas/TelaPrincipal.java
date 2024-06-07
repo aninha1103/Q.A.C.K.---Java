@@ -59,25 +59,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
         TelaPrincipal = new javax.swing.JPanel();
         BotaoUsuarios = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        TituloTela = new javax.swing.JLabel();
         BotaoAdicionarTeste = new javax.swing.JButton();
         BotaoFiltrarTeste = new javax.swing.JButton();
         campoNomeCargo = new javax.swing.JLabel();
         BotaoVisualizarTeste = new javax.swing.JButton();
         PainelListaTestes = new javax.swing.JScrollPane();
         ListaTestes = new javax.swing.JTable();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testes");
@@ -97,9 +87,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(80, 0, 102));
-        jLabel1.setText("Registros de Testes");
+        TituloTela.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TituloTela.setForeground(new java.awt.Color(80, 0, 102));
+        TituloTela.setText("Registros de Testes");
 
         BotaoAdicionarTeste.setBackground(new java.awt.Color(80, 0, 102));
         BotaoAdicionarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
@@ -162,7 +152,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(TituloTela)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,7 +173,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotaoUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoNomeCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
+                    .addComponent(TituloTela))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelListaTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -240,12 +230,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable ListaTestes;
     private javax.swing.JScrollPane PainelListaTestes;
     private javax.swing.JPanel TelaPrincipal;
+    private javax.swing.JLabel TituloTela;
     private javax.swing.JLabel campoNomeCargo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }
 

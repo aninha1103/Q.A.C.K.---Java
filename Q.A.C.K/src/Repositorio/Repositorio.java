@@ -1,12 +1,10 @@
 package Repositorio;
 
-import Modelo.Cargo;
 import Modelo.Cargos.Techlead;
 import Modelo.Status;
 import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
-import java.awt.Image;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

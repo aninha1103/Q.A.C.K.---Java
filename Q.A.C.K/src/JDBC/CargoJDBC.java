@@ -17,7 +17,6 @@ public class CargoJDBC {
         StringBuilder insertQuery = new StringBuilder();
         insertQuery.append("INSERT INTO Cargo( nome ) VALUES(");
         insertQuery.append( "'" ).append( c.getNome() ).append( "'); ");
-        //foto
 
     try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
             Statement statement = conn.createStatement())  {
@@ -66,7 +65,7 @@ public class CargoJDBC {
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM Cargo where id =");
         query.append( id ).append( "; ");
-        //foto
+
         Cargo cargo = null;
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
                 Statement statement = conn.createStatement())  {

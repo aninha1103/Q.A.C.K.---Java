@@ -6,12 +6,9 @@ import JDBC.UsuarioJDBC;
 import Modelo.Filtro;
 import Modelo.Status;
 import Modelo.Tag;
-import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TelaFiltrar<E> extends javax.swing.JFrame {
     
@@ -210,27 +207,26 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoFiltrar))
                     .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(FiltrarPorTexto)
                             .addGroup(PainelFiltragemLayout.createSequentialGroup()
                                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DataInicioTexto)
                                     .addComponent(DataFimTexto)
                                     .addComponent(StatusTexto))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(12, 12, 12)
                                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CampoFiltrarStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(CampoFiltrarDataInicio)
-                                    .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelFiltragemLayout.createSequentialGroup()
+                                    .addComponent(CampoFiltrarDataFim)
+                                    .addComponent(CampoFiltrarStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(UsuarioTexto)
-                                    .addGap(34, 34, 34)
-                                    .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelFiltragemLayout.createSequentialGroup()
-                                    .addComponent(TagTexto)
-                                    .addGap(62, 62, 62)
-                                    .addComponent(CampoFiltrarTag, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(TagTexto))
+                                .addGap(40, 40, 40)
+                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CampoFiltrarTag, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -252,11 +248,11 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                     .addComponent(StatusTexto)
                     .addComponent(CampoFiltrarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DataInicioTexto)
                     .addComponent(CampoFiltrarDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DataFimTexto)
                     .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)

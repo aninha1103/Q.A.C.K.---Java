@@ -231,10 +231,10 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoExcluirCadastroActionPerformed
 
     private void botalSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botalSalvarCadastroActionPerformed
-        String nome = this.cadastroNome.getText();
-        String login = this.cadastroUsuario.getText();
+        String nome     = this.cadastroNome.getText();
+        String login    = this.cadastroUsuario.getText();
         String senhaStr = String.copyValueOf( this.cadastroSenha.getPassword() );
-        Cargo cargo = Usuario.cargoPorId( cadastroCargo.getSelectedIndex() + 1);
+        Cargo cargo     = Usuario.cargoPorId( cadastroCargo.getSelectedIndex() + 1);
 
         if( this.idUsuario != null ){
             UsuarioJDBC.update( new Usuario( this.idUsuario, nome, login, senhaStr, cargo) );
