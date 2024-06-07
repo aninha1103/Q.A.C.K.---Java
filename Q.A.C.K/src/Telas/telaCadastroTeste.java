@@ -8,6 +8,7 @@ import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.time.LocalDate;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -15,6 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class telaCadastroTeste extends javax.swing.JFrame {
 
     private TelaPrincipal origem;
+    private TelaVisualizarTeste origemVisualizar;
     private Integer idTeste;
     private Anexo imagemTeste;
     private LocalDate data;
@@ -28,6 +30,17 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar ) {
         initComponents();
         operacoesPadrao( origem );   
+        operacoesEdicao( origem, testeEditar );
+    }
+    
+    public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar, TelaVisualizarTeste visualizar ) {
+        initComponents();
+        operacoesPadrao( origem );   
+        operacoesEdicao( origem, testeEditar );
+        this.origemVisualizar = visualizar;
+    }
+
+    public final void operacoesEdicao( TelaPrincipal origem, Teste testeEditar ){
         this.TelaCadastroTeste.setText("Edição de Teste");
         this.idTeste = testeEditar.getId();
         this.campoTitulo.setText(testeEditar.getNome());
@@ -37,7 +50,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         imagemTeste = testeEditar.getAnexo();
         data = testeEditar.getData();
     }
-
+    
     public final void operacoesPadrao( TelaPrincipal origem ){
         this.origem = origem;
         campoNomeArquivo.setText(" ");
@@ -61,6 +74,8 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         }
         return indice;
     }
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -257,17 +272,24 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Tag tag = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
         Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
+        Teste t = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status );
+        System.out.println(this.campoTag.getSelectedItem());
+        System.out.println(this.campoSituacao.getSelectedItem());
         if( anexo == null){
             anexo = new Anexo( caminhoImagem );
             AnexoJDBC.create( anexo );
         }
         if( this.idTeste == null){
-            TesteJDBC.create( new Teste( nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status )) ;
+            //TesteJDBC.create( t ) ;
         }else{
-            TesteJDBC.update( new Teste( this.idTeste, nome, data, descricao, anexo, criandoTeste, tag, status) );
+            TesteJDBC.update( t );
         }
         
         origem.atulizaListaTeste();
+        if( origemVisualizar != null ){
+            origemVisualizar.setTesteVizualizar( t );
+            origemVisualizar.atualizaCampos();
+        }
         this.dispose();
              
     }//GEN-LAST:event_botaoSalvarActionPerformed

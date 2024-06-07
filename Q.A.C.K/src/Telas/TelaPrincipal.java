@@ -1,6 +1,8 @@
 package Telas;
 
 import JDBC.TesteJDBC;
+import Modelo.Filtro;
+import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
@@ -21,11 +23,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         atulizaListaTeste();
     }
     
-    public final void atulizaListaTeste(){
+    protected final void atulizaListaTeste(){
         DefaultTableModel modelo = (DefaultTableModel) ListaTestes.getModel();
         modelo.setNumRows( 0 );
         modelo.setRowCount( 0 );
-        List<Teste> testes = TesteJDBC.findAll();
+        List<Teste> testes = new Filtro(null,null,null,null,null,null).filtrarTeste( TesteJDBC.findAll());
         for( Teste t : testes ){
             //id titulo data stauts categoria
             String data = t.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy") );
@@ -106,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        campoNomeCargo.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        campoNomeCargo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         campoNomeCargo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         campoNomeCargo.setText("Nome Usuario + Cargo");
 
@@ -209,7 +211,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void BotaoVizualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVizualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
-            TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ) );
+            TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ), this );
             t.setVisible( true );
             //telaCadastroTeste t = new telaCadastroTeste( this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
             //t.setVisible( true );
