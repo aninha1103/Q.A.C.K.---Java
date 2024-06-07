@@ -8,7 +8,6 @@ import Modelo.Tag;
 import Modelo.Teste;
 import Modelo.Usuario;
 import java.io.File;
-import java.lang.reflect.Constructor;
 import java.time.LocalDate;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -289,8 +288,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
         Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
         Teste t = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status );
-        System.out.println(this.campoTag.getSelectedItem());
-        System.out.println(this.campoSituacao.getSelectedItem());
+
         if( anexo == null){
             anexo = new Anexo( caminhoImagem );
             AnexoJDBC.create( anexo );
@@ -303,7 +301,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         
         origem.atulizaListaTeste();
         if( origemVisualizar != null ){
-            origemVisualizar.setTesteVizualizar( t );
+            origemVisualizar.setTesteVisualizar( t );
             origemVisualizar.atualizaCampos();
         }
         this.dispose();
@@ -311,7 +309,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoSalvarActionPerformed
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

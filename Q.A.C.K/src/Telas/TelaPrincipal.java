@@ -27,7 +27,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) ListaTestes.getModel();
         modelo.setNumRows( 0 );
         modelo.setRowCount( 0 );
-        List<Teste> testes = new Filtro(null,null,null,null,null,null).filtrarTeste( TesteJDBC.findAll());
+        List<Teste> testes = TesteJDBC.findAll();
         for( Teste t : testes ){
             //id titulo data stauts categoria
             String data = t.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy") );

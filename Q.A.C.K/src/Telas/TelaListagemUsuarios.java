@@ -178,7 +178,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoVisualizarUsuarioActionPerformed
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

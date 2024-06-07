@@ -6,12 +6,12 @@ import Modelo.Teste;
 public class TelaVisualizarTeste extends javax.swing.JFrame {
 
     private TelaPrincipal origem;
-    private Teste testeVizualizar;
+    private Teste testeVisualizar;
     
-    public TelaVisualizarTeste( Teste testeVizualizar, TelaPrincipal origem ) {
+    public TelaVisualizarTeste( Teste testeVisualizar, TelaPrincipal origem ) {
         initComponents();
         this.origem = origem;
-        this.testeVizualizar = testeVizualizar;
+        this.testeVisualizar = testeVisualizar;
         atualizaCampos();
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null); 
@@ -20,22 +20,22 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }
 
     protected final void atualizaCampos(){
-        this.TelaCadastroTeste.setText(testeVizualizar.getNome() );
-        this.campoDescricao.setText( testeVizualizar.getDescricao() );
-        this.CampoSituacao.setText( testeVizualizar.getStatus().name() );
-        this.CampoCategoria.setText( testeVizualizar.getTag().name() );
-        this.UsuarioCriadoPor.setText( testeVizualizar.getCriadoPor().getNome() );
+        this.TelaCadastroTeste.setText(testeVisualizar.getNome() );
+        this.campoDescricao.setText( testeVisualizar.getDescricao() );
+        this.CampoSituacao.setText( testeVisualizar.getStatus().name() );
+        this.CampoCategoria.setText( testeVisualizar.getTag().name() );
+        this.UsuarioCriadoPor.setText( testeVisualizar.getCriadoPor().getNome() );
         this.campoDescricao.setEnabled( false );
         this.CampoSituacao.setEnabled( false );
         this.CampoCategoria.setEnabled( false );
     }
 
-    public Teste getTesteVizualizar() {
-        return testeVizualizar;
+    public Teste getTesteVisualizar() {
+        return testeVisualizar;
     }
 
-    public void setTesteVizualizar(Teste testeVizualizar) {
-        this.testeVizualizar = testeVizualizar;
+    public void setTesteVisualizar(Teste testeVisualizar) {
+        this.testeVisualizar = testeVisualizar;
     }
     
     @SuppressWarnings("unchecked")
@@ -305,8 +305,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoExcluirActionPerformed
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed
-        //this = new TelaVisualizarTeste( testeVizualizar );
-        telaCadastroTeste telaCadastro = new telaCadastroTeste( origem, testeVizualizar, this );
+        //this = new TelaVisualizarTeste( testeVisualizar );
+        telaCadastroTeste telaCadastro = new telaCadastroTeste( origem, testeVisualizar, this );
         telaCadastro.setVisible( true );
     }//GEN-LAST:event_BotaoEditarActionPerformed
 

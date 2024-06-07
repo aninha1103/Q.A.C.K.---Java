@@ -131,7 +131,7 @@ public class TelaComentar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
-
+        this.dispose();
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     private void BotaoSalvarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarComentarioActionPerformed
