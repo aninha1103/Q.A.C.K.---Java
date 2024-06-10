@@ -6,7 +6,6 @@ import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,6 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.FiltroAtivoLabel.setText("Filtro: Inativo");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);        
+        this.ListaTestes.setEnabled( false );
         atulizaListaTeste( TesteJDBC.findAll() );
     }
     

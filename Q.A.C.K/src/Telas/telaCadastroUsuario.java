@@ -234,6 +234,11 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         String senhaStr = String.copyValueOf( this.cadastroSenha.getPassword() );
         Cargo cargo     = Usuario.cargoPorId( cadastroCargo.getSelectedIndex() + 1);
 
+        if( nome.isBlank() || login.isBlank() || senhaStr.isBlank() ){
+            JOptionPane.showMessageDialog( this, "Algum campo obrigatório está vazio, verifique","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        
         if( this.idUsuario != null ){
             UsuarioJDBC.update( new Usuario( this.idUsuario, nome, login, senhaStr, cargo) );
         }else{
