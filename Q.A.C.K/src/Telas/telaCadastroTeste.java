@@ -292,12 +292,14 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Tag tag              = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status        = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
         Anexo anexo          = AnexoJDBC.findByPath( caminhoImagem );
-        Teste t              = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status );
 
         if( anexo == null){
-            anexo = new Anexo( caminhoImagem );
-            AnexoJDBC.create( anexo );
+            AnexoJDBC.create( new Anexo( caminhoImagem ) );
+            anexo = AnexoJDBC.findByPath( caminhoImagem );
         }
+        
+        Teste t = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status );
+        
         if( this.idTeste == null){
             TesteJDBC.create( t ) ;
         }else{

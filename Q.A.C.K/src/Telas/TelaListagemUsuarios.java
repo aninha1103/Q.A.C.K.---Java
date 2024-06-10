@@ -17,7 +17,6 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
-        this.TabelaUsuarios.setEnabled( false );
         this.usuarios = UsuarioJDBC.findAll();
         atualizaListaUsuario();
     }

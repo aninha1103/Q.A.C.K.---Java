@@ -22,8 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
         this.FiltroAtivoLabel.setText("Filtro: Inativo");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
-        this.setLocationRelativeTo(null);        
-        this.ListaTestes.setEnabled( false );
+        this.setLocationRelativeTo(null);
         atulizaListaTeste( TesteJDBC.findAll() );
     }
     
@@ -138,10 +137,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes.setBackground(new java.awt.Color(234, 234, 234));
         ListaTestes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Título", "Data", "Status", "Categoria"
