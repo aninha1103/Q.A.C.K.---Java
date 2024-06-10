@@ -10,6 +10,7 @@ import Modelo.Usuario;
 import java.io.File;
 import java.time.LocalDate;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class telaCadastroTeste extends javax.swing.JFrame {
@@ -52,7 +53,6 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     
     public final void operacoesPadrao( TelaPrincipal origem ){
         this.origem = origem;
-        this.origem.setVisible( false );
         campoNomeArquivo.setText(" ");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);   
@@ -280,6 +280,11 @@ public class telaCadastroTeste extends javax.swing.JFrame {
 
     private void BotaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarActionPerformed
         String nome          = this.campoTitulo.getText();
+        if( nome.isEmpty() || nome.isBlank() ){
+            JOptionPane.showMessageDialog( this, "Nome não pode ser vazio","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        
         String descricao     = this.campoDescricao.getText();
         String caminhoImagem = ( !this.campoNomeArquivo.getText().trim().isEmpty() || !this.campoNomeArquivo.getText().trim().isBlank() ) 
                                 ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";

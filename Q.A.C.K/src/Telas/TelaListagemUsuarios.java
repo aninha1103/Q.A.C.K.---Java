@@ -5,6 +5,7 @@ import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -173,7 +174,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
             telaCadastroUsuario t = new telaCadastroUsuario( this, usuarioEdicao );
             t.setVisible( true );
         }else{
-            //erro: selecione um usuario para visualizar
+            JOptionPane.showMessageDialog( this, "Selecione um usuario para visualizar","Erro", JOptionPane.ERROR_MESSAGE );
         }
     }//GEN-LAST:event_BotaoVisualizarUsuarioActionPerformed
 

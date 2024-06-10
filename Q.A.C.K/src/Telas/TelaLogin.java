@@ -2,6 +2,7 @@ package Telas;
 
 import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
+import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -124,13 +125,16 @@ public class TelaLogin extends javax.swing.JFrame {
 
         for( Usuario u : UsuarioJDBC.findAll() ){
             if( u.login(login, senhaStr ) != null){
+                JOptionPane.showMessageDialog(this, "Bem vindo, " + u.getNome() , "Login", JOptionPane.INFORMATION_MESSAGE );
                 this.dispose();
                 TelaPrincipal t = new TelaPrincipal( u );
                 t.setVisible(true);
                 return;
             }
         }
-        //erro login ou senha invalido
+        JOptionPane.showMessageDialog(this, "Login ou senha inválida!" , "Erro", JOptionPane.ERROR_MESSAGE );
+        this.campoUsuario.setText("");
+        this.campoSenha.setText("");
         
     }//GEN-LAST:event_botaoEntrarActionPerformed
 

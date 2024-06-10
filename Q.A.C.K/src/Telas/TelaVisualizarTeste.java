@@ -307,7 +307,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
 
     private void BotaoComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoComentarActionPerformed
         if( origem.getUsuario().getCargo().getPermissoes().isComentar() ){
-            
+            //acao para comentar
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
         }
     }//GEN-LAST:event_BotaoComentarActionPerformed
 

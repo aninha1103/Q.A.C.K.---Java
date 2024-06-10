@@ -6,6 +6,7 @@ import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,6 +21,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.usuario = usuarioAtual;
         this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
+        this.FiltroAtivoLabel.setText("Filtro: Inativo");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);        
         atulizaListaTeste( TesteJDBC.findAll() );
@@ -51,6 +53,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public Filtro getFiltroAtivo() {
         return filtroAtivo;
     }
+    
+    public void setFiltroAtivoLabel( String messagem ){
+        this.FiltroAtivoLabel.setText(messagem);
+    }
 
     public void setFiltroAtivo(Filtro filtroAtivo) {
         this.filtroAtivo = filtroAtivo;
@@ -69,6 +75,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BotaoVisualizarTeste = new javax.swing.JButton();
         PainelListaTestes = new javax.swing.JScrollPane();
         ListaTestes = new javax.swing.JTable();
+        FiltroAtivoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testes");
@@ -145,6 +152,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes.setDefaultRenderer(Object.class, centerRenderer);
         PainelListaTestes.setViewportView(ListaTestes);
 
+        FiltroAtivoLabel.setText("Filtro: ");
+
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
         TelaPrincipalLayout.setHorizontalGroup(
@@ -159,7 +168,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(FiltroAtivoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BotaoFiltrarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoVisualizarTeste)
@@ -181,7 +191,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoAdicionarTeste)
                     .addComponent(BotaoFiltrarTeste)
-                    .addComponent(BotaoVisualizarTeste))
+                    .addComponent(BotaoVisualizarTeste)
+                    .addComponent(FiltroAtivoLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,7 +239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ), this );
             t.setVisible( true );
         }else{
-            //erro: selecione um usuario para visualizar
+            JOptionPane.showMessageDialog( this, "Selecione um teste para visualizar","Erro", JOptionPane.ERROR_MESSAGE );
         }
     }//GEN-LAST:event_BotaoVisualizarTesteActionPerformed
 
@@ -237,6 +248,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BotaoFiltrarTeste;
     private javax.swing.JButton BotaoUsuarios;
     private javax.swing.JButton BotaoVisualizarTeste;
+    private javax.swing.JLabel FiltroAtivoLabel;
     private javax.swing.JTable ListaTestes;
     private javax.swing.JScrollPane PainelListaTestes;
     private javax.swing.JPanel TelaPrincipal;

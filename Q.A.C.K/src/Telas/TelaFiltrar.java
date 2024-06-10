@@ -9,6 +9,7 @@ import Modelo.Tag;
 import Modelo.Usuario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 public class TelaFiltrar<E> extends javax.swing.JFrame {
     
@@ -329,15 +330,22 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
             dataFim = LocalDate.parse( this.CampoFiltrarDataFim.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         }
         
-        origemTela.setFiltroAtivo( new Filtro( null, tag, status, dataInicio, dataFim, usuario) );
-        origemTela.atulizaListaTeste( origemTela.getFiltroAtivo().filtrarTestes( TesteJDBC.findAll() ) );
-        this.dispose();
+        if( tag == null && status == null && dataInicio == null && dataFim == null && usuario == null){
+            JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para filtrar","Erro", JOptionPane.ERROR_MESSAGE );
+        }else{
+            origemTela.setFiltroAtivo( new Filtro( null, tag, status, dataInicio, dataFim, usuario) );
+            origemTela.setFiltroAtivoLabel("Filtro: Ativo");
+            origemTela.atulizaListaTeste( origemTela.getFiltroAtivo().filtrarTestes( TesteJDBC.findAll() ) );
+            this.dispose();
+        }
+        
         
     }//GEN-LAST:event_BotaoFiltrarActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
         origemTela.setFiltroAtivo( null );
         origemTela.atulizaListaTeste( TesteJDBC.findAll() );
+        origemTela.setFiltroAtivoLabel("Filtro: Inativo");
         this.dispose();
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
