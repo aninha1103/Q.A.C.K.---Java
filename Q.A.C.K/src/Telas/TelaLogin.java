@@ -7,6 +7,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
+        this.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        this.setLocationRelativeTo(null); 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,7 +125,7 @@ public class TelaLogin extends javax.swing.JFrame {
         for( Usuario u : UsuarioJDBC.findAll() ){
             if( u.login(login, senhaStr ) != null){
                 this.dispose();
-                TelaPrincipal t = new TelaPrincipal( u.login(login, senhaStr ) );
+                TelaPrincipal t = new TelaPrincipal( u );
                 t.setVisible(true);
                 return;
             }

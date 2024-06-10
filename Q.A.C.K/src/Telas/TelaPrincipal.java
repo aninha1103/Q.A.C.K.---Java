@@ -6,6 +6,7 @@ import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -199,13 +200,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoAdicionarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAdicionarTesteActionPerformed
-        telaCadastroTeste t = new telaCadastroTeste( this );
-        t.setVisible( true );
+        if( this.usuario.getCargo().getPermissoes().isCriar() ){
+            telaCadastroTeste t = new telaCadastroTeste( this );
+            t.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoAdicionarTesteActionPerformed
 
     private void BotaoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoUsuariosActionPerformed
-        TelaListagemUsuarios t = new TelaListagemUsuarios();
-        t.setVisible( true );
+        if( this.usuario.getCargo().getPermissoes().isManipularUsuario() ){
+            TelaListagemUsuarios t = new TelaListagemUsuarios();
+            t.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
+        
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
     private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed

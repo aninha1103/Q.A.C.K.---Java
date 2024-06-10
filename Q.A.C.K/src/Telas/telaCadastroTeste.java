@@ -52,6 +52,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     
     public final void operacoesPadrao( TelaPrincipal origem ){
         this.origem = origem;
+        this.origem.setVisible( false );
         campoNomeArquivo.setText(" ");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);   
@@ -280,7 +281,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     private void BotaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarActionPerformed
         String nome          = this.campoTitulo.getText();
         String descricao     = this.campoDescricao.getText();
-        String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") || !this.campoNomeArquivo.getText().trim().isEmpty() ) 
+        String caminhoImagem = ( !this.campoNomeArquivo.getText().trim().isEmpty() || !this.campoNomeArquivo.getText().trim().isBlank() ) 
                                 ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
         Usuario criandoTeste = origem.getUsuario();
         Tag tag              = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
@@ -304,11 +305,13 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             origemVisualizar.atualizaCampos();
         }
         this.dispose();
+        this.origem.setVisible( true );
              
     }//GEN-LAST:event_BotaoSalvarActionPerformed
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
         this.dispose();
+        this.origem.setVisible( true );
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
