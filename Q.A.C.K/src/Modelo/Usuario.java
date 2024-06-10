@@ -85,7 +85,6 @@ public class Usuario {
     
     public static Cargo cargoPorId( Integer idCargo ){
         Cargo cargo = null;
-        switch (idCargo){
         switch ( idCargo ){
             case 1 -> cargo = new QA();
             case 2 -> cargo = new Techlead();
