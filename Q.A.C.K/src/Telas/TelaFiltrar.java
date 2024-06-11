@@ -127,14 +127,14 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         PainelPrincipal.setBackground(new java.awt.Color(213, 213, 213));
         PainelPrincipal.setToolTipText("");
 
-        TelaFiltragem.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TelaFiltragem.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         TelaFiltragem.setForeground(new java.awt.Color(80, 0, 102));
         TelaFiltragem.setText("Filtragem");
 
         PainelFiltragem.setBackground(new java.awt.Color(234, 234, 234));
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         });
 
         BotaoFiltrar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoFiltrar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoFiltrar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoFiltrar.setText("Filtrar");
         BotaoFiltrar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,11 +153,11 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
             }
         });
 
-        FiltrarPorTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        FiltrarPorTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         FiltrarPorTexto.setText("Filtrar por:");
 
         BotaoLimpar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoLimpar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoLimpar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoLimpar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoLimpar.setText("Limpar");
         BotaoLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,39 +166,42 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
             }
         });
 
-        CampoFiltrarUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoFiltrarUsuario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CampoFiltrarUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum" }));
 
-        UsuarioTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        UsuarioTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         UsuarioTexto.setText("Usuário");
 
-        TagTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        TagTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         TagTexto.setText("Tag");
 
-        CampoFiltrarTag.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoFiltrarTag.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CampoFiltrarTag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum" }));
 
-        StatusTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        StatusTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         StatusTexto.setText("Status");
 
-        CampoFiltrarStatus.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoFiltrarStatus.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CampoFiltrarStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Andamento", "Finalizado" }));
         CampoFiltrarStatus.setToolTipText("");
 
-        DataInicioTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        DataInicioTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         DataInicioTexto.setText("Data Início");
 
-        DataFimTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        DataFimTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         DataFimTexto.setText("Data Fim");
 
         CampoFiltrarDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        CampoFiltrarDataInicio.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         CampoFiltrarDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        CampoFiltrarDataFim.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
-        NomeTesteTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        NomeTesteTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         NomeTesteTexto.setText("Nome Teste");
 
         CampoFiltrarNomeTeste.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        CampoFiltrarNomeTeste.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout PainelFiltragemLayout = new javax.swing.GroupLayout(PainelFiltragem);
         PainelFiltragem.setLayout(PainelFiltragemLayout);
@@ -211,42 +214,46 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BotaoCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoLimpar)
+                        .addComponent(BotaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoFiltrar))
-                    .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(FiltrarPorTexto)
-                        .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(DataInicioTexto)
-                                .addComponent(DataFimTexto)
-                                .addComponent(StatusTexto))
-                            .addGap(12, 12, 12)
-                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CampoFiltrarStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                                    .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                        .addComponent(CampoFiltrarDataInicio, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(UsuarioTexto)
-                                .addComponent(TagTexto)
-                                .addComponent(NomeTesteTexto))
-                            .addGap(19, 19, 19)
-                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CampoFiltrarTag, 0, 160, Short.MAX_VALUE)
-                                .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CampoFiltrarNomeTeste)))))
-                .addContainerGap())
+                        .addComponent(BotaoFiltrar)
+                        .addGap(12, 12, 12))
+                    .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                                .addComponent(StatusTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CampoFiltrarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(UsuarioTexto)
+                                    .addComponent(TagTexto)
+                                    .addComponent(NomeTesteTexto))
+                                .addGap(19, 19, 19)
+                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CampoFiltrarTag, 0, 160, Short.MAX_VALUE)
+                                    .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CampoFiltrarNomeTeste))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FiltrarPorTexto)
+                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DataInicioTexto)
+                                    .addComponent(DataFimTexto))
+                                .addGap(27, 27, 27)
+                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CampoFiltrarDataInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PainelFiltragemLayout.setVerticalGroup(
             PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFiltragemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(FiltrarPorTexto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeTesteTexto)
                     .addComponent(CampoFiltrarNomeTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -259,15 +266,15 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                     .addComponent(TagTexto)
                     .addComponent(CampoFiltrarTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(StatusTexto)
                     .addComponent(CampoFiltrarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(DataInicioTexto)
                     .addComponent(CampoFiltrarDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(DataFimTexto)
                     .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

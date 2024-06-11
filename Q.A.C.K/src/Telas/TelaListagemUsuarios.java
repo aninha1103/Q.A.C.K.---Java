@@ -50,11 +50,12 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(213, 213, 213));
 
-        ListaDeUsuariosTexto.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        ListaDeUsuariosTexto.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         ListaDeUsuariosTexto.setForeground(new java.awt.Color(80, 0, 102));
         ListaDeUsuariosTexto.setText("Lista de Usuários");
 
         PainelScrollTabela.setBackground(new java.awt.Color(234, 234, 234));
+        PainelScrollTabela.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
 
         TabelaUsuarios.setBackground(new java.awt.Color(234, 234, 234));
         TabelaUsuarios.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
@@ -87,7 +88,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         PainelScrollTabela.setViewportView(TabelaUsuarios);
 
         BotaoVisualizarUsuario.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoVisualizarUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoVisualizarUsuario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoVisualizarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BotaoVisualizarUsuario.setText("Visualizar");
         BotaoVisualizarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +98,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         });
 
         BotaoCadastrarUsuario.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCadastrarUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCadastrarUsuario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCadastrarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCadastrarUsuario.setText("Cadastrar");
         BotaoCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +108,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
         });
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +124,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ListaDeUsuariosTexto)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
             .addComponent(PainelScrollTabela)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,7 +147,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
                     .addComponent(BotaoVisualizarUsuario)
                     .addComponent(BotaoCadastrarUsuario)
                     .addComponent(BotaoCancelar))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

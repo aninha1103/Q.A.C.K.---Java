@@ -23,19 +23,19 @@ public class TelaComentar extends javax.swing.JFrame {
 
         PainelPrincipal.setBackground(new java.awt.Color(213, 213, 213));
 
-        TelaCadastroTeste.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TelaCadastroTeste.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         TelaCadastroTeste.setForeground(new java.awt.Color(80, 0, 102));
         TelaCadastroTeste.setText("Comentário");
 
         PainelComentario.setBackground(new java.awt.Color(234, 234, 234));
 
         Comentario.setColumns(20);
-        Comentario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        Comentario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         Comentario.setRows(5);
         ScrollComentario.setViewportView(Comentario);
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -45,7 +45,7 @@ public class TelaComentar extends javax.swing.JFrame {
         });
 
         BotaoSalvarComentario.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoSalvarComentario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoSalvarComentario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoSalvarComentario.setForeground(new java.awt.Color(255, 255, 255));
         BotaoSalvarComentario.setText("Salvar");
         BotaoSalvarComentario.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +63,7 @@ public class TelaComentar extends javax.swing.JFrame {
                 .addGroup(PainelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ScrollComentario)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelComentarioLayout.createSequentialGroup()
-                        .addGap(0, 264, Short.MAX_VALUE)
+                        .addGap(0, 268, Short.MAX_VALUE)
                         .addComponent(BotaoCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoSalvarComentario)))
@@ -73,7 +73,7 @@ public class TelaComentar extends javax.swing.JFrame {
             PainelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelComentarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollComentario, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(ScrollComentario, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoSalvarComentario)

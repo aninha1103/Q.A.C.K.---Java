@@ -30,9 +30,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(80, 0, 102));
 
+        campoSenha.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         campoSenha.setDisabledTextColor(new java.awt.Color(204, 204, 204));
 
-        campoUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        campoUsuario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         IconLogin.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         IconLogin.setForeground(new java.awt.Color(255, 228, 23));
@@ -43,17 +44,17 @@ public class TelaLogin extends javax.swing.JFrame {
         IconSenha.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\chave.png" ));
 
         ProgramName.setBackground(new java.awt.Color(255, 255, 255));
-        ProgramName.setFont(new java.awt.Font("SimSun", 1, 40)); // NOI18N
+        ProgramName.setFont(new java.awt.Font("Segoe UI Variable", 1, 40)); // NOI18N
         ProgramName.setForeground(new java.awt.Color(255, 228, 23));
         ProgramName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ProgramName.setText(" Q.A.C.K.");
 
-        Versao.setFont(new java.awt.Font("Serif", 0, 10)); // NOI18N
+        Versao.setFont(new java.awt.Font("Segoe UI Variable", 0, 10)); // NOI18N
         Versao.setForeground(new java.awt.Color(255, 228, 23));
         Versao.setText("Versão: 00.00.01");
 
         botaoEntrar.setBackground(new java.awt.Color(204, 204, 204));
-        botaoEntrar.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        botaoEntrar.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         botaoEntrar.setText("Entrar");
         botaoEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botaoEntrar.addActionListener(new java.awt.event.ActionListener() {

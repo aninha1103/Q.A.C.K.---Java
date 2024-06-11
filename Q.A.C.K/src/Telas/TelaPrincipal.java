@@ -69,12 +69,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BotaoUsuarios = new javax.swing.JButton();
         TituloTela = new javax.swing.JLabel();
         BotaoAdicionarTeste = new javax.swing.JButton();
-        BotaoFiltrarTeste = new javax.swing.JButton();
+        BotaoGerarRelatorio = new javax.swing.JButton();
         campoNomeCargo = new javax.swing.JLabel();
         BotaoVisualizarTeste = new javax.swing.JButton();
         PainelListaTestes = new javax.swing.JScrollPane();
         ListaTestes = new javax.swing.JTable();
         FiltroAtivoLabel = new javax.swing.JLabel();
+        BotaoFiltrarTeste = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testes");
@@ -94,12 +95,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        TituloTela.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TituloTela.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         TituloTela.setForeground(new java.awt.Color(80, 0, 102));
         TituloTela.setText("Registros de Testes");
 
         BotaoAdicionarTeste.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoAdicionarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoAdicionarTeste.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoAdicionarTeste.setForeground(new java.awt.Color(255, 255, 255));
         BotaoAdicionarTeste.setText("Adicionar");
         BotaoAdicionarTeste.addActionListener(new java.awt.event.ActionListener() {
@@ -108,22 +109,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        BotaoFiltrarTeste.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoFiltrarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-        BotaoFiltrarTeste.setForeground(new java.awt.Color(255, 255, 255));
-        BotaoFiltrarTeste.setText("Filtrar");
-        BotaoFiltrarTeste.addActionListener(new java.awt.event.ActionListener() {
+        BotaoGerarRelatorio.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoGerarRelatorio.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        BotaoGerarRelatorio.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoGerarRelatorio.setText("Gerar Relatòrio");
+        BotaoGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoFiltrarTesteActionPerformed(evt);
+                BotaoGerarRelatorioActionPerformed(evt);
             }
         });
 
-        campoNomeCargo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        campoNomeCargo.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         campoNomeCargo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         campoNomeCargo.setText("Nome Usuario + Cargo");
 
         BotaoVisualizarTeste.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoVisualizarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoVisualizarTeste.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoVisualizarTeste.setForeground(new java.awt.Color(255, 255, 255));
         BotaoVisualizarTeste.setText("Visualizar");
         BotaoVisualizarTeste.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         PainelListaTestes.setBackground(new java.awt.Color(234, 234, 234));
+        PainelListaTestes.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         ListaTestes.setBackground(new java.awt.Color(234, 234, 234));
         ListaTestes.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,7 +150,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes.setDefaultRenderer(Object.class, centerRenderer);
         PainelListaTestes.setViewportView(ListaTestes);
 
+        FiltroAtivoLabel.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         FiltroAtivoLabel.setText("Filtro: ");
+
+        BotaoFiltrarTeste.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoFiltrarTeste.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        BotaoFiltrarTeste.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoFiltrarTeste.setText("Filtrar");
+        BotaoFiltrarTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoFiltrarTesteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
@@ -168,6 +181,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BotaoFiltrarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotaoGerarRelatorio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoVisualizarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoAdicionarTeste)
@@ -186,9 +201,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoAdicionarTeste)
-                    .addComponent(BotaoFiltrarTeste)
+                    .addComponent(BotaoGerarRelatorio)
                     .addComponent(BotaoVisualizarTeste)
-                    .addComponent(FiltroAtivoLabel))
+                    .addComponent(FiltroAtivoLabel)
+                    .addComponent(BotaoFiltrarTeste))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -225,10 +241,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
-    private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed
+    private void BotaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioActionPerformed
         TelaFiltrar tela = new TelaFiltrar( this );
         tela.setVisible( Boolean.TRUE );
-    }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
+    }//GEN-LAST:event_BotaoGerarRelatorioActionPerformed
 
     private void BotaoVisualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVisualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
@@ -239,9 +255,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotaoVisualizarTesteActionPerformed
 
+    private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAdicionarTeste;
     private javax.swing.JButton BotaoFiltrarTeste;
+    private javax.swing.JButton BotaoGerarRelatorio;
     private javax.swing.JButton BotaoUsuarios;
     private javax.swing.JButton BotaoVisualizarTeste;
     private javax.swing.JLabel FiltroAtivoLabel;

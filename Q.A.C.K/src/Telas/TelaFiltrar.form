@@ -68,7 +68,7 @@
         <Component class="javax.swing.JLabel" name="TelaFiltragem">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SimSun" size="18" style="1"/>
+              <Font name="Segoe UI Variable" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="50" type="rgb"/>
@@ -93,46 +93,52 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="BotaoCancelar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BotaoLimpar" min="-2" max="-2" attributes="0"/>
+                              <Component id="BotaoLimpar" min="-2" pref="78" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="BotaoFiltrar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="FiltrarPorTexto" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="DataInicioTexto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="DataFimTexto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="StatusTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="StatusTexto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="CampoFiltrarStatus" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CampoFiltrarStatus" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="CampoFiltrarDataFim" alignment="0" pref="92" max="32767" attributes="0"/>
-                                              <Component id="CampoFiltrarDataInicio" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="UsuarioTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TagTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="NomeTesteTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="CampoFiltrarTag" pref="160" max="32767" attributes="0"/>
+                                          <Component id="CampoFiltrarUsuario" max="32767" attributes="0"/>
+                                          <Component id="CampoFiltrarNomeTeste" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="UsuarioTexto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TagTexto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="NomeTesteTexto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CampoFiltrarTag" pref="160" max="32767" attributes="0"/>
-                                      <Component id="CampoFiltrarUsuario" max="32767" attributes="0"/>
-                                      <Component id="CampoFiltrarNomeTeste" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FiltrarPorTexto" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="DataInicioTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DataFimTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="CampoFiltrarDataFim" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="CampoFiltrarDataInicio" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
+                              <EmptySpace min="74" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -141,7 +147,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="FiltrarPorTexto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="NomeTesteTexto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="CampoFiltrarNomeTeste" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -157,19 +163,19 @@
                           <Component id="CampoFiltrarTag" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="StatusTexto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="CampoFiltrarStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="StatusTexto" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoFiltrarStatus" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="DataInicioTexto" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoFiltrarDataInicio" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="DataInicioTexto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="CampoFiltrarDataInicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="DataFimTexto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="CampoFiltrarDataFim" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="DataFimTexto" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoFiltrarDataFim" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -189,7 +195,7 @@
                   <Color blue="66" green="0" red="50" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -206,7 +212,7 @@
                   <Color blue="66" green="0" red="50" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -220,7 +226,7 @@
             <Component class="javax.swing.JLabel" name="FiltrarPorTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Filtrar por:"/>
               </Properties>
@@ -231,7 +237,7 @@
                   <Color blue="66" green="0" red="50" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -245,7 +251,7 @@
             <Component class="javax.swing.JComboBox" name="CampoFiltrarUsuario">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
@@ -260,7 +266,7 @@
             <Component class="javax.swing.JLabel" name="UsuarioTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
@@ -268,7 +274,7 @@
             <Component class="javax.swing.JLabel" name="TagTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tag"/>
               </Properties>
@@ -276,7 +282,7 @@
             <Component class="javax.swing.JComboBox" name="CampoFiltrarTag">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
@@ -291,7 +297,7 @@
             <Component class="javax.swing.JLabel" name="StatusTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Status"/>
               </Properties>
@@ -299,7 +305,7 @@
             <Component class="javax.swing.JComboBox" name="CampoFiltrarStatus">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -317,7 +323,7 @@
             <Component class="javax.swing.JLabel" name="DataInicioTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data In&#xed;cio"/>
               </Properties>
@@ -325,7 +331,7 @@
             <Component class="javax.swing.JLabel" name="DataFimTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data Fim"/>
               </Properties>
@@ -335,6 +341,9 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="CampoFiltrarDataFim">
@@ -342,12 +351,15 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="NomeTesteTexto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SimSun" size="14" style="0"/>
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nome Teste"/>
               </Properties>
@@ -356,6 +368,9 @@
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Variable" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>

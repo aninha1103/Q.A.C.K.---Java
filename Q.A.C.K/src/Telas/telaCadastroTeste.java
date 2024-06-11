@@ -104,42 +104,42 @@ public class telaCadastroTeste extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(213, 213, 213));
 
-        TelaCadastroTeste.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TelaCadastroTeste.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         TelaCadastroTeste.setForeground(new java.awt.Color(80, 0, 102));
         TelaCadastroTeste.setText("Cadastro de Teste");
 
         jPanel2.setBackground(new java.awt.Color(234, 234, 234));
         jPanel2.setMinimumSize(new java.awt.Dimension(5, 5));
 
-        TituloTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        TituloTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         TituloTexto.setText("Título:");
 
-        DescricaoTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        DescricaoTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         DescricaoTexto.setText("Descrição:");
 
-        AnexosTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        AnexosTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         AnexosTexto.setText("Anexos:");
 
-        TagsTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        TagsTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         TagsTexto.setText("Tags:");
 
-        SituacaoTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        SituacaoTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         SituacaoTexto.setText("Situação");
 
-        CategoriaTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CategoriaTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CategoriaTexto.setText("Categoria");
 
-        campoTitulo.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        campoTitulo.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         campoDescricao.setColumns(20);
-        campoDescricao.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        campoDescricao.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         campoDescricao.setRows(5);
         ScrollAreaDescricao.setViewportView(campoDescricao);
 
-        campoSituacao.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        campoSituacao.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         campoSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Andamento", "Finalizado" }));
 
-        campoTag.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        campoTag.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         campoTag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Retrabalho", "Melhoria", "Bug" }));
 
         botaoSelecionarAnexo.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
@@ -154,7 +154,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         campoNomeArquivo.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
 
         BotaoSalvar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoSalvar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoSalvar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoSalvar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoSalvar.setText("Salvar");
         BotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +164,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         });
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +249,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TelaCadastroTeste)
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(

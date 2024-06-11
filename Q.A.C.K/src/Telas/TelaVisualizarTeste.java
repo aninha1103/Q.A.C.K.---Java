@@ -20,6 +20,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); 
         this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
         //this.PainelComentarios
+        
+        this.jTable1.getColumnModel().getColumn(1).setPreferredWidth(30);
+                
     }
 
     protected final void atualizaCampos(){
@@ -71,10 +74,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         UsuarioCriadoPor = new javax.swing.JLabel();
         ComentariosTexto = new javax.swing.JLabel();
         PainelComentarios = new javax.swing.JPanel();
-        NomeUsuarioComentario = new javax.swing.JLabel();
-        PainelScrollComentario = new javax.swing.JScrollPane();
-        ComentarioUsuario = new javax.swing.JTextArea();
         BotaoComentar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vizualizar Teste");
@@ -83,7 +85,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         Painel.setBackground(new java.awt.Color(213, 213, 213));
         Painel.setToolTipText("Vizualizar Teste");
 
-        TelaCadastroTeste.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TelaCadastroTeste.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         TelaCadastroTeste.setForeground(new java.awt.Color(80, 0, 102));
         TelaCadastroTeste.setText("Título Teste");
 
@@ -92,29 +94,29 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         PainelPrincipal.setBackground(new java.awt.Color(234, 234, 234));
         PainelPrincipal.setMinimumSize(new java.awt.Dimension(5, 5));
 
-        DescricaoTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        DescricaoTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         DescricaoTexto.setText("Descrição:");
 
-        TagsTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        TagsTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         TagsTexto.setText("Tags");
 
-        AnexosTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        AnexosTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         AnexosTexto.setText("Anexos:");
 
-        SituacaoTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        SituacaoTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         SituacaoTexto.setText("Situação:");
 
-        CategoriaTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CategoriaTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CategoriaTexto.setText("Categoria:");
 
-        CampoSituacao.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoSituacao.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CampoSituacao.setToolTipText("");
 
-        CampoCategoria.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CampoCategoria.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         campoDescricao.setEditable(false);
         campoDescricao.setColumns(20);
-        campoDescricao.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        campoDescricao.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         campoDescricao.setRows(5);
         ScrollAreaDescricao.setViewportView(campoDescricao);
 
@@ -144,26 +146,18 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             }
         });
 
-        CriadoPorTexto.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        CriadoPorTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         CriadoPorTexto.setText("Criado por:");
 
-        UsuarioCriadoPor.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        UsuarioCriadoPor.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         UsuarioCriadoPor.setForeground(new java.awt.Color(80, 0, 102));
         UsuarioCriadoPor.setText("Usuário");
 
-        ComentariosTexto.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        ComentariosTexto.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         ComentariosTexto.setForeground(new java.awt.Color(80, 0, 102));
         ComentariosTexto.setText("Comentários");
 
         PainelComentarios.setBackground(new java.awt.Color(239, 239, 239));
-
-        NomeUsuarioComentario.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
-        NomeUsuarioComentario.setText("NomeUsuárioComentário");
-
-        ComentarioUsuario.setColumns(20);
-        ComentarioUsuario.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
-        ComentarioUsuario.setRows(5);
-        PainelScrollComentario.setViewportView(ComentarioUsuario);
 
         BotaoComentar.setBackground(new java.awt.Color(80, 0, 102));
         BotaoComentar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
@@ -175,26 +169,46 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Usuário", "Comentário"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout PainelComentariosLayout = new javax.swing.GroupLayout(PainelComentarios);
         PainelComentarios.setLayout(PainelComentariosLayout);
         PainelComentariosLayout.setHorizontalGroup(
             PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelComentariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BotaoComentar)
-                    .addGroup(PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(NomeUsuarioComentario)
-                        .addComponent(PainelScrollComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelComentariosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BotaoComentar)))
+                .addContainerGap())
         );
         PainelComentariosLayout.setVerticalGroup(
             PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelComentariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(NomeUsuarioComentario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelScrollComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotaoComentar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -237,7 +251,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                                 .addComponent(DescricaoTexto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ScrollAreaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                        .addGap(0, 50, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PainelPrincipalLayout.setVerticalGroup(
@@ -266,7 +280,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 .addComponent(ComentariosTexto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelComentarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         PainelScrollPrincipal.setViewportView(PainelPrincipal);
@@ -287,8 +301,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TelaCadastroTeste)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -342,16 +355,13 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     private javax.swing.JTextField CampoCategoria;
     private javax.swing.JTextField CampoSituacao;
     private javax.swing.JLabel CategoriaTexto;
-    private javax.swing.JTextArea ComentarioUsuario;
     private javax.swing.JLabel ComentariosTexto;
     private javax.swing.JLabel CriadoPorTexto;
     private javax.swing.JLabel DescricaoTexto;
     private javax.swing.JLabel ImagemAnexada;
-    private javax.swing.JLabel NomeUsuarioComentario;
     private javax.swing.JPanel Painel;
     private javax.swing.JPanel PainelComentarios;
     private javax.swing.JPanel PainelPrincipal;
-    private javax.swing.JScrollPane PainelScrollComentario;
     private javax.swing.JScrollPane PainelScrollPrincipal;
     private javax.swing.JScrollPane ScrollAreaDescricao;
     private javax.swing.JLabel SituacaoTexto;
@@ -359,5 +369,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     private javax.swing.JLabel TelaCadastroTeste;
     private javax.swing.JLabel UsuarioCriadoPor;
     private javax.swing.JTextArea campoDescricao;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -59,35 +59,37 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(213, 213, 213));
 
-        TelaCadastroUsuario.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TelaCadastroUsuario.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
         TelaCadastroUsuario.setForeground(new java.awt.Color(80, 0, 102));
         TelaCadastroUsuario.setText("Cadastro de Usuário");
 
         jPanel2.setBackground(new java.awt.Color(234, 234, 234));
 
-        NomeTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        NomeTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         NomeTexto.setText("Nome:");
 
-        CargoTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        CargoTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CargoTexto.setText("Cargo:");
 
-        UsuarioTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        UsuarioTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         UsuarioTexto.setText("Usuário:");
 
-        SenhaTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        SenhaTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         SenhaTexto.setText("Senha:");
 
-        cadastroNome.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        cadastroNome.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
-        cadastroCargo.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        cadastroCargo.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         cadastroCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Q.A.", "Tech Lead", "Desenvolvedor" }));
 
-        cadastroUsuario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        cadastroUsuario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+
+        cadastroSenha.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(234, 234, 234));
 
         botalSalvarCadastro.setBackground(new java.awt.Color(80, 0, 102));
-        botalSalvarCadastro.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        botalSalvarCadastro.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         botalSalvarCadastro.setForeground(new java.awt.Color(255, 255, 255));
         botalSalvarCadastro.setText("Salvar");
         botalSalvarCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +99,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         });
 
         botaoExcluirCadastro.setBackground(new java.awt.Color(80, 0, 102));
-        botaoExcluirCadastro.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        botaoExcluirCadastro.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         botaoExcluirCadastro.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluirCadastro.setText("Excluir");
         botaoExcluirCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +109,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         });
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,12 +134,11 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 12, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botalSalvarCadastro)
                     .addComponent(botaoExcluirCadastro)
-                    .addComponent(BotaoCancelar))
-                .addContainerGap())
+                    .addComponent(BotaoCancelar)))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -147,19 +148,22 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(UsuarioTexto)
-                    .addComponent(NomeTexto)
-                    .addComponent(CargoTexto)
-                    .addComponent(SenhaTexto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastroNome, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cadastroCargo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cadastroUsuario, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(cadastroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UsuarioTexto)
+                            .addComponent(NomeTexto)
+                            .addComponent(CargoTexto)
+                            .addComponent(SenhaTexto))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cadastroNome, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cadastroSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cadastroCargo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cadastroUsuario, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
