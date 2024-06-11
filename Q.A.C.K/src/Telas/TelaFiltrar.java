@@ -118,6 +118,8 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         DataFimTexto = new javax.swing.JLabel();
         CampoFiltrarDataInicio = new javax.swing.JFormattedTextField();
         CampoFiltrarDataFim = new javax.swing.JFormattedTextField();
+        NomeTesteTexto = new javax.swing.JLabel();
+        CampoFiltrarNomeTeste = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Filtrar");
@@ -193,6 +195,11 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
 
         CampoFiltrarDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
+        NomeTesteTexto.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        NomeTesteTexto.setText("Nome Teste");
+
+        CampoFiltrarNomeTeste.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+
         javax.swing.GroupLayout PainelFiltragemLayout = new javax.swing.GroupLayout(PainelFiltragem);
         PainelFiltragem.setLayout(PainelFiltragemLayout);
         PainelFiltragemLayout.setHorizontalGroup(
@@ -207,28 +214,31 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                         .addComponent(BotaoLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoFiltrar))
-                    .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(FiltrarPorTexto)
-                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DataInicioTexto)
-                                    .addComponent(DataFimTexto)
-                                    .addComponent(StatusTexto))
-                                .addGap(12, 12, 12)
-                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CampoFiltrarDataInicio)
-                                    .addComponent(CampoFiltrarDataFim)
-                                    .addComponent(CampoFiltrarStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(UsuarioTexto)
-                                    .addComponent(TagTexto))
-                                .addGap(40, 40, 40)
-                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CampoFiltrarTag, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(FiltrarPorTexto)
+                        .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(DataInicioTexto)
+                                .addComponent(DataFimTexto)
+                                .addComponent(StatusTexto))
+                            .addGap(12, 12, 12)
+                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CampoFiltrarStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                                    .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                        .addComponent(CampoFiltrarDataInicio, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(UsuarioTexto)
+                                .addComponent(TagTexto)
+                                .addComponent(NomeTesteTexto))
+                            .addGap(19, 19, 19)
+                            .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CampoFiltrarTag, 0, 160, Short.MAX_VALUE)
+                                .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CampoFiltrarNomeTeste)))))
                 .addContainerGap())
         );
         PainelFiltragemLayout.setVerticalGroup(
@@ -236,6 +246,10 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
             .addGroup(PainelFiltragemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(FiltrarPorTexto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NomeTesteTexto)
+                    .addComponent(CampoFiltrarNomeTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UsuarioTexto)
@@ -256,7 +270,7 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DataFimTexto)
                     .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoFiltrar)
                     .addComponent(BotaoCancelar)
@@ -355,12 +369,14 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
     private javax.swing.JButton BotaoLimpar;
     private javax.swing.JFormattedTextField CampoFiltrarDataFim;
     private javax.swing.JFormattedTextField CampoFiltrarDataInicio;
+    private javax.swing.JFormattedTextField CampoFiltrarNomeTeste;
     private javax.swing.JComboBox<String> CampoFiltrarStatus;
     private javax.swing.JComboBox<String> CampoFiltrarTag;
     private javax.swing.JComboBox<String> CampoFiltrarUsuario;
     private javax.swing.JLabel DataFimTexto;
     private javax.swing.JLabel DataInicioTexto;
     private javax.swing.JLabel FiltrarPorTexto;
+    private javax.swing.JLabel NomeTesteTexto;
     private javax.swing.JPanel PainelFiltragem;
     private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JLabel StatusTexto;
