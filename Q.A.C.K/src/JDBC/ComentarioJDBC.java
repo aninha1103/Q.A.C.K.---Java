@@ -19,7 +19,7 @@ public class ComentarioJDBC {
         insertQuery.append( c.getUsuario().getId() ).append( ", ");
         insertQuery.append( 0 ).append( "); ");
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
-          Statement statement = connection.createStatement();)
+             Statement statement = connection.createStatement();)
         {
             statement.executeUpdate(insertQuery.toString());
             statement.close();

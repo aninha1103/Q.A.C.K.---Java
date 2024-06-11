@@ -1,26 +1,52 @@
 
 package Telas;
 
+import JDBC.AnexoJDBC;
+import JDBC.TesteJDBC;
 import Modelo.Teste;
+import javax.swing.JOptionPane;
 
 public class TelaVisualizarTeste extends javax.swing.JFrame {
 
-    public TelaVisualizarTeste( Teste testeVizualizar ) {
+    private TelaPrincipal origem;
+    private Teste testeVisualizar;
+    
+    public TelaVisualizarTeste( Teste testeVisualizar, TelaPrincipal origem ) {
         initComponents();
-        this.TelaCadastroTeste.setText(testeVizualizar.getNome() );
-        this.campoDescricao.setText( testeVizualizar.getDescricao() );
-        this.CampoSituacao.setText( testeVizualizar.getStatus().name() );
-        this.CampoCategoria.setText( testeVizualizar.getTag().name() );
-        this.UsuarioCriadoPor.setText( testeVizualizar.getCriadoPor().getNome() );
-        this.campoDescricao.setEnabled( false );
-        this.CampoSituacao.setEnabled( false );
-        this.CampoCategoria.setEnabled( false );
+        this.origem = origem;
+        this.testeVisualizar = testeVisualizar;
+        atualizaCampos();
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null); 
-        //this.ImagemAnexada.setIcon(icon);
+        this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
         //this.PainelComentarios
     }
 
+    protected final void atualizaCampos(){
+        //Atualizando os dados de vizualicao do teste
+        Integer idAnexo = 1;
+        if( this.testeVisualizar.getAnexo() != null ){
+            idAnexo =  this.testeVisualizar.getAnexo().getId();
+        }
+        this.ImagemAnexada.setIcon( new javax.swing.ImageIcon( AnexoJDBC.findById( idAnexo ).getCaminhoArquivo() ) );
+        this.TelaCadastroTeste.setText(testeVisualizar.getNome() );
+        this.campoDescricao.setText( testeVisualizar.getDescricao() );
+        this.CampoSituacao.setText( testeVisualizar.getStatus().name() );
+        this.CampoCategoria.setText( testeVisualizar.getTag().name() );
+        this.UsuarioCriadoPor.setText( testeVisualizar.getCriadoPor().getNome() );
+        this.campoDescricao.setEnabled( false );
+        this.CampoSituacao.setEnabled( false );
+        this.CampoCategoria.setEnabled( false );
+    }
+
+    public Teste getTesteVisualizar() {
+        return testeVisualizar;
+    }
+
+    public void setTesteVisualizar(Teste testeVisualizar) {
+        this.testeVisualizar = testeVisualizar;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -280,15 +306,32 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoComentarActionPerformed
-        // TODO add your handling code here:
+        if( origem.getUsuario().getCargo().getPermissoes().isComentar() ){
+            //acao para comentar
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoComentarActionPerformed
 
     private void BotaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoExcluirActionPerformed
-        // TODO add your handling code here:
+        if( origem.getUsuario().getCargo().getPermissoes().isExcluir()){
+            if( JOptionPane.showConfirmDialog(this, "Confirma exclusão?", "Excluir teste", JOptionPane.YES_NO_OPTION) == 0 ){
+                TesteJDBC.delete( testeVisualizar );
+                origem.atulizaListaTeste( TesteJDBC.findAll() );
+                this.dispose();
+            }
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoExcluirActionPerformed
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarActionPerformed
-
+        if( origem.getUsuario().getCargo().getPermissoes().isAlterar() ){
+            telaCadastroTeste telaCadastro = new telaCadastroTeste( origem, testeVisualizar, this );
+            telaCadastro.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoEditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

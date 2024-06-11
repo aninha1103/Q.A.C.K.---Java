@@ -1,31 +1,36 @@
 package Telas;
 
 import JDBC.TesteJDBC;
+import Modelo.Filtro;
 import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private Usuario usuario;
+    private Filtro filtroAtivo;
     
     public TelaPrincipal( Usuario usuarioAtual ) {
         initComponents();
         this.usuario = usuarioAtual;
         this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
+        this.FiltroAtivoLabel.setText("Filtro: Inativo");
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
-        this.setLocationRelativeTo(null);        
-        atulizaListaTeste();
+        this.setLocationRelativeTo(null);
+        atulizaListaTeste( TesteJDBC.findAll() );
     }
     
-    public final void atulizaListaTeste(){
+    protected final void atulizaListaTeste( List<Teste> testes){
+        
         DefaultTableModel modelo = (DefaultTableModel) ListaTestes.getModel();
         modelo.setNumRows( 0 );
         modelo.setRowCount( 0 );
-        List<Teste> testes = TesteJDBC.findAll();
         for( Teste t : testes ){
             //id titulo data stauts categoria
             String data = t.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy") );
@@ -39,30 +44,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public Usuario getUsuario() {
         return usuario;
     }
+
+    public JTable getListaTestes() {
+        return ListaTestes;
+    }
+
+    public Filtro getFiltroAtivo() {
+        return filtroAtivo;
+    }
+    
+    public void setFiltroAtivoLabel( String messagem ){
+        this.FiltroAtivoLabel.setText(messagem);
+    }
+
+    public void setFiltroAtivo(Filtro filtroAtivo) {
+        this.filtroAtivo = filtroAtivo;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
         TelaPrincipal = new javax.swing.JPanel();
         BotaoUsuarios = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        TituloTela = new javax.swing.JLabel();
         BotaoAdicionarTeste = new javax.swing.JButton();
         BotaoFiltrarTeste = new javax.swing.JButton();
         campoNomeCargo = new javax.swing.JLabel();
         BotaoVisualizarTeste = new javax.swing.JButton();
         PainelListaTestes = new javax.swing.JScrollPane();
         ListaTestes = new javax.swing.JTable();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenu7.setText("jMenu7");
+        FiltroAtivoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testes");
@@ -82,9 +94,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(80, 0, 102));
-        jLabel1.setText("Registros de Testes");
+        TituloTela.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        TituloTela.setForeground(new java.awt.Color(80, 0, 102));
+        TituloTela.setText("Registros de Testes");
 
         BotaoAdicionarTeste.setBackground(new java.awt.Color(80, 0, 102));
         BotaoAdicionarTeste.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
@@ -106,7 +118,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        campoNomeCargo.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        campoNomeCargo.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         campoNomeCargo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         campoNomeCargo.setText("Nome Usuario + Cargo");
 
@@ -125,10 +137,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes.setBackground(new java.awt.Color(234, 234, 234));
         ListaTestes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Título", "Data", "Status", "Categoria"
@@ -139,6 +148,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes.setDefaultRenderer(Object.class, centerRenderer);
         PainelListaTestes.setViewportView(ListaTestes);
 
+        FiltroAtivoLabel.setText("Filtro: ");
+
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
         TelaPrincipalLayout.setHorizontalGroup(
@@ -147,13 +158,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TelaPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(TituloTela)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(FiltroAtivoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BotaoFiltrarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoVisualizarTeste)
@@ -168,14 +180,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotaoUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoNomeCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
+                    .addComponent(TituloTela))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelListaTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoAdicionarTeste)
                     .addComponent(BotaoFiltrarTeste)
-                    .addComponent(BotaoVisualizarTeste))
+                    .addComponent(BotaoVisualizarTeste)
+                    .addComponent(FiltroAtivoLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -194,27 +207,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoAdicionarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAdicionarTesteActionPerformed
-        telaCadastroTeste t = new telaCadastroTeste( this );
-        t.setVisible( true );
+        if( this.usuario.getCargo().getPermissoes().isCriar() ){
+            telaCadastroTeste t = new telaCadastroTeste( this );
+            t.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoAdicionarTesteActionPerformed
 
     private void BotaoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoUsuariosActionPerformed
-        TelaListagemUsuarios t = new TelaListagemUsuarios();
-        t.setVisible( true );
+        if( this.usuario.getCargo().getPermissoes().isManipularUsuario() ){
+            TelaListagemUsuarios t = new TelaListagemUsuarios();
+            t.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
+        
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
     private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed
-        // TODO add your handling code here:
+        TelaFiltrar tela = new TelaFiltrar( this );
+        tela.setVisible( Boolean.TRUE );
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
     private void BotaoVisualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVisualizarTesteActionPerformed
         if( ListaTestes.getSelectedRow() != -1){
-            TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ) );
+            TelaVisualizarTeste t = new TelaVisualizarTeste( TesteJDBC.findByRowIndex( ListaTestes.getSelectedRow() ), this );
             t.setVisible( true );
-            //telaCadastroTeste t = new telaCadastroTeste( this, this.rep.getTestes().get( ListaTestes.getSelectedRow() ) );
-            //t.setVisible( true );
         }else{
-            //erro: selecione um usuario para visualizar
+            JOptionPane.showMessageDialog( this, "Selecione um teste para visualizar","Erro", JOptionPane.ERROR_MESSAGE );
         }
     }//GEN-LAST:event_BotaoVisualizarTesteActionPerformed
 
@@ -223,15 +244,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BotaoFiltrarTeste;
     private javax.swing.JButton BotaoUsuarios;
     private javax.swing.JButton BotaoVisualizarTeste;
+    private javax.swing.JLabel FiltroAtivoLabel;
     private javax.swing.JTable ListaTestes;
     private javax.swing.JScrollPane PainelListaTestes;
     private javax.swing.JPanel TelaPrincipal;
+    private javax.swing.JLabel TituloTela;
     private javax.swing.JLabel campoNomeCargo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }
 

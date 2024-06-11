@@ -10,11 +10,13 @@ import Modelo.Usuario;
 import java.io.File;
 import java.time.LocalDate;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class telaCadastroTeste extends javax.swing.JFrame {
 
     private TelaPrincipal origem;
+    private TelaVisualizarTeste origemVisualizar;
     private Integer idTeste;
     private Anexo imagemTeste;
     private LocalDate data;
@@ -28,6 +30,17 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar ) {
         initComponents();
         operacoesPadrao( origem );   
+        operacoesEdicao( origem, testeEditar );
+    }
+    
+    public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar, TelaVisualizarTeste visualizar ) {
+        initComponents();
+        operacoesPadrao( origem );   
+        operacoesEdicao( origem, testeEditar );
+        this.origemVisualizar = visualizar;
+    }
+
+    public final void operacoesEdicao( TelaPrincipal origem, Teste testeEditar ){
         this.TelaCadastroTeste.setText("Edição de Teste");
         this.idTeste = testeEditar.getId();
         this.campoTitulo.setText(testeEditar.getNome());
@@ -37,7 +50,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         imagemTeste = testeEditar.getAnexo();
         data = testeEditar.getData();
     }
-
+    
     public final void operacoesPadrao( TelaPrincipal origem ){
         this.origem = origem;
         campoNomeArquivo.setText(" ");
@@ -266,30 +279,46 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSelecionarAnexoActionPerformed
 
     private void BotaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarActionPerformed
-        String nome = this.campoTitulo.getText();
-        String descricao = this.campoDescricao.getText();
-        String caminhoImagem = ( this.campoNomeArquivo.getText().trim().equals(" ") || !this.campoNomeArquivo.getText().trim().isEmpty() ) ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
-        Usuario criandoTeste = origem.getUsuario();
-        Tag tag = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
-        Status status = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
-        Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
-        if( anexo == null){
-            anexo = new Anexo( caminhoImagem );
-            AnexoJDBC.create( anexo );
-        }
-        if( this.idTeste == null){
-            TesteJDBC.create( new Teste( nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status )) ;
-        }else{
-            TesteJDBC.update( new Teste( this.idTeste, nome, data, descricao, anexo, criandoTeste, tag, status) );
+        String nome          = this.campoTitulo.getText();
+        if( nome.isEmpty() || nome.isBlank() ){
+            JOptionPane.showMessageDialog( this, "Nome não pode ser vazio","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
         }
         
-        origem.atulizaListaTeste();
+        String descricao     = this.campoDescricao.getText();
+        String caminhoImagem = ( !this.campoNomeArquivo.getText().trim().isEmpty() || !this.campoNomeArquivo.getText().trim().isBlank() ) 
+                                ? this.campoNomeArquivo.getText() : System.getProperty("user.dir") + "\\src\\Recursos\\camera.png";
+        Usuario criandoTeste = origem.getUsuario();
+        Tag tag              = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
+        Status status        = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
+        Anexo anexo          = AnexoJDBC.findByPath( caminhoImagem );
+
+        if( anexo == null){
+            AnexoJDBC.create( new Anexo( caminhoImagem ) );
+            anexo = AnexoJDBC.findByPath( caminhoImagem );
+        }
+        
+        Teste t = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status );
+        
+        if( this.idTeste == null){
+            TesteJDBC.create( t ) ;
+        }else{
+            TesteJDBC.update( t );
+        }
+        
+        origem.atulizaListaTeste( TesteJDBC.findAll() );
+        if( origemVisualizar != null ){
+            origemVisualizar.setTesteVisualizar( t );
+            origemVisualizar.atualizaCampos();
+        }
         this.dispose();
+        this.origem.setVisible( true );
              
     }//GEN-LAST:event_BotaoSalvarActionPerformed
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        this.origem.setVisible( true );
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

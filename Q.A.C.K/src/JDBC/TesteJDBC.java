@@ -43,8 +43,8 @@ public class TesteJDBC {
         updateQuery.append("UPDATE Teste SET ");
         updateQuery.append( "descricao = '" ).append( t.getDescricao() ) .append( "', ");
         updateQuery.append( "status = '"    ).append( t.getStatus().toString().toLowerCase().charAt(0) ).append( "', ");
-        updateQuery.append( "id_tag = "     ).append( TagJDBC.findIdbyName( t.getTag().name() ) );
-        //updateQuery.append( "id_anexo = "  ).append( t.getAnexo().getId() );
+        updateQuery.append( "id_tag = "     ).append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( ",");
+        updateQuery.append( "id_anexo = "  ).append( t.getAnexo().getId() );
         updateQuery.append( " WHERE id = " ).append( t.getId() ).append( ";" );
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
@@ -91,7 +91,7 @@ public class TesteJDBC {
                     Usuario usuario  = UsuarioJDBC.findById(rs.getInt("id_usuario"));
                     Tag tag          = TagJDBC.findById( rs.getInt("id_tag"));
                     Status status    = ("a".equals(rs.getString("status") ) ) ? Status.ANDAMENTO : Status.FINALIZADO;
-                    Teste t = new Teste(id, titulo, LocalDate.now(), descricao, anexo, usuario, tag, status);
+                    Teste t = new Teste(id, titulo, data, descricao, anexo, usuario, tag, status);
                     teste.add(t);
                 }
                     
@@ -100,7 +100,7 @@ public class TesteJDBC {
                 System.out.println( ex.getMessage() );
                 Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-        return teste;    
+        return teste;
     }
     
     public static Teste findByRowIndex( Integer index ){
@@ -123,7 +123,7 @@ public class TesteJDBC {
                     Usuario usuario  = UsuarioJDBC.findById(rs.getInt("id_usuario"));
                     Tag tag          = TagJDBC.findById( rs.getInt("id_tag"));
                     Status status    = ("a".equals(rs.getString("status") ) ) ? Status.ANDAMENTO : Status.FINALIZADO;
-                    t = new Teste(id, titulo, LocalDate.now(), descricao, anexo, usuario, tag, status);
+                    t = new Teste(id, titulo, data, descricao, anexo, usuario, tag, status);
                 }
 
                 statement.close();

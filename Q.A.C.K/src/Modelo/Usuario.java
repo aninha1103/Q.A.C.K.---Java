@@ -85,7 +85,7 @@ public class Usuario {
     
     public static Cargo cargoPorId( Integer idCargo ){
         Cargo cargo = null;
-        switch (idCargo){
+        switch ( idCargo ){
             case 1 -> cargo = new QA();
             case 2 -> cargo = new Techlead();
             case 3 -> cargo = new Dev();
@@ -96,8 +96,8 @@ public class Usuario {
     public String getNomeCargo(){
         String nomeCargo = "";
         switch( this.getCargo().getId() ){
-            case 1 -> nomeCargo = "TechLead";
-            case 2 -> nomeCargo = "QA";
+            case 1 -> nomeCargo = "QA";
+            case 2 -> nomeCargo = "TechLead";
             case 3 -> nomeCargo = "Dev";
         }
         return nomeCargo;

@@ -98,7 +98,7 @@
                               <Component id="BotaoFiltrar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="FiltrarPorTexto" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -106,23 +106,22 @@
                                           <Component id="DataFimTexto" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="StatusTexto" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="CampoFiltrarStatus" max="32767" attributes="0"/>
                                           <Component id="CampoFiltrarDataInicio" max="32767" attributes="0"/>
-                                          <Component id="CampoFiltrarDataFim" alignment="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="CampoFiltrarDataFim" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="CampoFiltrarStatus" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="UsuarioTexto" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                          <Component id="CampoFiltrarUsuario" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="UsuarioTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TagTexto" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="TagTexto" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                          <Component id="CampoFiltrarTag" min="-2" pref="104" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="CampoFiltrarTag" max="32767" attributes="0"/>
+                                          <Component id="CampoFiltrarUsuario" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -154,14 +153,14 @@
                           <Component id="CampoFiltrarStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="DataInicioTexto" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="CampoFiltrarDataInicio" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="DataInicioTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoFiltrarDataInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="DataFimTexto" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="CampoFiltrarDataFim" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="DataFimTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoFiltrarDataFim" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="19" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -271,11 +270,8 @@
                   <Font name="SimSun" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
+                  <StringArray count="1">
                     <StringItem index="0" value="Nenhum"/>
-                    <StringItem index="1" value="Bug"/>
-                    <StringItem index="2" value="Retrabalho"/>
-                    <StringItem index="3" value="Melhoria"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -299,10 +295,11 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
                     <StringItem index="0" value="Nenhum"/>
-                    <StringItem index="1" value="Finalizado"/>
-                    <StringItem index="2" value="Andamento"/>
+                    <StringItem index="1" value="Andamento"/>
+                    <StringItem index="2" value="Finalizado"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

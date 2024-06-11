@@ -3,6 +3,7 @@ package Telas;
 import JDBC.UsuarioJDBC;
 import Modelo.Cargo;
 import Modelo.Usuario;
+import javax.swing.JOptionPane;
 
 public class telaCadastroUsuario extends javax.swing.JFrame {
 
@@ -12,11 +13,13 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
     public telaCadastroUsuario( TelaListagemUsuarios tela ) {
         initComponents();
         operacoesPadrao( tela );
+        this.botaoExcluirCadastro.setEnabled( false );
     }
     
     public telaCadastroUsuario( TelaListagemUsuarios tela, Usuario usuarioEditar ) {
         initComponents();
         operacoesPadrao( tela );
+        this.botaoExcluirCadastro.setEnabled( true );
         this.idUsuario = usuarioEditar.getId();
         this.cadastroNome.setText( usuarioEditar.getNome() );
         this.cadastroCargo.setSelectedIndex( usuarioEditar.getCargo().getId() - 1 );
@@ -218,25 +221,24 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
 
     private void botaoExcluirCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirCadastroActionPerformed
         //mensagem: Confirma exclusão?
-        for( Usuario u : UsuarioJDBC.findAll() ){
-            if( u.getId() == idUsuario){
-                UsuarioJDBC.delete( u );
-                telaOrigem.atualizaListaUsuario();
-                break;
-            }
+        if( JOptionPane.showConfirmDialog(this, "Confirma exclusão?", "Excluir usuário", JOptionPane.YES_NO_OPTION) == 0 ){
+            UsuarioJDBC.delete( UsuarioJDBC.findById( idUsuario ) );
+            telaOrigem.atualizaListaUsuario();
+            this.dispose();
         }
-        //erro: usuario nao encontrado
-        this.dispose();
-        
-        
     }//GEN-LAST:event_botaoExcluirCadastroActionPerformed
 
     private void botalSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botalSalvarCadastroActionPerformed
-        String nome = this.cadastroNome.getText();
-        String login = this.cadastroUsuario.getText();
+        String nome     = this.cadastroNome.getText();
+        String login    = this.cadastroUsuario.getText();
         String senhaStr = String.copyValueOf( this.cadastroSenha.getPassword() );
-        Cargo cargo = Usuario.cargoPorId( cadastroCargo.getSelectedIndex() + 1);
+        Cargo cargo     = Usuario.cargoPorId( cadastroCargo.getSelectedIndex() + 1);
 
+        if( nome.isBlank() || login.isBlank() || senhaStr.isBlank() ){
+            JOptionPane.showMessageDialog( this, "Algum campo obrigatório está vazio, verifique","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        
         if( this.idUsuario != null ){
             UsuarioJDBC.update( new Usuario( this.idUsuario, nome, login, senhaStr, cargo) );
         }else{
@@ -247,7 +249,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_botalSalvarCadastroActionPerformed
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

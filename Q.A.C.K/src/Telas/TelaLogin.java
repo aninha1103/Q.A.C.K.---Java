@@ -2,11 +2,14 @@ package Telas;
 
 import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
+import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
+        this.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        this.setLocationRelativeTo(null); 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -122,13 +125,16 @@ public class TelaLogin extends javax.swing.JFrame {
 
         for( Usuario u : UsuarioJDBC.findAll() ){
             if( u.login(login, senhaStr ) != null){
+                JOptionPane.showMessageDialog(this, "Bem vindo, " + u.getNome() , "Login", JOptionPane.INFORMATION_MESSAGE );
                 this.dispose();
-                TelaPrincipal t = new TelaPrincipal( u.login(login, senhaStr ) );
+                TelaPrincipal t = new TelaPrincipal( u );
                 t.setVisible(true);
                 return;
             }
         }
-        //erro login ou senha invalido
+        JOptionPane.showMessageDialog(this, "Login ou senha inválida!" , "Erro", JOptionPane.ERROR_MESSAGE );
+        this.campoUsuario.setText("");
+        this.campoSenha.setText("");
         
     }//GEN-LAST:event_botaoEntrarActionPerformed
 

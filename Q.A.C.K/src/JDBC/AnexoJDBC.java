@@ -1,15 +1,11 @@
 package JDBC;
 
 import Modelo.Anexo;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +22,6 @@ public class AnexoJDBC {
         StringBuilder insertQuery = new StringBuilder();
         insertQuery.append("INSERT INTO Anexos( caminho ) VALUES(");
         insertQuery.append( "'" ).append( a.getCaminhoArquivo() ).append( "'); ");
-        //foto
 
     try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
             Statement statement = conn.createStatement())  {
@@ -43,7 +38,7 @@ public class AnexoJDBC {
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM Anexos where caminho LIKE ");
         query.append( "'" ).append( caminho ).append( "'; ");
-        //foto
+
         Anexo a = null;
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
                 Statement statement = conn.createStatement())  {
@@ -69,7 +64,7 @@ public class AnexoJDBC {
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM Anexos where id =");
         query.append( id ).append( "; ");
-        //foto
+
         Anexo a = new Anexo();
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
                 Statement statement = conn.createStatement())  {

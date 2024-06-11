@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,32 +46,44 @@ public class Filtro {
         return usuario;
     }
     
-    public List<Teste> filtrarTeste( List<Teste> teste ){
-        List<Teste> testesFiltrado = teste;
+    public List<Teste> filtrarTestes( List<Teste> testes ){
+        List<Teste> testesFiltrado = testes;
         if( this.getNome() != null ){
-            int lenght = getNome().length();
-            testesFiltrado = teste.stream().filter( x -> x.getNome().substring(0, ( x.getNome().length() < lenght) ? x.getNome().length() : lenght ).equalsIgnoreCase(
+            int lenght = this.getNome().length();
+            testesFiltrado = testesFiltrado.stream().filter( x -> x.getNome().substring(0, ( x.getNome().length() < lenght) ? x.getNome().length() : lenght ).equalsIgnoreCase(
                              this.getNome() ) )
                              .collect(Collectors.toList());
         }
         
         if( this.getUsuario() != null ){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getCriadoPor() == this.getUsuario() ).collect(Collectors.toList());
+            testesFiltrado = testesFiltrado.stream().filter( x -> x.getCriadoPor().getId() == this.getUsuario().getId()).collect(Collectors.toList());
+            if( testesFiltrado.isEmpty()){
+                return testesFiltrado;
+            }
         }
-        
+
         if( this.getTag() != null ){
             testesFiltrado = testesFiltrado.stream().filter( x -> x.getTag() == this.getTag() ).collect(Collectors.toList());
+            if( testesFiltrado.isEmpty()){
+                return testesFiltrado;
+            }
         }
         
         if( this.getStatus() != null ){
             testesFiltrado = testesFiltrado.stream().filter( x -> x.getStatus()== this.getStatus() ).collect(Collectors.toList());
+            if( testesFiltrado.isEmpty()){
+                return testesFiltrado;
+            }
         }
         
         if( this.getDataInicio() != null){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getData().isAfter( getDataInicio() ) ).collect(Collectors.toList());
+            testesFiltrado = testesFiltrado.stream().filter( x -> x.getData().isAfter( getDataInicio().plus( -1, ChronoUnit.DAYS ) ) ).collect(Collectors.toList());
+            if( testesFiltrado.isEmpty()){
+                return testesFiltrado;
+            }
         }
         if( this.getDataFim()!= null){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getData().isBefore( getDataFim() ) ).collect(Collectors.toList());
+            testesFiltrado = testesFiltrado.stream().filter( x -> x.getData().isBefore( getDataFim().plus( +1, ChronoUnit.DAYS) ) ).collect(Collectors.toList());
         }
         
         return testesFiltrado;

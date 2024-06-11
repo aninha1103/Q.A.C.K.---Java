@@ -47,7 +47,7 @@ public class Testes {
             LocalDate dataFim = LocalDate.parse("2024-06-01");
             Usuario usuario =  rep.getUsuarios().get( 0 );
             // Exibindo filtro nos teste
-            for (Teste teste : new Filtro( nome, tag, status, dataInicio, dataFim , usuario ).filtrarTeste( rep.getTestes() ) ) {
+            for (Teste teste : new Filtro( nome, tag, status, dataInicio, dataFim , usuario ).filtrarTestes( rep.getTestes() ) ) {
                 System.out.println("ID: " + teste.getId() + ", Nome: " + teste.getNome() + ", Data: " + teste.getData() + ", Descricao: " + teste.getDescricao() + ", Criado por: " + teste.getCriadoPor().getNome() + ", Tag: " + teste.getTag());
             }
         }catch( Exception e ){

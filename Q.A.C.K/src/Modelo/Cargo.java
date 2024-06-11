@@ -42,6 +42,7 @@ public class Cargo {
 
     public Cargo(int id, String nome, Permissoes permissoes) {
         this.id = id;
+        this.nome = nome;
         this.permissoes = permissoes;
     }
 
