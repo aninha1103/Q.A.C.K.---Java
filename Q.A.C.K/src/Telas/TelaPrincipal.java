@@ -21,7 +21,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.usuario = usuarioAtual;
         this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
         this.FiltroAtivoLabel.setText("Filtro: Inativo");
-        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        
+        this.ListaTestes.getColumnModel().getColumn( 1 ).setPreferredWidth(350);
+       this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
         atulizaListaTeste( TesteJDBC.findAll() );
     }
@@ -144,7 +146,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             new String [] {
                 "ID", "Título", "Data", "Status", "Categoria"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ListaTestes.getTableHeader().setResizingAllowed(false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         ListaTestes.setDefaultRenderer(Object.class, centerRenderer);
@@ -244,7 +255,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void BotaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioActionPerformed
         TelaRelatorio tela = new TelaRelatorio( this );
         tela.setVisible( true );
-        
     }//GEN-LAST:event_BotaoGerarRelatorioActionPerformed
 
     private void BotaoVisualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVisualizarTesteActionPerformed

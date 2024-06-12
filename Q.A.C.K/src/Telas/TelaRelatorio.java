@@ -1,7 +1,9 @@
 package Telas;
 
 import JDBC.TesteJDBC;
+import Modelo.Relatorio;
 import Modelo.Teste;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
     public TelaRelatorio( TelaPrincipal origem ) {
         initComponents();
         this.telaOrigem = origem;
+        desativaCheckBoxs();
+        deselecionaCheckBoxs();
         relatorioPorData();
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
@@ -218,6 +222,17 @@ public class TelaRelatorio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog( this, "Nenhuma dado encontrado","Erro", JOptionPane.ERROR_MESSAGE );
             return;
         }
+        Map camposSelecionados = getCamposSelecionados();
+        if( camposSelecionados.size() == 0){
+            JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para gerar relatório","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        if( Relatorio.gerarRelatorio(  dadosRelatorio ,  camposSelecionados ) ){
+            JOptionPane.showMessageDialog( this, "Arquivo gerado no caminho:\n" + System.getProperty("user.dir") + "\\Relatorios","Sucesso", JOptionPane.INFORMATION_MESSAGE );
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog( this, "Erro inesperado","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoGerarRelatorioActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
@@ -302,14 +317,35 @@ public class TelaRelatorio extends javax.swing.JFrame {
         for( int i = 0; i < telaOrigem.getListaTestes().getModel().getRowCount(); i++){
             Map<String,String> dado = new TreeMap<>();
             Teste testeLinha = TesteJDBC.findByRowIndex( i );
-            dado.put("nome", testeLinha.getCriadoPor().getNome() );
-            dado.put("titulo", testeLinha.getNome() );
-            dado.put("data_teste", testeLinha.getData().toString() );
+            dado.put("Nome", testeLinha.getCriadoPor().getNome() );
+            dado.put("titulo",  testeLinha.getNome() );
+            dado.put("data_teste", testeLinha.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy")) );
             dado.put("status", testeLinha.getStatus().toString()) ;
             dado.put("tag", testeLinha.getTag().toString() );
             dados.add( dado );
         }
         return dados;
+    }
+    
+    private Map getCamposSelecionados(){
+        Map<String,String> camposSelecionados = new HashMap<>();
+        
+        if( this.UsuarioCheckBox.isSelected() ){
+            camposSelecionados.put("Nome", "");
+        }
+        if( this.NomeTesteCheckBox.isSelected() ){
+            camposSelecionados.put("titulo", "");
+        }
+        if( this.DataCheckBox.isSelected() ){
+            camposSelecionados.put("data_teste", "");
+        }
+        if( this.StatusCheckBox.isSelected() ){
+            camposSelecionados.put("status", "");
+        }
+        if( this.TagsCheckBox.isSelected() ){
+            camposSelecionados.put("tag", "");
+        }
+        return camposSelecionados;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

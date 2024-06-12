@@ -312,8 +312,6 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             origemVisualizar.atualizaCampos();
         }
         this.dispose();
-        this.origem.setVisible( true );
-             
     }//GEN-LAST:event_BotaoSalvarActionPerformed
 
     private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
