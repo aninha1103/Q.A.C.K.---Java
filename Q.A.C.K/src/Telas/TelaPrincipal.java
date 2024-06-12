@@ -23,7 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.FiltroAtivoLabel.setText("Filtro: Inativo");
         
         this.ListaTestes.getColumnModel().getColumn( 1 ).setPreferredWidth(350);
-       this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setDefaultCloseOperation( EXIT_ON_CLOSE );
         this.setLocationRelativeTo(null);
         atulizaListaTeste( TesteJDBC.findAll() );
     }

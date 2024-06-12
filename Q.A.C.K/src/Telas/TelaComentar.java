@@ -149,6 +149,7 @@ public class TelaComentar extends javax.swing.JFrame {
             ComentarioJDBC.update( new Comentario( idComentario, idTeste, origem.getUsuario(),LocalDate.now(), this.Comentario.getText() ) );
         }
         telaVisualizar.atualizaComentarios( ComentarioJDBC.findByITestd( idTeste ) );
+        telaVisualizar.setEnabled( true );
         this.dispose();
     }//GEN-LAST:event_BotaoSalvarComentarioActionPerformed
 
