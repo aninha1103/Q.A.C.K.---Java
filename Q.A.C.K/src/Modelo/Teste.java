@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Teste {
+public class Teste implements Comparable<Teste>{
     private Integer id;
     private String nome;
     private LocalDate data;
@@ -125,13 +125,13 @@ public class Teste {
         this.status = status;
     }
     
-    
-
     @Override
     public String toString() {
         return id + "  " + nome + "           " + data ;
     }
-    
-    
-    
+
+    @Override
+    public int compareTo(Teste other) {
+        return id.compareTo( other.getId() );
+    }
 }

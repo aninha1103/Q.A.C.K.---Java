@@ -242,7 +242,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
     private void BotaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioActionPerformed
-        
+        TelaRelatorio tela = new TelaRelatorio( this );
+        tela.setVisible( true );
         
     }//GEN-LAST:event_BotaoGerarRelatorioActionPerformed
 
@@ -257,7 +258,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void BotaoFiltrarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarTesteActionPerformed
         TelaFiltrar tela = new TelaFiltrar( this );
-        tela.setVisible( Boolean.TRUE );
+        tela.setVisible( true );
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

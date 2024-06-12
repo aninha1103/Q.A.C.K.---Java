@@ -1,10 +1,24 @@
-
 package Telas;
 
-public class TelaRelatorios extends javax.swing.JFrame {
+import JDBC.TesteJDBC;
+import Modelo.Teste;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.swing.JOptionPane;
 
-    public TelaRelatorios() {
+public class TelaRelatorio extends javax.swing.JFrame {
+
+    private TelaPrincipal telaOrigem;
+    
+    public TelaRelatorio( TelaPrincipal origem ) {
         initComponents();
+        this.telaOrigem = origem;
+        relatorioPorData();
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -74,6 +88,11 @@ public class TelaRelatorios extends javax.swing.JFrame {
 
         CampoTipoRelatorio.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         CampoTipoRelatorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por Data", "Por Status", "Por Tags", "Por Usuário" }));
+        CampoTipoRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoTipoRelatorioActionPerformed(evt);
+            }
+        });
 
         NomeTesteCheckBox.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         NomeTesteCheckBox.setText("Nome Teste");
@@ -193,17 +212,106 @@ public class TelaRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     private void BotaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioActionPerformed
-
+        List<Map> dadosRelatorio = pegaDados();
+        
+        if( dadosRelatorio.isEmpty() ){
+            JOptionPane.showMessageDialog( this, "Nenhuma dado encontrado","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
     }//GEN-LAST:event_BotaoGerarRelatorioActionPerformed
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-
+        deselecionaCheckBoxs();
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
     private void BotaoFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarActionPerformed
-        // TODO add your handling code here:
+        TelaFiltrar tela = new TelaFiltrar( telaOrigem );
+        tela.setVisible( true );
     }//GEN-LAST:event_BotaoFiltrarActionPerformed
 
+    private void CampoTipoRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoTipoRelatorioActionPerformed
+        desativaCheckBoxs();
+        deselecionaCheckBoxs();
+        switch( this.CampoTipoRelatorio.getSelectedIndex() ){
+            case 0 -> relatorioPorData();
+            case 1 -> relatorioPorStatus();
+            case 2 -> relatorioPorTag();
+            case 3 -> relatorioPorUsuario();
+        }
+    }//GEN-LAST:event_CampoTipoRelatorioActionPerformed
+
+    private void desativaCheckBoxs(){
+        this.NomeTesteCheckBox.setEnabled( false );
+        this.UsuarioCheckBox.setEnabled( false );
+        this.TagsCheckBox.setEnabled( false );
+        this.StatusCheckBox.setEnabled( false );
+        this.DataCheckBox.setEnabled( false );
+    }
+    
+    private void deselecionaCheckBoxs(){
+        this.NomeTesteCheckBox.setSelected(false );
+        this.UsuarioCheckBox.setSelected( false );
+        this.TagsCheckBox.setSelected( false );
+        this.StatusCheckBox.setSelected( false );
+        this.DataCheckBox.setSelected( false );
+    }
+    
+    private void relatorioPorData(){
+        this.NomeTesteCheckBox.setEnabled( true );
+        this.UsuarioCheckBox.setEnabled( true );
+        this.DataCheckBox.setEnabled( true );
+        this.NomeTesteCheckBox.setSelected( true );
+        this.UsuarioCheckBox.setSelected( true );
+        this.DataCheckBox.setSelected( true );
+        
+    }
+    
+    private void relatorioPorStatus(){
+        this.NomeTesteCheckBox.setEnabled( true );
+        this.UsuarioCheckBox.setEnabled( true );
+        this.StatusCheckBox.setEnabled( true );
+        this.NomeTesteCheckBox.setSelected( true );
+        this.UsuarioCheckBox.setSelected( true );
+        this.StatusCheckBox.setSelected( true );
+    }
+    
+    private void relatorioPorTag(){
+        this.NomeTesteCheckBox.setEnabled( true );
+        this.DataCheckBox.setEnabled( true );
+        this.TagsCheckBox.setEnabled( true );
+        this.NomeTesteCheckBox.setSelected(true );
+        this.DataCheckBox.setSelected(true );
+        this.TagsCheckBox.setSelected(true );
+    }
+    
+    private void relatorioPorUsuario(){
+        this.NomeTesteCheckBox.setEnabled( true );
+        this.UsuarioCheckBox.setEnabled( true );
+        this.DataCheckBox.setEnabled( true );
+        this.StatusCheckBox.setEnabled( true );
+        this.TagsCheckBox.setEnabled( true );
+        this.NomeTesteCheckBox.setSelected(true );
+        this.UsuarioCheckBox.setSelected(true );
+        this.DataCheckBox.setSelected(true );
+        this.StatusCheckBox.setSelected(true );
+        this.TagsCheckBox.setSelected(true );
+    }
+    
+    private List<Map> pegaDados(){
+        List<Map> dados = new ArrayList<>();
+        for( int i = 0; i < telaOrigem.getListaTestes().getModel().getRowCount(); i++){
+            Map<String,String> dado = new TreeMap<>();
+            Teste testeLinha = TesteJDBC.findByRowIndex( i );
+            dado.put("nome", testeLinha.getCriadoPor().getNome() );
+            dado.put("titulo", testeLinha.getNome() );
+            dado.put("data_teste", testeLinha.getData().toString() );
+            dado.put("status", testeLinha.getStatus().toString()) ;
+            dado.put("tag", testeLinha.getTag().toString() );
+            dados.add( dado );
+        }
+        return dados;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoCancelar;
     private javax.swing.JButton BotaoFiltrar;
