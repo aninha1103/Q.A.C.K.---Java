@@ -123,6 +123,7 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Filtrar");
+        setResizable(false);
 
         PainelPrincipal.setBackground(new java.awt.Color(213, 213, 213));
         PainelPrincipal.setToolTipText("");
@@ -132,6 +133,7 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         TelaFiltragem.setText("Filtragem");
 
         PainelFiltragem.setBackground(new java.awt.Color(234, 234, 234));
+        PainelFiltragem.setName(""); // NOI18N
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
         BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
@@ -200,7 +202,6 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         NomeTesteTexto.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         NomeTesteTexto.setText("Nome Teste");
 
-        CampoFiltrarNomeTeste.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         CampoFiltrarNomeTeste.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout PainelFiltragemLayout = new javax.swing.GroupLayout(PainelFiltragem);
@@ -219,23 +220,6 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                         .addComponent(BotaoFiltrar)
                         .addGap(12, 12, 12))
                     .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                                .addComponent(StatusTexto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CampoFiltrarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PainelFiltragemLayout.createSequentialGroup()
-                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(UsuarioTexto)
-                                    .addComponent(TagTexto)
-                                    .addComponent(NomeTesteTexto))
-                                .addGap(19, 19, 19)
-                                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CampoFiltrarTag, 0, 160, Short.MAX_VALUE)
-                                    .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CampoFiltrarNomeTeste))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(PainelFiltragemLayout.createSequentialGroup()
                         .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FiltrarPorTexto)
                             .addGroup(PainelFiltragemLayout.createSequentialGroup()
@@ -246,7 +230,20 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                                 .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(CampoFiltrarDataFim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CampoFiltrarDataInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(74, 98, Short.MAX_VALUE))
+                    .addGroup(PainelFiltragemLayout.createSequentialGroup()
+                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UsuarioTexto)
+                            .addComponent(TagTexto)
+                            .addComponent(NomeTesteTexto)
+                            .addComponent(StatusTexto))
+                        .addGap(19, 19, 19)
+                        .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CampoFiltrarTag, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CampoFiltrarUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CampoFiltrarNomeTeste)
+                            .addComponent(CampoFiltrarStatus, 0, 143, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         PainelFiltragemLayout.setVerticalGroup(
             PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +263,7 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                     .addComponent(TagTexto)
                     .addComponent(CampoFiltrarTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(PainelFiltragemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StatusTexto)
                     .addComponent(CampoFiltrarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -301,7 +298,8 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TelaFiltragem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelFiltragem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(PainelFiltragem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -318,57 +316,61 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BotaoCancelarActionPerformed
-
-    private void BotaoFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarActionPerformed
-        Usuario usuario;
-        Tag tag;
-        Status status;
-        LocalDate dataInicio = null;
-        LocalDate dataFim = null;
-        
-        switch( this.CampoFiltrarUsuario.getSelectedIndex() ){
-            case 0 -> usuario = null;
-            default -> usuario = UsuarioJDBC.findById(Integer.valueOf( this.CampoFiltrarUsuario.getSelectedItem().toString().split(" -")[0] ) );
-        }
-        
-        switch( this.CampoFiltrarTag.getSelectedIndex() ){
-            case 0 -> tag = null;
-            default -> tag = Tag.valueOf( this.CampoFiltrarTag.getSelectedItem().toString() );
-        }
-        
-        switch( this.CampoFiltrarStatus.getSelectedIndex() ){
-            case 1 -> status = Status.ANDAMENTO;
-            case 2 -> status = Status.FINALIZADO;
-            default -> status = null;
-        }
-        if( !this.CampoFiltrarDataInicio.getText().isBlank() ){
-            dataInicio = LocalDate.parse( this.CampoFiltrarDataInicio.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy") );
-        }
-        if( !this.CampoFiltrarDataFim.getText().isBlank() ){
-            dataFim = LocalDate.parse( this.CampoFiltrarDataFim.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        }
-        
-        if( tag == null && status == null && dataInicio == null && dataFim == null && usuario == null){
-            JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para filtrar","Erro", JOptionPane.ERROR_MESSAGE );
-        }else{
-            origemTela.setFiltroAtivo( new Filtro( null, tag, status, dataInicio, dataFim, usuario) );
-            origemTela.setFiltroAtivoLabel("Filtro: Ativo");
-            origemTela.atulizaListaTeste( origemTela.getFiltroAtivo().filtrarTestes( TesteJDBC.findAll() ) );
-            this.dispose();
-        }
-        
-        
-    }//GEN-LAST:event_BotaoFiltrarActionPerformed
-
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
         origemTela.setFiltroAtivo( null );
         origemTela.atulizaListaTeste( TesteJDBC.findAll() );
         origemTela.setFiltroAtivoLabel("Filtro: Inativo");
         this.dispose();
     }//GEN-LAST:event_BotaoLimparActionPerformed
+
+    private void BotaoFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFiltrarActionPerformed
+        String nomeTeste = null;
+        Usuario usuario;
+        Tag tag;
+        Status status;
+        LocalDate dataInicio = null;
+        LocalDate dataFim = null;
+
+        if( !this.CampoFiltrarNomeTeste.getText().isBlank()){
+            nomeTeste = this.CampoFiltrarNomeTeste.getText();
+        }
+
+        switch( this.CampoFiltrarUsuario.getSelectedIndex() ){
+            case 0 -> usuario = null;
+            default -> usuario = UsuarioJDBC.findById(Integer.valueOf( this.CampoFiltrarUsuario.getSelectedItem().toString().split(" -")[0] ) );
+        }
+
+        switch( this.CampoFiltrarTag.getSelectedIndex() ){
+            case 0 -> tag = null;
+            default -> tag = Tag.valueOf( this.CampoFiltrarTag.getSelectedItem().toString() );
+        }
+
+        switch( this.CampoFiltrarStatus.getSelectedIndex() ){
+            case 1 -> status = Status.ANDAMENTO;
+            case 2 -> status = Status.FINALIZADO;
+            default -> status = null;
+        }
+
+        if( !this.CampoFiltrarDataInicio.getText().isBlank() ){
+            dataInicio = LocalDate.parse( this.CampoFiltrarDataInicio.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy") );
+        }
+        if( !this.CampoFiltrarDataFim.getText().isBlank() ){
+            dataFim = LocalDate.parse( this.CampoFiltrarDataFim.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        }
+
+        if( nomeTeste == null && tag == null && status == null && dataInicio == null && dataFim == null && usuario == null){
+            JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para filtrar","Erro", JOptionPane.ERROR_MESSAGE );
+        }else{
+            origemTela.setFiltroAtivo( new Filtro( nomeTeste, tag, status, dataInicio, dataFim, usuario) );
+            origemTela.setFiltroAtivoLabel("Filtro: Ativo");
+            origemTela.atulizaListaTeste( origemTela.getFiltroAtivo().filtrarTestes( TesteJDBC.findAll() ) );
+            this.dispose();
+        }
+    }//GEN-LAST:event_BotaoFiltrarActionPerformed
+
+    private void BotaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoCancelar;
