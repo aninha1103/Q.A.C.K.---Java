@@ -14,7 +14,7 @@ public class Relatorio {
     public Relatorio() {
     }
 
-    public static boolean gerarRelatorio( List<Map> dadosRelatorio, Map camposSelecionados ){
+    public static boolean gerarRelatorioCsv( List<Map> dadosRelatorio, Map camposSelecionados ){
         new File( ".\\Relatorios").mkdir();
         
         try( BufferedWriter bw = new BufferedWriter( new FileWriter(".\\Relatorios\\relatorioQ.A.C.K.csv") )){

@@ -1,9 +1,33 @@
 package Telas;
 
+import JDBC.ComentarioJDBC;
+import Modelo.Comentario;
+import java.time.LocalDate;
+
 public class TelaComentar extends javax.swing.JFrame {
 
-    public TelaComentar() {
+    private TelaPrincipal origem;
+    private TelaVisualizarTeste telaVisualizar;
+    private Integer idTeste;
+    private Integer idComentario;
+    
+    public TelaComentar( TelaPrincipal origemTela, Integer idTeste, TelaVisualizarTeste telaVisualizar ) {
+        this.origem = origemTela;
+        this.telaVisualizar = telaVisualizar;
+        this.idTeste = idTeste;
         initComponents();
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null); 
+    }
+    
+    public TelaComentar( TelaPrincipal origemTela, Integer idTeste, Integer idComentario, TelaVisualizarTeste telaVisualizar ) {
+        this.origem = origemTela;
+        this.telaVisualizar = telaVisualizar;
+        this.idTeste = idTeste;
+        this.idComentario = idComentario;
+        initComponents();
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null); 
     }
 
     @SuppressWarnings("unchecked")
@@ -119,7 +143,13 @@ public class TelaComentar extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoCancelarActionPerformed
 
     private void BotaoSalvarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarComentarioActionPerformed
-        // TODO add your handling code here:
+        if( idComentario == null){
+            ComentarioJDBC.create( new Comentario( idTeste, origem.getUsuario(),LocalDate.now(), this.Comentario.getText() ) );
+        }else{
+            ComentarioJDBC.update( new Comentario( idComentario, idTeste, origem.getUsuario(),LocalDate.now(), this.Comentario.getText() ) );
+        }
+        telaVisualizar.atualizaComentarios( ComentarioJDBC.findByITestd( idTeste ) );
+        this.dispose();
     }//GEN-LAST:event_BotaoSalvarComentarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

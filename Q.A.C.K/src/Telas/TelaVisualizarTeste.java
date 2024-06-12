@@ -2,9 +2,14 @@
 package Telas;
 
 import JDBC.AnexoJDBC;
+import JDBC.ComentarioJDBC;
 import JDBC.TesteJDBC;
+import Modelo.Comentario;
 import Modelo.Teste;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaVisualizarTeste extends javax.swing.JFrame {
 
@@ -16,12 +21,11 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.origem = origem;
         this.testeVisualizar = testeVisualizar;
         atualizaCampos();
-        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
-        this.setLocationRelativeTo(null); 
         this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
-        //this.PainelComentarios
-        
-        this.jTable1.getColumnModel().getColumn(1).setPreferredWidth(30);
+        atualizaComentarios( ComentarioJDBC.findByITestd( testeVisualizar.getId() ) );
+        this.TabelaComentario.getColumnModel().getColumn(1).setPreferredWidth(30);
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.setLocationRelativeTo(null);
                 
     }
 
@@ -50,6 +54,23 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.testeVisualizar = testeVisualizar;
     }
     
+    public void atualizaComentarios( List<Comentario> comentarios){
+        if( comentarios == null ){
+            return;
+        }
+        
+        DefaultTableModel modelo = (DefaultTableModel) TabelaComentario.getModel();
+        modelo.setNumRows( 0 );
+        modelo.setRowCount( 0 );
+        for( Comentario c : comentarios ){
+            //id titulo data stauts categoria
+            String usuario = c.getUsuario().getNome();
+            String comentario= c.getTextoComentario();
+            String[] dados = { usuario, comentario };
+            modelo.addRow( dados );
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,7 +97,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         PainelComentarios = new javax.swing.JPanel();
         BotaoComentar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelaComentario = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vizualizar Teste");
@@ -169,8 +190,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaComentario.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        TabelaComentario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -189,7 +210,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TabelaComentario);
 
         javax.swing.GroupLayout PainelComentariosLayout = new javax.swing.GroupLayout(PainelComentarios);
         PainelComentarios.setLayout(PainelComentariosLayout);
@@ -301,7 +322,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TelaCadastroTeste)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,7 +334,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -320,7 +344,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
 
     private void BotaoComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoComentarActionPerformed
         if( origem.getUsuario().getCargo().getPermissoes().isComentar() ){
-            //acao para comentar
+            TelaComentar telaComentario = new TelaComentar( origem, testeVisualizar.getId(), this );
+            telaComentario.setVisible( true );
+            this.setEnabled( false );
         }else{
             JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
         }
@@ -365,11 +391,11 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     private javax.swing.JScrollPane PainelScrollPrincipal;
     private javax.swing.JScrollPane ScrollAreaDescricao;
     private javax.swing.JLabel SituacaoTexto;
+    private javax.swing.JTable TabelaComentario;
     private javax.swing.JLabel TagsTexto;
     private javax.swing.JLabel TelaCadastroTeste;
     private javax.swing.JLabel UsuarioCriadoPor;
     private javax.swing.JTextArea campoDescricao;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,8 +3,12 @@ package JDBC;
 import Modelo.Comentario;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,4 +65,31 @@ public class ComentarioJDBC {
                 Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+   public static List<Comentario> findByITestd( Integer idTeste){
+        StringBuilder query = new StringBuilder();
+        query.append( "SELECT * FROM Comentario WHERE id_teste = ").append( idTeste ).append( ";");
+        
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
+          Statement statement = connection.createStatement();)
+        {
+            ResultSet rs = statement.executeQuery(query.toString());
+            List<Comentario> comentarios = new ArrayList();
+            while( rs.next() ){
+                comentarios.add( new Comentario( rs.getInt("id"),
+                                                                    rs.getInt("id_teste"),
+                                                                    UsuarioJDBC.findById(rs.getInt("id_usuario")),
+                                                                    LocalDate.parse(rs.getString("data_comentario")),
+                                                                    rs.getString("textComent")));
+            }
+            
+            statement.close();
+            if( !comentarios.isEmpty() ){
+                return comentarios;
+            }
+        } catch (SQLException ex) {
+            System.out.println( ex.getMessage() );
+            Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+   }
 }

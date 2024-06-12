@@ -227,7 +227,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para gerar relatório","Erro", JOptionPane.ERROR_MESSAGE );
             return;
         }
-        if( Relatorio.gerarRelatorio(  dadosRelatorio ,  camposSelecionados ) ){
+        if( Relatorio.gerarRelatorioCsv(  dadosRelatorio ,  camposSelecionados ) ){
             JOptionPane.showMessageDialog( this, "Arquivo gerado no caminho:\n" + System.getProperty("user.dir") + "\\Relatorios","Sucesso", JOptionPane.INFORMATION_MESSAGE );
             this.dispose();
         }else{
