@@ -3,7 +3,7 @@ package Telas;
 import JDBC.TagJDBC;
 import JDBC.TesteJDBC;
 import JDBC.UsuarioJDBC;
-import Modelo.Filtro;
+import Servicos.Filtro;
 import Modelo.Status;
 import Modelo.Tag;
 import Modelo.Usuario;

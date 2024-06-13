@@ -1,7 +1,7 @@
 package Telas;
 
 import JDBC.TesteJDBC;
-import Modelo.Relatorio;
+import Servicos.Relatorio;
 import Modelo.Teste;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -225,7 +225,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
             return;
         }
         Map camposSelecionados = getCamposSelecionados();
-        if( camposSelecionados.size() == 0){
+        if( camposSelecionados.isEmpty()){
             JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para gerar relatório","Erro", JOptionPane.ERROR_MESSAGE );
             return;
         }

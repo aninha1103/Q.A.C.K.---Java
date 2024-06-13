@@ -1,5 +1,9 @@
-package Modelo;
+package Servicos;
 
+import Modelo.Status;
+import Modelo.Tag;
+import Modelo.Teste;
+import Modelo.Usuario;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;

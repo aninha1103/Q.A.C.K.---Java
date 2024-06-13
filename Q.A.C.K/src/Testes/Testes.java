@@ -1,7 +1,7 @@
 
 package Testes;
 import Modelo.Cargo;
-import Modelo.Filtro;
+import Servicos.Filtro;
 import Modelo.Permissoes;
 import Modelo.Status;
 import Modelo.Tag;

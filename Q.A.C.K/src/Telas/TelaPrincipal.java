@@ -1,7 +1,7 @@
 package Telas;
 
 import JDBC.TesteJDBC;
-import Modelo.Filtro;
+import Servicos.Filtro;
 import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
