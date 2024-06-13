@@ -19,7 +19,6 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     private TelaVisualizarTeste origemVisualizar;
     private Integer idTeste;
     private Anexo imagemTeste;
-    private LocalDate data;
     
     public telaCadastroTeste( TelaPrincipal origem ) {
         initComponents();
@@ -48,7 +47,6 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         this.campoSituacao.setSelectedIndex( getStatusIndice( testeEditar ) );
         this.campoTag.setSelectedIndex( getTagIndice( testeEditar ) );
         imagemTeste = testeEditar.getAnexo();
-        data = testeEditar.getData();
     }
     
     public final void operacoesPadrao( TelaPrincipal origem ){
@@ -291,8 +289,13 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Usuario criandoTeste = origem.getUsuario();
         Tag tag              = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status        = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
-        Anexo anexo          = AnexoJDBC.findByPath( caminhoImagem );
-
+        Anexo anexo;
+        
+        if( imagemTeste.getId() != 1 && caminhoImagem.equals( System.getProperty("user.dir") + "\\src\\Recursos\\camera.png")){
+            anexo = imagemTeste;
+        }else{
+            anexo = AnexoJDBC.findByPath( caminhoImagem );
+        }
         if( anexo == null){
             AnexoJDBC.create( new Anexo( caminhoImagem ) );
             anexo = AnexoJDBC.findByPath( caminhoImagem );

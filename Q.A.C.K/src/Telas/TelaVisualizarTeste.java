@@ -6,8 +6,14 @@ import JDBC.ComentarioJDBC;
 import JDBC.TesteJDBC;
 import Modelo.Comentario;
 import Modelo.Teste;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,9 +28,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.testeVisualizar = testeVisualizar;
         atualizaCampos();
         this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
-        atualizaComentarios( ComentarioJDBC.findByITestd( testeVisualizar.getId() ) );
+        atualizaComentarios( ComentarioJDBC.findByIdTest( testeVisualizar.getId() ) );
         this.TabelaComentario.getColumnModel().getColumn( 0 ).setResizable(false);
-        this.TabelaComentario.getColumnModel().getColumn(1).setPreferredWidth(780);
+        this.TabelaComentario.getColumnModel().getColumn(1).setPreferredWidth(750);
        
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
@@ -37,7 +43,15 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         if( this.testeVisualizar.getAnexo() != null ){
             idAnexo =  this.testeVisualizar.getAnexo().getId();
         }
-        this.ImagemAnexada.setIcon( new javax.swing.ImageIcon( AnexoJDBC.findById( idAnexo ).getCaminhoArquivo() ) );
+        try {
+            this.ImagemAnexada.setIcon( new javax.swing.ImageIcon( 
+                    ImageIO.read( new File( AnexoJDBC.findById( idAnexo ).getCaminhoArquivo())).getScaledInstance
+                                                       (ImagemAnexada.getWidth(), ImagemAnexada.getHeight(), Image.SCALE_SMOOTH)) 
+            );
+            this.ImagemAnexada.updateUI();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaVisualizarTeste.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.TelaCadastroTeste.setText(testeVisualizar.getNome() );
         this.campoDescricao.setText( testeVisualizar.getDescricao() );
         this.CampoSituacao.setText( testeVisualizar.getStatus().name() );
@@ -145,6 +159,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
 
         ImagemAnexada.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         ImagemAnexada.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\camera.png" ));
+        ImagemAnexada.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ImagemAnexada.setPreferredSize(new java.awt.Dimension(256, 256));
 
         BotaoEditar.setBackground(new java.awt.Color(80, 0, 102));
@@ -210,6 +225,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             }
         });
         TabelaComentario.setAutoscrolls(false);
+        TabelaComentario.setShowVerticalLines(true);
+        TabelaComentario.getTableHeader().setResizingAllowed(false);
         jScrollPane1.setViewportView(TabelaComentario);
 
         javax.swing.GroupLayout PainelComentariosLayout = new javax.swing.GroupLayout(PainelComentarios);
@@ -346,7 +363,6 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         if( origem.getUsuario().getCargo().getPermissoes().isComentar() ){
             TelaComentar telaComentario = new TelaComentar( origem, testeVisualizar.getId(), this );
             telaComentario.setVisible( true );
-            this.setEnabled( false );
         }else{
             JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
         }

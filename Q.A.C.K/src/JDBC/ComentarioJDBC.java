@@ -65,7 +65,7 @@ public class ComentarioJDBC {
                 Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
-   public static List<Comentario> findByITestd( Integer idTeste){
+   public static List<Comentario> findByIdTest( Integer idTeste){
         StringBuilder query = new StringBuilder();
         query.append( "SELECT * FROM Comentario WHERE id_teste = ").append( idTeste ).append( ";");
         
