@@ -3,6 +3,7 @@ package Telas;
 import JDBC.UsuarioJDBC;
 import Modelo.Cargo;
 import Modelo.Usuario;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class telaCadastroUsuario extends javax.swing.JFrame {
@@ -29,6 +30,7 @@ public class telaCadastroUsuario extends javax.swing.JFrame {
     
     private void operacoesPadrao( TelaListagemUsuarios tela ){
         this.telaOrigem = tela;
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
     }

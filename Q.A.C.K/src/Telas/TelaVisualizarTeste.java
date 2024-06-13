@@ -9,11 +9,11 @@ import Modelo.Teste;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,9 +29,9 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         atualizaCampos();
         this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
         atualizaComentarios( ComentarioJDBC.findByIdTest( testeVisualizar.getId() ) );
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.TabelaComentario.getColumnModel().getColumn( 0 ).setResizable(false);
         this.TabelaComentario.getColumnModel().getColumn(1).setPreferredWidth(750);
-       
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
                 

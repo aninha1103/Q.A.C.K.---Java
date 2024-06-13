@@ -9,6 +9,7 @@ import Modelo.Tag;
 import Modelo.Usuario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TelaFiltrar<E> extends javax.swing.JFrame {
@@ -21,6 +22,7 @@ public class TelaFiltrar<E> extends javax.swing.JFrame {
         preencheComboBoxUsuario();
         preencheComboBoxTag();
         selecionaFiltroAtivo();
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
     }

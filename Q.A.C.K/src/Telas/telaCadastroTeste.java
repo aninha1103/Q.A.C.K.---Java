@@ -9,6 +9,7 @@ import Modelo.Teste;
 import Modelo.Usuario;
 import java.io.File;
 import java.time.LocalDate;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -52,6 +53,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     public final void operacoesPadrao( TelaPrincipal origem ){
         this.origem = origem;
         campoNomeArquivo.setText(" ");
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);   
     }
@@ -289,12 +291,12 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Usuario criandoTeste = origem.getUsuario();
         Tag tag              = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status        = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
-        Anexo anexo;
+        Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
         
-        if( imagemTeste.getId() != 1 && caminhoImagem.equals( System.getProperty("user.dir") + "\\src\\Recursos\\camera.png")){
-            anexo = imagemTeste;
-        }else{
-            anexo = AnexoJDBC.findByPath( caminhoImagem );
+        if( imagemTeste != null){
+            if( imagemTeste.getId() != 1 && caminhoImagem.equals( System.getProperty("user.dir") + "\\src\\Recursos\\camera.png")){
+                anexo = imagemTeste;   
+            }
         }
         if( anexo == null){
             AnexoJDBC.create( new Anexo( caminhoImagem ) );

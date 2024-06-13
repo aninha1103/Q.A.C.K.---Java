@@ -5,6 +5,7 @@ import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +16,7 @@ public class TelaListagemUsuarios extends javax.swing.JFrame {
     
     public TelaListagemUsuarios() {
         initComponents();
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
         this.usuarios = UsuarioJDBC.findAll();

@@ -2,12 +2,14 @@ package Telas;
 
 import JDBC.UsuarioJDBC;
 import Modelo.Usuario;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( EXIT_ON_CLOSE );
         this.setLocationRelativeTo(null); 
     }
@@ -47,7 +49,7 @@ public class TelaLogin extends javax.swing.JFrame {
         ProgramName.setFont(new java.awt.Font("Segoe UI Variable", 1, 40)); // NOI18N
         ProgramName.setForeground(new java.awt.Color(255, 228, 23));
         ProgramName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ProgramName.setText(" Q.A.C.K.");
+        ProgramName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logoNomepng.png"))); // NOI18N
 
         Versao.setFont(new java.awt.Font("Segoe UI Variable", 0, 10)); // NOI18N
         Versao.setForeground(new java.awt.Color(255, 228, 23));
@@ -68,28 +70,31 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Versao)
-                .addContainerGap())
-            .addComponent(ProgramName, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(IconLogin)
-                    .addComponent(IconSenha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoUsuario)
-                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Versao)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(IconLogin)
+                                    .addComponent(IconSenha))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botaoEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(campoUsuario)
+                                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ProgramName))
+                        .addGap(136, 136, 136))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(ProgramName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(26, 26, 26)
+                .addComponent(ProgramName)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IconLogin))
@@ -99,7 +104,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(IconSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(Versao)
                 .addContainerGap())
         );
@@ -108,13 +113,11 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -136,7 +139,7 @@ public class TelaLogin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Login ou senha inválida!" , "Erro", JOptionPane.ERROR_MESSAGE );
         this.campoUsuario.setText("");
         this.campoSenha.setText("");
-        
+
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -144,7 +147,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel IconSenha;
     private javax.swing.JLabel ProgramName;
     private javax.swing.JLabel Versao;
-    public javax.swing.JButton botaoEntrar;
+    private javax.swing.JButton botaoEntrar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JPanel jPanel1;

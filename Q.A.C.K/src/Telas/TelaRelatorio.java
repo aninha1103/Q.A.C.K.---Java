@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TelaRelatorio extends javax.swing.JFrame {
@@ -21,6 +22,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         desativaCheckBoxs();
         deselecionaCheckBoxs();
         relatorioPorData();
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
     }

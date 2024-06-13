@@ -3,6 +3,7 @@ package Telas;
 import JDBC.ComentarioJDBC;
 import Modelo.Comentario;
 import java.time.LocalDate;
+import javax.swing.ImageIcon;
 
 public class TelaComentar extends javax.swing.JFrame {
 
@@ -12,20 +13,21 @@ public class TelaComentar extends javax.swing.JFrame {
     private Integer idComentario;
     
     public TelaComentar( TelaPrincipal origemTela, Integer idTeste, TelaVisualizarTeste telaVisualizar ) {
-        this.origem = origemTela;
-        this.telaVisualizar = telaVisualizar;
-        this.idTeste = idTeste;
+        operacoesPadrao( origemTela, idTeste, telaVisualizar );
         initComponents();
-        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
-        this.setLocationRelativeTo(null); 
     }
     
     public TelaComentar( TelaPrincipal origemTela, Integer idTeste, Integer idComentario, TelaVisualizarTeste telaVisualizar ) {
+        operacoesPadrao( origemTela, idTeste, telaVisualizar );
+        this.idComentario = idComentario;
+        initComponents();
+    }
+    
+    private void operacoesPadrao( TelaPrincipal origemTela, Integer idTeste, TelaVisualizarTeste telaVisualizar ){
         this.origem = origemTela;
         this.telaVisualizar = telaVisualizar;
         this.idTeste = idTeste;
-        this.idComentario = idComentario;
-        initComponents();
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null); 
     }

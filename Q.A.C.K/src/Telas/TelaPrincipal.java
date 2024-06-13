@@ -6,6 +6,7 @@ import Modelo.Teste;
 import Modelo.Usuario;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -21,7 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.usuario = usuarioAtual;
         this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
         this.FiltroAtivoLabel.setText("Filtro: Inativo");
-        
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.ListaTestes.getColumnModel().getColumn( 1 ).setPreferredWidth(350);
         this.setDefaultCloseOperation( EXIT_ON_CLOSE );
         this.setLocationRelativeTo(null);
