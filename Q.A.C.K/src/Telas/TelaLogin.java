@@ -127,15 +127,15 @@ public class TelaLogin extends javax.swing.JFrame {
         String login = this.campoUsuario.getText();
         String senhaStr = String.copyValueOf(this.campoSenha.getPassword());
 
-        for( Usuario u : UsuarioJDBC.findAll() ){
-            if( u.login(login, senhaStr ) != null){
-                JOptionPane.showMessageDialog(this, "Bem vindo, " + u.getNome() , "Login", JOptionPane.INFORMATION_MESSAGE );
-                this.dispose();
-                TelaPrincipal t = new TelaPrincipal( u );
-                t.setVisible(true);
-                return;
-            }
+        Usuario usuarioLogin = UsuarioJDBC.findByLogin( login, senhaStr );
+        if( usuarioLogin != null){
+            JOptionPane.showMessageDialog(this, "Bem vindo, " + usuarioLogin.getNome() , "Login", JOptionPane.INFORMATION_MESSAGE );
+            this.dispose();
+            TelaPrincipal t = new TelaPrincipal( usuarioLogin );
+            t.setVisible(true);
+            return;
         }
+        
         JOptionPane.showMessageDialog(this, "Login ou senha inválida!" , "Erro", JOptionPane.ERROR_MESSAGE );
         this.campoUsuario.setText("");
         this.campoSenha.setText("");

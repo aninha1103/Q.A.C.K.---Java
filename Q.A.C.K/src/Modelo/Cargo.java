@@ -1,16 +1,11 @@
-
 package Modelo;
 
-
 public class Cargo {
-    
-    /*Atributos*/
+
     private int id;
     private String nome;
     private Permissoes permissoes;
     
-    /*Fim Atributos*/
-
     public int getId() {
         return id;
     }
@@ -45,5 +40,4 @@ public class Cargo {
         this.nome = nome;
         this.permissoes = permissoes;
     }
-
 }

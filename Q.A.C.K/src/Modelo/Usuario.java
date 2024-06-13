@@ -14,6 +14,23 @@ public class Usuario {
     private Cargo cargo;
     /*Fim Atributos*/
     
+   public Usuario( String nome, String login, String senha, Cargo cargo) {
+        this.id = null;
+        construtorPadrao( nome, login, senha, cargo );
+    }
+
+    public Usuario(int id, String nome, String login, String senha, Cargo cargo) {
+        this.id = id;
+        construtorPadrao( nome, login, senha, cargo );
+    }
+    
+    private void construtorPadrao( String nome, String login, String senha, Cargo cargo ){
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.cargo = cargo;
+    }
+    
     public int getId() {
         return id;
     }
@@ -59,30 +76,6 @@ public class Usuario {
         return "-- Usuario criado -- \nid: " + id + "\nsenha: " + senha+ "\nnome: " + nome+ "\nlogin: " + login+ "\nCargo: " + cargo.getId() + "\n-- FIM --";
     }
 
-    public Usuario( String nome, String login, String senha, Cargo cargo) {
-        this.id = null;
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.cargo = cargo;
-    }
-
-    public Usuario(int id, String nome, String login, String senha, Cargo cargo) {
-        this.id = id;
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.cargo = cargo;
-    }
-    
-    public Usuario login(String login, String senha){
-        if( !(this.login.equals( login ) && this.senha.equals( senha ) ) ){
-            //erro login ou senha invalida
-            return null;
-        }
-        return this;
-    }
-    
     public static Cargo cargoPorId( Integer idCargo ){
         Cargo cargo = null;
         switch ( idCargo ){
@@ -92,15 +85,4 @@ public class Usuario {
         }
         return cargo;
     }
-    
-    public String getNomeCargo(){
-        String nomeCargo = "";
-        switch( this.getCargo().getId() ){
-            case 1 -> nomeCargo = "QA";
-            case 2 -> nomeCargo = "TechLead";
-            case 3 -> nomeCargo = "Dev";
-        }
-        return nomeCargo;
-    }
-
 }

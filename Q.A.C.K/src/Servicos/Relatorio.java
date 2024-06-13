@@ -43,10 +43,4 @@ public class Relatorio {
         }
         return false;
     }
-    
-    private static String tipoRelatorio(){
-        return "";
-    }
-    
-    
 }

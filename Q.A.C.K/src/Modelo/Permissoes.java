@@ -68,9 +68,7 @@ public class Permissoes {
         this.exportaRelatorio = exportaRelatorio;
         this.comentar = comentar;
     }
-
     
-
     @Override
     public String toString() {
         return "criar: " + criar + ", alterar: " + alterar + ", excluir: " + excluir + ", exportaRelatorio: " + exportaRelatorio + ", comentar: " + comentar;

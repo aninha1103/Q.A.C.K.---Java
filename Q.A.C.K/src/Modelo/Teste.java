@@ -1,8 +1,6 @@
 package Modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Teste implements Comparable<Teste>{
     private Integer id;
@@ -13,25 +11,21 @@ public class Teste implements Comparable<Teste>{
     private Usuario criadoPor;
     private Tag tag;
     private Status status;
-    private List<Comentario> comentarios;
     
     public Teste() {
     }
 
     public Teste( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
         this.id = null;
-        this.nome = nome;
-        this.data = data;
-        this.descricao = descricao;
-        this.imagem = imagem;
-        this.criadoPor = criadoPor;
-        this.tag = tag;
-        this.status = status;
-        this.comentarios = new ArrayList<>();
+        construtorPadrao( nome, data, descricao, imagem, criadoPor, tag, status);
     }
     
     public Teste( Integer id, String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
         this.id = id;
+        construtorPadrao( nome, data, descricao, imagem, criadoPor, tag, status);
+    }    
+
+    private void construtorPadrao( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ){
         this.nome = nome;
         this.data = data;
         this.descricao = descricao;
@@ -39,34 +33,6 @@ public class Teste implements Comparable<Teste>{
         this.criadoPor = criadoPor;
         this.tag = tag;
         this.status = status;
-        this.comentarios = new ArrayList<>();
-    }    
-
-    public void criarComentario( Usuario usuarioAtual, String comentarioTexto ){
-        if( !usuarioAtual.getCargo().getPermissoes().isComentar() ){
-            //erro usuario não pode criar comentarios
-            return;
-        }
-        
-        Comentario c = new Comentario( this.getId(), usuarioAtual, LocalDate.now(), comentarioTexto);
-        comentarios.add( c );
-    }
-    
-    public void excluirComentario( Usuario usuarioAtual, Comentario comentario){
-        if( !comentario.permiteAlteracao( usuarioAtual ) && !usuarioAtual.getCargo().getPermissoes().isComentar() ){
-            //erro: usuario nao tem permissao de excluir comentario selecionado
-            return;
-        }
-        comentarios.remove( comentario );
-    }
-    
-    public void editarCometario( Usuario usuarioAtual, Comentario comentario, String novoTexto ){
-        if( !comentario.permiteAlteracao( usuarioAtual ) && !usuarioAtual.getCargo().getPermissoes().isComentar() ){
-            //erro: usuario nao tem permissao de alterar comentario selecionado
-            return;
-        }
-        comentario.setTextoComentario( novoTexto );
-        comentario.setEditado( Boolean.TRUE );
     }
     
     public Integer getId() {
@@ -79,10 +45,6 @@ public class Teste implements Comparable<Teste>{
     
     public LocalDate getData() {
         return data;
-    }
-    
-    public List<Comentario> getComentarios(){
-        return comentarios;
     }
 
     public String getNome() {

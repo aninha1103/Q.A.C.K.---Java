@@ -20,7 +20,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal( Usuario usuarioAtual ) {
         initComponents();
         this.usuario = usuarioAtual;
-        this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getNomeCargo() );
+        this.campoNomeCargo.setText( usuarioAtual.getNome() + ", " + usuarioAtual.getCargo().getNome() );
         this.FiltroAtivoLabel.setText("Filtro: Inativo");
         this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.ListaTestes.getColumnModel().getColumn( 1 ).setPreferredWidth(350);
@@ -250,12 +250,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
         }
-        
     }//GEN-LAST:event_BotaoUsuariosActionPerformed
 
     private void BotaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioActionPerformed
-        TelaRelatorio tela = new TelaRelatorio( this );
-        tela.setVisible( true );
+        if( this.usuario.getCargo().getPermissoes().isExportaRelatorio() ){
+            TelaRelatorio tela = new TelaRelatorio( this );
+            tela.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoGerarRelatorioActionPerformed
 
     private void BotaoVisualizarTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVisualizarTesteActionPerformed

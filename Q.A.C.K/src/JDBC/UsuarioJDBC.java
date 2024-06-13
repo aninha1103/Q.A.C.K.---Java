@@ -100,6 +100,33 @@ public class UsuarioJDBC {
         return null;
     }
     
+    public static Usuario findByLogin( String login, String senha ){
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM Usuario u ")
+                .append( "where u.usuario = '").append( login )
+                .append( "' AND u.senha = '").append( senha ).append( "';") ;
+        Usuario u = null;
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
+                Statement statement = conn.createStatement())  {
+
+                ResultSet rs = statement.executeQuery(query.toString());
+
+                while( rs.next()){
+                    u = new Usuario( rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("usuario"),
+                            rs.getString("senha"),
+                            CargoJDBC.findById(rs.getInt("id_cargo")) );
+                }
+
+                statement.close();
+            } catch (SQLException ex) {
+                System.out.println( ex.getMessage() );
+                Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return u;
+    }
+    
     public static Usuario findById( Integer id ){
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM Usuario where id =");
