@@ -1,6 +1,7 @@
 package JDBC;
 
 import Modelo.Comentario;
+import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -75,11 +76,13 @@ public class ComentarioJDBC {
             ResultSet rs = statement.executeQuery(query.toString());
             List<Comentario> comentarios = new ArrayList();
             while( rs.next() ){
-                comentarios.add( new Comentario( rs.getInt("id"),
+                Comentario c = new Comentario( rs.getInt("id"),
                                                                     rs.getInt("id_teste"),
                                                                     UsuarioJDBC.findById(rs.getInt("id_usuario")),
                                                                     LocalDate.parse(rs.getString("data_comentario")),
-                                                                    rs.getString("textComent")));
+                                                                    rs.getString("textComent"));
+                c.setEditado((rs.getInt("is_edited" ) == 1) );
+                comentarios.add( c );
             }
             
             statement.close();
@@ -92,4 +95,31 @@ public class ComentarioJDBC {
         }
         return null;
    }
+   
+   public static Comentario findByRowIndex( Integer index, Integer id_teste ){
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM Comentario WHERE id_teste =").append( id_teste ).append( " LIMIT 1 OFFSET ");
+        query.append( index ).append( "; ");
+        
+        Comentario comentario = null;
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
+                Statement statement = conn.createStatement())  {
+
+                ResultSet rs = statement.executeQuery(query.toString());
+
+                while( rs.next()){
+                    Integer id       = rs.getInt("id");
+                    String textoComentario    = rs.getString("textComent");
+                    LocalDate dataComentario   = LocalDate.parse( rs.getString("data_comentario") );
+                    Usuario usuario  = UsuarioJDBC.findById(rs.getInt("id_usuario"));
+                    comentario = new Comentario(id, id_teste, usuario, dataComentario, textoComentario);
+                }
+
+                statement.close();
+            } catch (SQLException ex) {
+                System.out.println( ex.getMessage() );
+                Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return comentario;    
+    }
 }

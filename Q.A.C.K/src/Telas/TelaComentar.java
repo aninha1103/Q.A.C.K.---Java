@@ -13,14 +13,15 @@ public class TelaComentar extends javax.swing.JFrame {
     private Integer idComentario;
     
     public TelaComentar( TelaPrincipal origemTela, Integer idTeste, TelaVisualizarTeste telaVisualizar ) {
-        operacoesPadrao( origemTela, idTeste, telaVisualizar );
         initComponents();
+        operacoesPadrao( origemTela, idTeste, telaVisualizar );
     }
     
-    public TelaComentar( TelaPrincipal origemTela, Integer idTeste, Integer idComentario, TelaVisualizarTeste telaVisualizar ) {
+    public TelaComentar( TelaPrincipal origemTela, Integer idTeste, Integer idComentario, TelaVisualizarTeste telaVisualizar, String comentario ) {
+        initComponents();
         operacoesPadrao( origemTela, idTeste, telaVisualizar );
         this.idComentario = idComentario;
-        initComponents();
+        this.Comentario.setText(comentario);
     }
     
     private void operacoesPadrao( TelaPrincipal origemTela, Integer idTeste, TelaVisualizarTeste telaVisualizar ){

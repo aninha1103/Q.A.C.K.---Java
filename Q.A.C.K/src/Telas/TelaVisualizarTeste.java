@@ -27,11 +27,11 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.origem = origem;
         this.testeVisualizar = testeVisualizar;
         atualizaCampos();
-        this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
         atualizaComentarios( ComentarioJDBC.findByIdTest( testeVisualizar.getId() ) );
-        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.TabelaComentario.getColumnModel().getColumn( 0 ).setResizable(false);
         this.TabelaComentario.getColumnModel().getColumn(1).setPreferredWidth(750);
+        this.PainelScrollPrincipal.getVerticalScrollBar().setUnitIncrement(16);
+        this.setIconImage( new ImageIcon( System.getProperty("user.dir") +"\\src\\Recursos\\Q.A.C.K.png").getImage() );
         this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
                 
@@ -82,7 +82,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
             //id titulo data stauts categoria
             String usuario = c.getUsuario().getNome();
             String comentario= c.getTextoComentario();
-            String[] dados = { usuario, comentario };
+            String editado = (c.getEditado()) ? "Sim" : "Não";
+            String[] dados = { usuario, comentario, editado };
             modelo.addRow( dados );
         }
     }
@@ -214,11 +215,11 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Usuário", "Comentário"
+                "Usuário", "Comentário", "Editado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -408,7 +409,13 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoEditarActionPerformed
 
     private void BotaoEditarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarComentarioActionPerformed
-        // TODO add your handling code here:
+        if( origem.getUsuario().getCargo().getPermissoes().isComentar() ){
+            Comentario comentario = ComentarioJDBC.findByRowIndex( TabelaComentario.getSelectedRow(), testeVisualizar.getId());
+            TelaComentar telaComentario = new TelaComentar( origem, testeVisualizar.getId(), comentario.getId() ,this,  comentario.getTextoComentario() );
+            telaComentario.setVisible( true );
+        }else{
+            JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+        }
     }//GEN-LAST:event_BotaoEditarComentarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
