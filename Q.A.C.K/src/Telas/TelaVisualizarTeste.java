@@ -114,6 +114,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         BotaoComentar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaComentario = new javax.swing.JTable();
+        BotaoEditarComentario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vizualizar Teste");
@@ -229,6 +230,16 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         TabelaComentario.getTableHeader().setResizingAllowed(false);
         jScrollPane1.setViewportView(TabelaComentario);
 
+        BotaoEditarComentario.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoEditarComentario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoEditarComentario.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoEditarComentario.setText("Editar");
+        BotaoEditarComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoEditarComentarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelComentariosLayout = new javax.swing.GroupLayout(PainelComentarios);
         PainelComentarios.setLayout(PainelComentariosLayout);
         PainelComentariosLayout.setHorizontalGroup(
@@ -239,16 +250,23 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelComentariosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BotaoEditarComentario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoComentar)))
                 .addContainerGap())
         );
         PainelComentariosLayout.setVerticalGroup(
             PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelComentariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotaoComentar)
+                .addGroup(PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelComentariosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotaoComentar))
+                    .addGroup(PainelComentariosLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(BotaoEditarComentario)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -339,8 +357,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TelaCadastroTeste)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -389,10 +407,15 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotaoEditarActionPerformed
 
+    private void BotaoEditarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarComentarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoEditarComentarioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnexosTexto;
     private javax.swing.JButton BotaoComentar;
     private javax.swing.JButton BotaoEditar;
+    private javax.swing.JButton BotaoEditarComentario;
     private javax.swing.JButton BotaoExcluir;
     private javax.swing.JTextField CampoCategoria;
     private javax.swing.JTextField CampoSituacao;
