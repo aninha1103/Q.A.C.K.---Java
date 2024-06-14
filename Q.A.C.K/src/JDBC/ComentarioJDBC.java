@@ -81,7 +81,7 @@ public class ComentarioJDBC {
                                                                     UsuarioJDBC.findById(rs.getInt("id_usuario")),
                                                                     LocalDate.parse(rs.getString("data_comentario")),
                                                                     rs.getString("textComent"));
-                c.setEditado((rs.getInt("is_edited" ) == 1) );
+                c.setEditado( (rs.getInt("is_edited" ) == 1) );
                 comentarios.add( c );
             }
             

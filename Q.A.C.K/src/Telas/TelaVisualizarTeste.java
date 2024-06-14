@@ -409,13 +409,18 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoEditarActionPerformed
 
     private void BotaoEditarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEditarComentarioActionPerformed
-        if( origem.getUsuario().getCargo().getPermissoes().isComentar() ){
-            Comentario comentario = ComentarioJDBC.findByRowIndex( TabelaComentario.getSelectedRow(), testeVisualizar.getId());
-            TelaComentar telaComentario = new TelaComentar( origem, testeVisualizar.getId(), comentario.getId() ,this,  comentario.getTextoComentario() );
-            telaComentario.setVisible( true );
-        }else{
+       if( !origem.getUsuario().getCargo().getPermissoes().isComentar()){
             JOptionPane.showMessageDialog( this, "Não tem permissão para essa ação","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
         }
+        if( TabelaComentario.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog( this, "Selecione um comentário para visualizar","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        Comentario comentario = ComentarioJDBC.findByRowIndex( TabelaComentario.getSelectedRow(), testeVisualizar.getId());
+        TelaComentar telaComentario = new TelaComentar( origem, testeVisualizar.getId(), comentario.getId() ,this,  comentario.getTextoComentario() );
+        telaComentario.setVisible( true );
+        
     }//GEN-LAST:event_BotaoEditarComentarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
