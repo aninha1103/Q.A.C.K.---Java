@@ -57,6 +57,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         this.CampoSituacao.setText( testeVisualizar.getStatus().name() );
         this.CampoCategoria.setText( testeVisualizar.getTag().name() );
         this.UsuarioCriadoPor.setText( testeVisualizar.getCriadoPor().getNome() );
+        this.CampoTicket.setText(testeVisualizar.getTicket());
+        this.CampoTicket.setEnabled( false );
         this.campoDescricao.setEnabled( false );
         this.CampoSituacao.setEnabled( false );
         this.CampoCategoria.setEnabled( false );
@@ -117,6 +119,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         TabelaComentario = new javax.swing.JTable();
         BotaoEditarComentario = new javax.swing.JButton();
         BotaoCancelar = new javax.swing.JButton();
+        TagsTexto1 = new javax.swing.JLabel();
+        CampoTicket = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vizualizar Teste");
@@ -272,14 +276,21 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         PainelComentariosLayout.setVerticalGroup(
             PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelComentariosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(BotaoComentar)
                     .addComponent(BotaoEditarComentario)
-                    .addComponent(BotaoCancelar)))
+                    .addComponent(BotaoCancelar))
+                .addContainerGap())
         );
+
+        TagsTexto1.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        TagsTexto1.setText("Ticket:");
+
+        CampoTicket.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        CampoTicket.setToolTipText("");
 
         javax.swing.GroupLayout PainelPrincipalLayout = new javax.swing.GroupLayout(PainelPrincipal);
         PainelPrincipal.setLayout(PainelPrincipalLayout);
@@ -297,15 +308,25 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                                 .addComponent(ImagemAnexada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(ComentariosTexto)
                             .addGroup(PainelPrincipalLayout.createSequentialGroup()
-                                .addComponent(TagsTexto)
-                                .addGap(48, 48, 48)
-                                .addComponent(SituacaoTexto)
+                                .addComponent(DescricaoTexto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CampoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(CategoriaTexto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CampoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ScrollAreaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(TagsTexto1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(CampoTicket))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(TagsTexto)
+                                        .addGap(48, 48, 48)
+                                        .addComponent(SituacaoTexto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CampoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(CategoriaTexto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CampoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -313,11 +334,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(CriadoPorTexto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(UsuarioCriadoPor))
-                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
-                                .addComponent(DescricaoTexto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ScrollAreaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(UsuarioCriadoPor)))
                         .addGap(0, 52, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -339,15 +356,19 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                     .addComponent(CampoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CriadoPorTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(UsuarioCriadoPor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(TagsTexto1)
+                    .addComponent(CampoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AnexosTexto)
-                    .addComponent(ImagemAnexada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ImagemAnexada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AnexosTexto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComentariosTexto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelComentarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         PainelScrollPrincipal.setViewportView(PainelPrincipal);
@@ -368,8 +389,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TelaCadastroTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(289, 289, 289))
+                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(271, 271, 271))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -380,7 +401,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -444,6 +465,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     private javax.swing.JButton BotaoExcluir;
     private javax.swing.JTextField CampoCategoria;
     private javax.swing.JTextField CampoSituacao;
+    private javax.swing.JTextField CampoTicket;
     private javax.swing.JLabel CategoriaTexto;
     private javax.swing.JLabel ComentariosTexto;
     private javax.swing.JLabel CriadoPorTexto;
@@ -457,6 +479,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
     private javax.swing.JLabel SituacaoTexto;
     private javax.swing.JTable TabelaComentario;
     private javax.swing.JLabel TagsTexto;
+    private javax.swing.JLabel TagsTexto1;
     private javax.swing.JLabel TelaCadastroTeste;
     private javax.swing.JLabel UsuarioCriadoPor;
     private javax.swing.JTextArea campoDescricao;

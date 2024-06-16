@@ -79,6 +79,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes = new javax.swing.JTable();
         FiltroAtivoLabel = new javax.swing.JLabel();
         BotaoFiltrarTeste = new javax.swing.JButton();
+        BotaoCancelar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testes");
@@ -175,6 +176,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        BotaoCancelar1.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoCancelar1.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        BotaoCancelar1.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoCancelar1.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\logout.png" ));
+        BotaoCancelar1.setMaximumSize(new java.awt.Dimension(27, 27));
+        BotaoCancelar1.setMinimumSize(new java.awt.Dimension(27, 27));
+        BotaoCancelar1.setPreferredSize(new java.awt.Dimension(26, 26));
+
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
         TelaPrincipalLayout.setHorizontalGroup(
@@ -187,7 +196,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotaoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotaoCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TelaPrincipalLayout.createSequentialGroup()
                         .addComponent(FiltroAtivoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,17 +208,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoVisualizarTeste)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoAdicionarTeste)
-                        .addContainerGap())))
+                        .addComponent(BotaoAdicionarTeste)))
+                .addContainerGap())
             .addComponent(PainelListaTestes, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
         );
         TelaPrincipalLayout.setVerticalGroup(
             TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TelaPrincipalLayout.createSequentialGroup()
-                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotaoUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoNomeCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TituloTela))
+                .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TituloTela)
+                        .addComponent(campoNomeCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(TelaPrincipalLayout.createSequentialGroup()
+                        .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(BotaoUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotaoCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelListaTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -277,6 +293,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAdicionarTeste;
+    private javax.swing.JButton BotaoCancelar1;
     private javax.swing.JButton BotaoFiltrarTeste;
     private javax.swing.JButton BotaoGerarRelatorio;
     private javax.swing.JButton BotaoUsuarios;
