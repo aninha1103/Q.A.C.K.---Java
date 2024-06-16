@@ -13,10 +13,11 @@ public class Relatorio {
     public Relatorio() {
     }
 
-    public static boolean gerarRelatorioCsv( List<Map> dadosRelatorio, Map camposSelecionados ){
+    public static boolean gerarRelatorioCsv( List<Map> dadosRelatorio, Map camposSelecionados, String nomeArquivo ){
         new File( ".\\Relatorios").mkdir();
         
-        try( BufferedWriter bw = new BufferedWriter( new FileWriter(".\\Relatorios\\relatorioQ.A.C.K.csv") )){
+        String nomeArquivoString = ".\\Relatorios\\" + nomeArquivo + ".csv";
+        try( BufferedWriter bw = new BufferedWriter( new FileWriter(  nomeArquivoString ) )){
             Boolean first = true;
             for(  Map m : dadosRelatorio ){
                 if( first ){

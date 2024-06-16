@@ -45,6 +45,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
         StatusCheckBox = new javax.swing.JRadioButton();
         DataCheckBox = new javax.swing.JRadioButton();
         BotaoFiltrar = new javax.swing.JButton();
+        NomeArquivoLabel = new javax.swing.JLabel();
+        ArquivoNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Relatórios");
@@ -125,10 +127,21 @@ public class TelaRelatorio extends javax.swing.JFrame {
             }
         });
 
+        NomeArquivoLabel.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        NomeArquivoLabel.setText("Nome arquivo:");
+
         javax.swing.GroupLayout PainelRelatorioLayout = new javax.swing.GroupLayout(PainelRelatorio);
         PainelRelatorio.setLayout(PainelRelatorioLayout);
         PainelRelatorioLayout.setHorizontalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelRelatorioLayout.createSequentialGroup()
+                .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NomeTesteCheckBox)
+                    .addComponent(UsuarioCheckBox)
+                    .addComponent(TagsCheckBox)
+                    .addComponent(StatusCheckBox)
+                    .addComponent(DataCheckBox))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(PainelRelatorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,24 +153,25 @@ public class TelaRelatorio extends javax.swing.JFrame {
                         .addComponent(BotaoLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoGerarRelatorio))
-                    .addGroup(PainelRelatorioLayout.createSequentialGroup()
-                        .addComponent(RelatorioTexto)
-                        .addGap(26, 26, 26)
-                        .addComponent(CampoTipoRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PainelRelatorioLayout.createSequentialGroup()
-                .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NomeTesteCheckBox)
-                    .addComponent(UsuarioCheckBox)
-                    .addComponent(TagsCheckBox)
-                    .addComponent(StatusCheckBox)
-                    .addComponent(DataCheckBox))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelRelatorioLayout.createSequentialGroup()
+                            .addComponent(NomeArquivoLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ArquivoNome))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PainelRelatorioLayout.createSequentialGroup()
+                            .addComponent(RelatorioTexto)
+                            .addGap(44, 44, 44)
+                            .addComponent(CampoTipoRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         PainelRelatorioLayout.setVerticalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelRelatorioLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelRelatorioLayout.createSequentialGroup()
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NomeArquivoLabel)
+                    .addComponent(ArquivoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RelatorioTexto)
                     .addComponent(CampoTipoRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,8 +190,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addComponent(BotaoGerarRelatorio)
                     .addComponent(BotaoCancelar)
                     .addComponent(BotaoLimpar)
-                    .addComponent(BotaoFiltrar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BotaoFiltrar)))
         );
 
         javax.swing.GroupLayout PainelPrincipalLayout = new javax.swing.GroupLayout(PainelPrincipal);
@@ -188,7 +201,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(RelatoriosTexto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(PainelRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                .addComponent(PainelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         PainelPrincipalLayout.setVerticalGroup(
             PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +211,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(RelatoriosTexto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(PainelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,6 +236,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void BotaoGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioActionPerformed
         List<Map> dadosRelatorio = pegaDados();
         
+        if( this.ArquivoNome.getText().isBlank() ){
+            JOptionPane.showMessageDialog( this, "Nome do arquivo inválido","Erro", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        
         if( dadosRelatorio.isEmpty() ){
             JOptionPane.showMessageDialog( this, "Nenhuma dado encontrado","Erro", JOptionPane.ERROR_MESSAGE );
             return;
@@ -229,7 +250,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog( this, "Selecione ao menos um campo para gerar relatório","Erro", JOptionPane.ERROR_MESSAGE );
             return;
         }
-        if( Relatorio.gerarRelatorioCsv(  dadosRelatorio ,  camposSelecionados ) ){
+        if( Relatorio.gerarRelatorioCsv(  dadosRelatorio ,  camposSelecionados, this.ArquivoNome.getText() ) ){
             JOptionPane.showMessageDialog( this, "Arquivo gerado no caminho:\n" + System.getProperty("user.dir") + "\\Relatorios","Sucesso", JOptionPane.INFORMATION_MESSAGE );
             this.dispose();
         }else{
@@ -351,12 +372,14 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ArquivoNome;
     private javax.swing.JButton BotaoCancelar;
     private javax.swing.JButton BotaoFiltrar;
     private javax.swing.JButton BotaoGerarRelatorio;
     private javax.swing.JButton BotaoLimpar;
     private javax.swing.JComboBox<String> CampoTipoRelatorio;
     private javax.swing.JRadioButton DataCheckBox;
+    private javax.swing.JLabel NomeArquivoLabel;
     private javax.swing.JRadioButton NomeTesteCheckBox;
     private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JPanel PainelRelatorio;
