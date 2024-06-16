@@ -19,14 +19,15 @@ import java.util.logging.Logger;
 public class TesteJDBC {
     public static void create( Teste t ){
         StringBuilder insertQuery = new StringBuilder();
-        insertQuery.append("INSERT INTO Teste( titulo, data_teste, descricao, id_usuario, id_tag, status, id_anexo ) VALUES(");
+        insertQuery.append("INSERT INTO Teste( titulo, data_teste, descricao, id_usuario, id_tag, status, id_anexo, Ticket ) VALUES(");
         insertQuery.append( "'" ).append( t.getNome()     ).append( "', ");
         insertQuery.append( "'" ).append( t.getData()     ).append( "', ");
         insertQuery.append( "'" ).append( t.getDescricao()).append( "', ");
         insertQuery.append( t.getCriadoPor().getId()      ).append( ", ");
         insertQuery.append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( ", ");
         insertQuery.append( "'" ).append( t.getStatus().toString().toLowerCase().charAt(0) ).append( "', ");
-        insertQuery.append( t.getAnexo().getId() ).append( ");");
+        insertQuery.append( t.getAnexo().getId() ).append( ", ");
+        insertQuery.append("'").append( t.getTicket() ).append( "');");
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
             Statement statement = connection.createStatement();)
         {
@@ -46,6 +47,7 @@ public class TesteJDBC {
         updateQuery.append( "status = '"    ).append( t.getStatus().toString().toLowerCase().charAt(0) ).append( "', ");
         updateQuery.append( "id_tag = "     ).append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( ",");
         updateQuery.append( "id_anexo = "  ).append( t.getAnexo().getId() );
+        updateQuery.append( "Ticket = "  ).append( t.getTicket() );
         updateQuery.append( " WHERE id = " ).append( t.getId() ).append( ";" );
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
           Statement statement = connection.createStatement();)
@@ -92,7 +94,8 @@ public class TesteJDBC {
                     Usuario usuario  = UsuarioJDBC.findById(rs.getInt("id_usuario"));
                     Tag tag          = TagJDBC.findById( rs.getInt("id_tag"));
                     Status status    = ("a".equals(rs.getString("status") ) ) ? Status.ANDAMENTO : Status.FINALIZADO;
-                    Teste t = new Teste(id, titulo, data, descricao, anexo, usuario, tag, status);
+                    String ticket = rs.getString("Ticket");
+                    Teste t = new Teste(id, titulo, data, descricao, anexo, usuario, tag, status, ticket);
                     teste.add(t);
                 }
                     
@@ -124,7 +127,8 @@ public class TesteJDBC {
                     Usuario usuario  = UsuarioJDBC.findById(rs.getInt("id_usuario"));
                     Tag tag          = TagJDBC.findById( rs.getInt("id_tag"));
                     Status status    = ("a".equals(rs.getString("status") ) ) ? Status.ANDAMENTO : Status.FINALIZADO;
-                    t = new Teste(id, titulo, data, descricao, anexo, usuario, tag, status);
+                    String ticket = rs.getString("Ticket");
+                    t = new Teste(id, titulo, data, descricao, anexo, usuario, tag, status, ticket);
                 }
 
                 statement.close();
@@ -132,6 +136,6 @@ public class TesteJDBC {
                 System.out.println( ex.getMessage() );
                 Logger.getLogger(UsuarioJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-        return t;    
+        return t;
     }
 }

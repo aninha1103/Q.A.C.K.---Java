@@ -17,8 +17,6 @@ public class Repositorio {
     public Repositorio() {
         this.testes = new ArrayList<>();
         this.usuarios = new ArrayList<>();
-        this.usuarios.add(( new Usuario( "ADMIN", "adm", "adm", new Techlead() ) ) );
-        this.testes.add( new Teste( "teste", LocalDate.parse("2020-01-01"), "Destinado a teste", null, usuarios.getFirst(), Tag.BUG, Status.ANDAMENTO) );
     }
     
     //manipulacao teste

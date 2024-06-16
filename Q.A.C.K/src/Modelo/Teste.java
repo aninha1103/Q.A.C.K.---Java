@@ -11,21 +11,22 @@ public class Teste implements Comparable<Teste>{
     private Usuario criadoPor;
     private Tag tag;
     private Status status;
+    private String ticket;
     
     public Teste() {
     }
 
-    public Teste( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
+    public Teste( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status, String ticket ) {
         this.id = null;
-        construtorPadrao( nome, data, descricao, imagem, criadoPor, tag, status);
+        construtorPadrao( nome, data, descricao, imagem, criadoPor, tag, status, ticket);
     }
     
-    public Teste( Integer id, String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ) {
+    public Teste( Integer id, String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status, String ticket ) {
         this.id = id;
-        construtorPadrao( nome, data, descricao, imagem, criadoPor, tag, status);
+        construtorPadrao( nome, data, descricao, imagem, criadoPor, tag, status, ticket);
     }    
 
-    private void construtorPadrao( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status ){
+    private void construtorPadrao( String nome, LocalDate data, String descricao, Anexo imagem, Usuario criadoPor, Tag tag, Status status, String ticket ){
         this.nome = nome;
         this.data = data;
         this.descricao = descricao;
@@ -33,6 +34,7 @@ public class Teste implements Comparable<Teste>{
         this.criadoPor = criadoPor;
         this.tag = tag;
         this.status = status;
+        this.ticket = ticket;
     }
     
     public Integer getId() {
@@ -85,6 +87,14 @@ public class Teste implements Comparable<Teste>{
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+    
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
     }
     
     @Override

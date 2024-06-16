@@ -48,6 +48,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         this.campoSituacao.setSelectedIndex( getStatusIndice( testeEditar ) );
         this.campoTag.setSelectedIndex( getTagIndice( testeEditar ) );
         imagemTeste = testeEditar.getAnexo();
+        this.campoTicketNome.setText( testeEditar.getTicket() );
     }
     
     public final void operacoesPadrao( TelaPrincipal origem ){
@@ -97,8 +98,8 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         campoNomeArquivo = new javax.swing.JTextField();
         BotaoSalvar = new javax.swing.JButton();
         BotaoCancelar = new javax.swing.JButton();
-        campoTicketNome = new javax.swing.JTextField();
         TicketCampo = new javax.swing.JLabel();
+        campoTicketNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Teste");
@@ -175,9 +176,6 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             }
         });
 
-        campoTicketNome.setEditable(false);
-        campoTicketNome.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
-
         TicketCampo.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         TicketCampo.setText("Ticket:");
 
@@ -215,9 +213,9 @@ public class telaCadastroTeste extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(botaoSelecionarAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoTicketNome, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(campoTicketNome)
+                                    .addComponent(campoNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -309,6 +307,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
         Usuario criandoTeste = origem.getUsuario();
         Tag tag              = Tag.valueOf( this.campoTag.getSelectedItem().toString().toUpperCase() );
         Status status        = Status.valueOf( this.campoSituacao.getSelectedItem().toString().toUpperCase() );
+        String ticket = this.campoTicketNome.getText();
         Anexo anexo = AnexoJDBC.findByPath( caminhoImagem );
         
         if( imagemTeste != null){
@@ -321,7 +320,7 @@ public class telaCadastroTeste extends javax.swing.JFrame {
             anexo = AnexoJDBC.findByPath( caminhoImagem );
         }
         
-        Teste t = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status );
+        Teste t = new Teste( this.idTeste, nome, LocalDate.now(), descricao, anexo, criandoTeste, tag, status, ticket );
         
         if( this.idTeste == null){
             TesteJDBC.create( t ) ;
