@@ -41,6 +41,7 @@ public class TesteJDBC {
     public static void update( Teste t ){
         StringBuilder updateQuery = new StringBuilder();
         updateQuery.append("UPDATE Teste SET ");
+        updateQuery.append( "titulo = '").append( t.getNome() ).append( "',");
         updateQuery.append( "descricao = '" ).append( t.getDescricao() ) .append( "', ");
         updateQuery.append( "status = '"    ).append( t.getStatus().toString().toLowerCase().charAt(0) ).append( "', ");
         updateQuery.append( "id_tag = "     ).append( TagJDBC.findIdbyName( t.getTag().name() ) ).append( ",");
