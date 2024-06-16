@@ -297,7 +297,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
     private void BotaoLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLogOutActionPerformed
-        if( JOptionPane.showConfirmDialog(this, "Deseja sair?", "Excluir teste", JOptionPane.YES_NO_OPTION) == 0 ){
+        if( JOptionPane.showConfirmDialog(this, "Deseja sair?", "Logout", JOptionPane.YES_NO_OPTION) == 0 ){
             this.dispose();
             TelaLogin tela = new TelaLogin();
             tela.setVisible( true );
