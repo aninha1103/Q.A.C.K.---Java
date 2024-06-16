@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 public class Relatorio {
     
@@ -19,9 +18,9 @@ public class Relatorio {
         
         try( BufferedWriter bw = new BufferedWriter( new FileWriter(".\\Relatorios\\relatorioQ.A.C.K.csv") )){
             Boolean first = true;
-            for(  Map m : dadosRelatorio){
+            for(  Map m : dadosRelatorio ){
                 if( first ){
-                    String colunasRelatorio = Arrays.toString( m.keySet().toArray());
+                    String colunasRelatorio = Arrays.toString( camposSelecionados.keySet().toArray());
                     bw.write( colunasRelatorio.substring( 1, colunasRelatorio.length() - 1));
                     bw.newLine();
                     first = false;
