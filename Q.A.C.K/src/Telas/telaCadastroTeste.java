@@ -29,13 +29,13 @@ public class telaCadastroTeste extends javax.swing.JFrame {
     
     public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar ) {
         initComponents();
-        operacoesPadrao( origem );   
+        operacoesPadrao( origem );
         operacoesEdicao( origem, testeEditar );
     }
     
     public telaCadastroTeste( TelaPrincipal origem, Teste testeEditar, TelaVisualizarTeste visualizar ) {
         initComponents();
-        operacoesPadrao( origem );   
+        operacoesPadrao( origem );
         operacoesEdicao( origem, testeEditar );
         this.origemVisualizar = visualizar;
     }

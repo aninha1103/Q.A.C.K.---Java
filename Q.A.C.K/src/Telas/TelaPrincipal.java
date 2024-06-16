@@ -79,7 +79,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ListaTestes = new javax.swing.JTable();
         FiltroAtivoLabel = new javax.swing.JLabel();
         BotaoFiltrarTeste = new javax.swing.JButton();
-        BotaoCancelar1 = new javax.swing.JButton();
+        BotaoLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testes");
@@ -176,13 +176,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        BotaoCancelar1.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar1.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
-        BotaoCancelar1.setForeground(new java.awt.Color(255, 255, 255));
-        BotaoCancelar1.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\logout.png" ));
-        BotaoCancelar1.setMaximumSize(new java.awt.Dimension(27, 27));
-        BotaoCancelar1.setMinimumSize(new java.awt.Dimension(27, 27));
-        BotaoCancelar1.setPreferredSize(new java.awt.Dimension(26, 26));
+        BotaoLogOut.setBackground(new java.awt.Color(80, 0, 102));
+        BotaoLogOut.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        BotaoLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoLogOut.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\logout.png" ));
+        BotaoLogOut.setMaximumSize(new java.awt.Dimension(27, 27));
+        BotaoLogOut.setMinimumSize(new java.awt.Dimension(27, 27));
+        BotaoLogOut.setPreferredSize(new java.awt.Dimension(26, 26));
+        BotaoLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoLogOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TelaPrincipalLayout = new javax.swing.GroupLayout(TelaPrincipal);
         TelaPrincipal.setLayout(TelaPrincipalLayout);
@@ -198,7 +203,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotaoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotaoLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(TelaPrincipalLayout.createSequentialGroup()
                         .addComponent(FiltroAtivoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -222,7 +227,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(TelaPrincipalLayout.createSequentialGroup()
                         .addGroup(TelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(BotaoUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BotaoCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BotaoLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelListaTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,11 +296,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible( true );
     }//GEN-LAST:event_BotaoFiltrarTesteActionPerformed
 
+    private void BotaoLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLogOutActionPerformed
+        if( JOptionPane.showConfirmDialog(this, "Deseja sair?", "Excluir teste", JOptionPane.YES_NO_OPTION) == 0 ){
+            this.dispose();
+            TelaLogin tela = new TelaLogin();
+            tela.setVisible( true );
+        }
+    }//GEN-LAST:event_BotaoLogOutActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAdicionarTeste;
-    private javax.swing.JButton BotaoCancelar1;
     private javax.swing.JButton BotaoFiltrarTeste;
     private javax.swing.JButton BotaoGerarRelatorio;
+    private javax.swing.JButton BotaoLogOut;
     private javax.swing.JButton BotaoUsuarios;
     private javax.swing.JButton BotaoVisualizarTeste;
     private javax.swing.JLabel FiltroAtivoLabel;
