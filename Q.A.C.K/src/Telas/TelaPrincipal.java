@@ -115,7 +115,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         BotaoGerarRelatorio.setBackground(new java.awt.Color(80, 0, 102));
         BotaoGerarRelatorio.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoGerarRelatorio.setForeground(new java.awt.Color(255, 255, 255));
-        BotaoGerarRelatorio.setText("Gerar Relatòrio");
+        BotaoGerarRelatorio.setText("Gerar Relatório");
         BotaoGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoGerarRelatorioActionPerformed(evt);
