@@ -166,7 +166,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         ImagemAnexada.setPreferredSize(new java.awt.Dimension(256, 256));
 
         BotaoEditar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoEditar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoEditar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoEditar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoEditar.setIcon(new javax.swing.ImageIcon( "src\\Recursos\\lapis.png" ));
         BotaoEditar.setPreferredSize(new java.awt.Dimension(25, 30));
@@ -201,7 +201,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         PainelComentarios.setBackground(new java.awt.Color(239, 239, 239));
 
         BotaoComentar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoComentar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoComentar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoComentar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoComentar.setText("Comentar");
         BotaoComentar.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +233,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TabelaComentario);
 
         BotaoEditarComentario.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoEditarComentario.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoEditarComentario.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoEditarComentario.setForeground(new java.awt.Color(255, 255, 255));
         BotaoEditarComentario.setText("Editar");
         BotaoEditarComentario.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +243,7 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
         });
 
         BotaoCancelar.setBackground(new java.awt.Color(80, 0, 102));
-        BotaoCancelar.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        BotaoCancelar.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
         BotaoCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -368,8 +368,8 @@ public class TelaVisualizarTeste extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TelaCadastroTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(284, 284, 284))
+                .addComponent(PainelScrollPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(289, 289, 289))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
