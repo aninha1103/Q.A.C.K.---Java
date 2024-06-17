@@ -339,7 +339,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
         List<Map> dados = new ArrayList<>();
         for( int i = 0; i < telaOrigem.getListaTestes().getModel().getRowCount(); i++){
             Map<String,String> dado = new TreeMap<>();
-            Teste testeLinha = TesteJDBC.findByRowIndex( i );
+            Integer idTeste = Integer.valueOf((String)telaOrigem.getListaTestes().getModel().getValueAt( i, 0));
+            Teste testeLinha = TesteJDBC.findById( idTeste );
             dado.put("Nome", testeLinha.getCriadoPor().getNome() );
             dado.put("titulo",  testeLinha.getNome() );
             dado.put("data_teste", testeLinha.getData().format( DateTimeFormatter.ofPattern("dd/MM/yyyy")) );
