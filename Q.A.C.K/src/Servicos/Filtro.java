@@ -54,40 +54,41 @@ public class Filtro {
         List<Teste> testesFiltrado = testes;
         if( this.getNome() != null ){
             int lenght = this.getNome().length();
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getNome().substring(0, ( x.getNome().length() < lenght) ? x.getNome().length() : lenght ).equalsIgnoreCase(
-                             this.getNome() ) )
-                             .collect(Collectors.toList());
+            testesFiltrado.removeIf( t -> !t.getNome().substring( 0, ( t.getNome().length() < lenght) ? t.getNome().length() : lenght ).equalsIgnoreCase(this.getNome() ) );
+            if( testesFiltrado.isEmpty()){
+                return testesFiltrado;
+            }
         }
         
         if( this.getUsuario() != null ){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getCriadoPor().getId() == this.getUsuario().getId()).collect(Collectors.toList());
+            testesFiltrado.removeIf( t -> t.getCriadoPor().getId() != this.getUsuario().getId() );
             if( testesFiltrado.isEmpty()){
                 return testesFiltrado;
             }
         }
 
         if( this.getTag() != null ){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getTag() == this.getTag() ).collect(Collectors.toList());
+            testesFiltrado.removeIf( t -> t.getTag() != this.getTag() );
             if( testesFiltrado.isEmpty()){
                 return testesFiltrado;
             }
         }
         
         if( this.getStatus() != null ){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getStatus()== this.getStatus() ).collect(Collectors.toList());
+            testesFiltrado.removeIf( t -> t.getStatus() != this.getStatus() );
             if( testesFiltrado.isEmpty()){
                 return testesFiltrado;
             }
         }
         
         if( this.getDataInicio() != null){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getData().isAfter( getDataInicio().plus( -1, ChronoUnit.DAYS ) ) ).collect(Collectors.toList());
+            testesFiltrado.removeIf( t -> !t.getData().isAfter( this.getDataInicio().plus( -1, ChronoUnit.DAYS ) ) );
             if( testesFiltrado.isEmpty()){
                 return testesFiltrado;
             }
         }
         if( this.getDataFim()!= null){
-            testesFiltrado = testesFiltrado.stream().filter( x -> x.getData().isBefore( getDataFim().plus( +1, ChronoUnit.DAYS) ) ).collect(Collectors.toList());
+            testesFiltrado.removeIf( t -> !t.getData().isBefore( this.getDataFim().plus( +1, ChronoUnit.DAYS) ) );
         }
         
         return testesFiltrado;
