@@ -351,7 +351,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }
     
     private Map getCamposSelecionados(){
-        Map<String,String> camposSelecionados = new HashMap<>();
+        Map<String,String> camposSelecionados = new TreeMap<>();
         
         if( this.UsuarioCheckBox.isSelected() ){
             camposSelecionados.put("Nome", "");
